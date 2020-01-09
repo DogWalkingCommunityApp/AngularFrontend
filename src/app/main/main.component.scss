@@ -1,0 +1,10 @@
+$headerHeight: 100px;
+
+header {
+    width: 100vw;
+    height: $headerHeight;
+}
+
+app-map {
+    height: calc(100% - #{$headerHeight});
+}

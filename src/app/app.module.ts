@@ -7,14 +7,21 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
+import { MapComponent } from './map/map.component'
 import { AppRoutingModule } from './app-routing.module';
+
+import { MainComponent } from './main/main.component';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    MapComponent,
+    MainComponent
+  ],
   entryComponents: [],
   imports: [
     BrowserModule,
