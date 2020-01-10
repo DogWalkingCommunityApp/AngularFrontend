@@ -1,0 +1,6 @@
+@import '../../sass/variables.scss';
+
+#map {
+    width: 100vw;
+    height: calc(100% - #{$headerHeight});
+}
