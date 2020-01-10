@@ -1,6 +1,13 @@
 @import '../../sass/variables.scss';
+@import '../../sass/functions.scss';
 
 #map {
     width: 100vw;
     height: calc(100% - #{$headerHeight});
+}
+
+::ng-deep .map-marker-user {
+    height: 24px;
+    width: 24px;
+    background-image: url(colorUserIcon(blue));
 }
