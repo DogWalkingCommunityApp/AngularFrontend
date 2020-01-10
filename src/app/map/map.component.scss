@@ -1,6 +1,6 @@
+@import '../../sass/variables.scss';
+
 #map {
     width: 100vw;
-    flex-direction: row;
-    flex-grow: 1;
-    height: 100%;
+    height: calc(100% - #{$headerHeight});
 }

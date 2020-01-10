@@ -44,8 +44,14 @@ export class MapComponent implements AfterViewInit {
     
     
         const behavior = new this.HereMap.mapevents.Behavior(new this.HereMap.mapevents.MapEvents(map));
+        //const ui = this.HereMap.ui.UI.createDefault(map, defaultLayers);
     
-        const ui = this.HereMap.ui.UI.createDefault(map, defaultLayers);
+
+        const icon = new this.HereMap.map.Icon('assets/icon/direction-marker.svg');
+        const marker = new this.HereMap.map.Marker({ lat: geoLocation.coords.latitude, lng: geoLocation.coords.longitude }, { icon: icon });
+        const group = new this.HereMap.map.Group();
+        map.addObject(group);
+        group.addObject(marker);
       })
     }
   }
