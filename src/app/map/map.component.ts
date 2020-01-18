@@ -1,5 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { MapCoordinates } from './map.interfaces';
+import { TrackingService } from '../tracking.service';
 
 @Component({
   selector: 'app-map',
@@ -9,8 +10,9 @@ import { MapCoordinates } from './map.interfaces';
 export class MapComponent implements AfterViewInit {
   private HereMap: any;
   private platform: any;
+  private userMarker;
 
-  constructor() { 
+  constructor(private TrackingService: TrackingService) { 
     this.HereMap = (window as any).H
 
     this.platform = new this.HereMap.service.Platform({
@@ -58,25 +60,26 @@ export class MapComponent implements AfterViewInit {
         map.addObject(group);
         group.addObject(marker);*/
 
-        this.addMarker(map, coords, 'assets/icon/direction-marker.svg', 'map-marker-user');
+        this.userMarker = this.addMarker(map, coords, 'assets/icon/direction-marker.svg', 'map-marker-user');
+
+        // FIXME: For testing
+        this.startTracking();
       })
     }
   }
 
   addMarker(map: any, coords: MapCoordinates, imagePath: string, className: string) {
     const outerElement = document.createElement('div'),
-        innerElement = document.createElement('img');
+        innerElement = document.createElement('div');
 
-    innerElement.src = imagePath;
-    outerElement.classList.add(className);
-  
-  
-    //outerElement.appendChild(innerElement);
-  
+    innerElement.classList.add(className);
+    
+    outerElement.appendChild(innerElement);
+    
     const changeOpacity = (evt) => {
       evt.target.style.opacity = 0.6;
     };
-  
+    
     const changeOpacityToOne = (evt) => {
       evt.target.style.opacity = 1;
     };
@@ -94,12 +97,27 @@ export class MapComponent implements AfterViewInit {
         clonedElement.removeEventListener('mouseout', changeOpacityToOne);
       }
     });
+    
+    
+    this.TrackingService.compass.subscribe((heading: number) => {
+      const value = `transform: rotate(${Math.round(heading)}deg)`;
+      const element = document.querySelector('.map-marker-user');
+      element && element.setAttribute('style', value);
+    })
   
-    // Marker for Chicago Bears home
-    var bearsMarker = new this.HereMap.map.DomMarker(coords, {
+    var newMarker = new this.HereMap.map.DomMarker(coords, {
       icon: domIcon
     });
-    map.addObject(bearsMarker);
+
+    map.addObject(newMarker);
+
+    return newMarker;
   }
 
+  startTracking() {
+    // Send a callback and a callee string
+    this.TrackingService.startTracking((coords: MapCoordinates)=> {
+      this.userMarker.setGeometry(coords);
+    }, 'userIcon')
+  }
 }

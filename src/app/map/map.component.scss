@@ -9,6 +9,8 @@
 ::ng-deep .map-marker-user {
     height: 24px;
     width: 24px;
+    left: -12px;
+    top: -12px;
     background-image: url(colorUserIcon(#5b84dc));
     fill: blue;
 }
