@@ -1,0 +1,28 @@
+<ion-content class="registration-page">
+  <form #form="ngForm">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+
+            <img src="/assets/floof_logo_final.svg" alt=""/>
+
+
+          <div>
+            <ion-item lines="none">
+                <img class="profile-pic" src="{{image}}" alt=""/><ion-input type="file" accept="image/*" (change)="changeListener($event)"></ion-input>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-input class="textfeld" name="benutzername" type="text" placeholder="Benutzername" [(ngModel)]="username" required></ion-input>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-input class="textfeld" name="passwort" type="password" placeholder="Passwort" [(ngModel)]="password" required></ion-input>
+            </ion-item>
+          </div>
+          <div >
+            <ion-button type="submit"  [disabled]="form.invalid" routerLink="/registration">Registrieren</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
