@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
+import {RouteReuseStrategy, RouterModule} from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -13,6 +13,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { MainComponent } from './main/main.component';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import {LoginComponent} from './login/login.component';
+import {FormsModule} from '@angular/forms';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
@@ -20,14 +22,16 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
   declarations: [
     AppComponent,
     MapComponent,
-    MainComponent
+    MainComponent,
+    LoginComponent
   ],
   entryComponents: [],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    FormsModule
   ],
   providers: [
     StatusBar,
