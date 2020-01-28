@@ -16,6 +16,7 @@ export class RegistrationComponent{
   private password:string;
   private confirmPassword:string;
   private birthdate;
+  private licenseAgreement;
 
   constructor() { 
   }
@@ -38,6 +39,10 @@ export class RegistrationComponent{
 
     const response = await fetch(config.serverBaseUrl + 'register', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
       body: JSON.stringify(profile)
     })
 
