@@ -1,5 +1,5 @@
 <ion-content class="registration-page">
-  <form #form="ngForm" [mustMatch]="[['password', 'confirmPassword'], ['email', 'confirmEmail']]">
+  <form #form="ngForm" [mustMatch]="[['password', 'confirmPassword'], ['email', 'confirmEmail'], ['license-agreement']]">
     <ion-grid>
       <ion-row justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
@@ -31,7 +31,11 @@
             </ion-item>
             <ion-item class="datepicker">
               <ion-label>MM DD YYYY</ion-label>
-              <ion-datetime displayFormat="MM DD YYYY" name="birthdate" placeholder="Select Birthday" [(ngModel)]="birthdate"></ion-datetime>
+              <ion-datetime displayFormat="MM DD YYYY" name="birthdate" placeholder="Select Birthday" [(ngModel)]="birthdate" required></ion-datetime>
+            </ion-item>
+            <ion-item class="checkbox">
+              <ion-checkbox type="checkbox" name="license-agreement" [(ngModel)]="licenseAgreement" required></ion-checkbox>
+              <ion-label>Ich stimme den Nutzungsbedingungen zu.</ion-label>
             </ion-item>
           </div>
           <div >

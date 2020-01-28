@@ -1,14 +1,18 @@
 .textfeld{
     width: 100%;
     padding: 8px 18px!important;
-    margin: 8px 4px;
+    margin: 6px 4px;
     box-sizing: border-box;
     border: 2px solid grey;
     border-radius: 10px;
   }
 
-  .datepicker {
+  .datepicker, .checkbox {
       margin: 0 20px;
+  }
+
+  .checkbox ion-checkbox {
+      margin-right: 20px;
   }
 
   .logo {

@@ -21,7 +21,7 @@ export class RegistrationComponent{
   }
 
   async onRegistration() {
-    const { username, name, vorname, email, birthdate} = this;
+    const { username, name, vorname, email, birthdate } = this;
 
     const jsShaObj =  new jssha('SHA-256', 'TEXT');
     jsShaObj.update(this.password);

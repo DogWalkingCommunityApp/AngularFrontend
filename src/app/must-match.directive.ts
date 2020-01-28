@@ -5,27 +5,41 @@ import { NG_VALIDATORS, Validator, ValidationErrors, FormGroup } from '@angular/
 const MustMatch = (matchers: string[][]) => {
     return (formGroup: FormGroup) => {
       matchers.forEach(matchersArray => {
-        const controlName = matchersArray[0]
-        const matchingControlName = matchersArray[1]
+        if (matchersArray.length === 2) {
+          const controlName = matchersArray[0]
+          const matchingControlName = matchersArray[1]
 
-        const control = formGroup.controls[controlName];
-      const matchingControl = formGroup.controls[matchingControlName];
-      
-        // return null if controls haven't initialised yet
-        if (!control || !matchingControl) {
-          return null;
-        }
-
-        // return null if another validator has already found an error on the matchingControl
-        if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+          const control = formGroup.controls[controlName];
+          const matchingControl = formGroup.controls[matchingControlName];
+        
+          // return null if controls haven't initialised yet
+          if (!control || !matchingControl) {
             return null;
-        }
+          }
 
-        // set error on matchingControl if validation fails
-        if (control.value !== matchingControl.value) {
-            matchingControl.setErrors({ mustMatch: true });
+          // return null if another validator has already found an error on the matchingControl
+          if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+              return null;
+          }
+
+          // set error on matchingControl if validation fails
+          if (control.value !== matchingControl.value) {
+              matchingControl.setErrors({ mustMatch: true });
+          } else {
+              matchingControl.setErrors(null);
+          }
         } else {
-            matchingControl.setErrors(null);
+          const checkbox = formGroup.controls[matchersArray[0]];
+
+          if(!checkbox) {
+            return null;
+          }
+
+          if (!checkbox.value) {
+            checkbox.setErrors({ mustMatch: true });
+          } else {
+            checkbox.setErrors(null);
+          }
         }
       })
     }
