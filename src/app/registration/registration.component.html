@@ -1,0 +1,48 @@
+<ion-content class="registration-page">
+  <form #form="ngForm" [mustMatch]="[['password', 'confirmPassword'], ['email', 'confirmEmail'], ['license-agreement']]">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+
+            <img class="logo" src="/assets/floof_logo_final.svg" alt=""/>
+
+
+          <div>
+            <ion-item lines="none">
+              <ion-input class="textfeld" name="benutzername" type="text" placeholder="Benutzername" [(ngModel)]="username" required></ion-input>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-input class="textfeld" name="name" type="text" placeholder="Name" [(ngModel)]="name" required></ion-input>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-input class="textfeld" name="vorname" type="text" placeholder="Vorname" [(ngModel)]="vorname" required></ion-input>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-input class="textfeld" name="email" type="text" placeholder="E-Mail" [(ngModel)]="email" required></ion-input>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-input class="textfeld" name="confirmEmail" type="text" placeholder="Confirm E-Mail" [(ngModel)]="confirmEmail" required></ion-input>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-input class="textfeld" name="password" type="password" placeholder="Passwort" [(ngModel)]="password" required></ion-input>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-input class="textfeld" name="confirmPassword" type="password" placeholder="Confirm Passwort" [(ngModel)]="confirmPassword" required></ion-input>
+            </ion-item>
+            <ion-item class="datepicker">
+              <ion-label>MM DD YYYY</ion-label>
+              <ion-datetime displayFormat="MM DD YYYY" name="birthdate" placeholder="Select Birthday" [(ngModel)]="birthdate" required></ion-datetime>
+            </ion-item>
+            <ion-item class="checkbox">
+              <ion-checkbox type="checkbox" name="license-agreement" [(ngModel)]="licenseAgreement" required></ion-checkbox>
+              <ion-label>Ich stimme den Nutzungsbedingungen zu.</ion-label>
+            </ion-item>
+          </div>
+          <div >
+            <ion-button class="submit-button" type="submit"  [disabled]="form.invalid" (click)="onRegistration($event)">Registrieren</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
