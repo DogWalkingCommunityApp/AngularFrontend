@@ -15,6 +15,7 @@ import { MainComponent } from './main/main.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import {LoginComponent} from './login/login.component';
 import {FormsModule} from '@angular/forms';
+import {PasswortVergessenComponent} from './passwort-vergessen/passwort-vergessen.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
@@ -23,7 +24,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     AppComponent,
     MapComponent,
     MainComponent,
-    LoginComponent
+    LoginComponent,
+    PasswortVergessenComponent
   ],
   entryComponents: [],
   imports: [
