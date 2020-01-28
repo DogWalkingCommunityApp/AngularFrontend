@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { PictureUploaderComponent } from './picture-uploader/picture-uploader.component';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import {FormsModule} from '@angular/forms';
@@ -25,7 +26,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     MapComponent,
     MainComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    PictureUploaderComponent
   ],
   entryComponents: [],
   imports: [
