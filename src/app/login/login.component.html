@@ -4,16 +4,15 @@
   <form #form="ngForm">
     <ion-grid>
       <ion-row justify-content-center>
-        <img height="150 px" width="250 px" src="/assets/floof_logo_final.svg" alt=""/>
+        <img height="150 px" width="250 px" src="../../assets/floof_logo_final.svg" alt=""/>
       </ion-row>
       <ion-row justify-content-center>
-
           <div>
             <ion-item lines="none">
-              <ion-input class="textfeld" name="benutzername" type="text" placeholder="Benutzername" ngModel required></ion-input>
+              <ion-input class="textfeld" name="benutzername" type="text" placeholder="Benutzername" [(ngModel)]="login" required></ion-input>
             </ion-item>
             <ion-item lines="none">
-              <ion-input class="textfeld" name="passwort" type="password" placeholder="Passwort" ngModel required></ion-input>
+              <ion-input class="textfeld" name="passwort" type="password" placeholder="Passwort" [(ngModel)]="password" required></ion-input>
             </ion-item>
           </div>
       </ion-row>
@@ -24,7 +23,7 @@
           </ion-row>
       <ion-row>
         <ion-col text-right>
-          <ion-button class="button" type="submit" [disabled]="form.invalid" (click)="login()" routerLink="/main">Login</ion-button>
+          <ion-button class="button" type="submit" [disabled]="form.invalid" (click)="onLogin()" routerLink="/main">Login</ion-button>
         </ion-col>
         <ion-col text-left>
           <ion-button class="button" type="submit" routerLink="/registration" >Registrieren</ion-button>

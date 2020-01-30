@@ -48,7 +48,7 @@ export class RegistrationComponent{
 
     const responseData = await response.json();
 
-    console.log(responseData)
+    console.log(responseData);
   }
 
 }
