@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import jssha from 'jssha';
 import config from '../environment.json';
 import { RegisterResponse } from '../registration/registration.interfaces.js';
@@ -11,7 +11,7 @@ import { DataStoreService } from '../data-store.service.js';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   private login: string;
   private password: string;
@@ -20,38 +20,6 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router, private dataStore: DataStoreService) { }
 
-  ngOnInit() {
-    // Auto login if the authToken already exists
-    this.initialLogin();
-  }
-
-  async initialLogin() {
-    if (this.dataStore.authToken) {
-      try {
-        const userData = { 
-          authId: this.dataStore.authToken.id,
-          login: null,
-          password: null
-        }
-
-        const response = await fetch(config.serverBaseUrl + 'login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(userData)
-        });
-
-        const responseData: RegisterResponse = await response.json();
-        console.log(responseData)
-        if (responseData.success) {
-          this.handleResponse(responseData)
-        };
-      } catch (e) {
-        console.log(e)
-      }
-    }
-  }
 
   async onLogin() {
     const {login} = this;
