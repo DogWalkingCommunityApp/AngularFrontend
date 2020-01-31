@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import config from './environment.json';
-import { RegisterResponse } from './registration/registration.interfaces.js';
+import { RegisterResponse } from './registration/registration.interfaces';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -45,11 +45,11 @@ export class DataStoreService {
   async initialLogin() {
     if (this.authToken) {
       try {
-        const userData = { 
+        const userData = {
           authId: this.authToken.id,
           login: null,
           password: null
-        }
+        };
 
         const response = await fetch(config.serverBaseUrl + 'login', {
           method: 'POST',
@@ -62,10 +62,10 @@ export class DataStoreService {
         const responseData: RegisterResponse = await response.json();
 
         if (responseData.success) {
-          this.handleResponse(responseData)
-        };
+          this.handleResponse(responseData);
+        }
       } catch (e) {
-        console.log(e)
+        console.log(e);
       }
     }
   }
@@ -75,6 +75,7 @@ export class DataStoreService {
       this.authToken = response.data.authToken;
       this.userData = response.data.userData;
 
+      console.log('Log: ', response.data.userData);
       if (this.router.routerState.snapshot.url === '/login') {
         this.router.navigate(['/main']);
       }

@@ -1,8 +1,10 @@
-<p [(ngModel)]="userData" name="profile" ngDefaultControl>
-  {{userData}}
+<p>
+  {{dataStore.userData.vorname}} {{dataStore.userData.name}}
   <button>
     <i class="material-icons">
       exit_to_app
     </i>
   </button>
+  {{dataStore.userData.username}}
+  {{dataStore.userData.email}}
 </p>

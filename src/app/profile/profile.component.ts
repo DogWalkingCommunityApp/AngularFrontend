@@ -8,9 +8,7 @@ import {DataStoreService} from '../data-store.service';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private dataStoreService: DataStoreService) {}
-
-  public userData = this.dataStoreService.userData;
+  constructor(private dataStore: DataStoreService) {}
   ngOnInit() {}
 
 }
