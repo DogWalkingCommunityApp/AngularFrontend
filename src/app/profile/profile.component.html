@@ -1,3 +1,8 @@
-<p>
-  profile works!
+<p [(ngModel)]="userProfileData" name="displayName" ngDefaultControl>
+  {{userProfileData}}
+  <button>
+    <i class="material-icons">
+      exit_to_app
+    </i>
+  </button>
 </p>

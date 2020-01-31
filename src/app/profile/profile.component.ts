@@ -7,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  userProfileData: any = {
+    firstName: 'Michael',
+    lastName: 'Burnham',
+  };
+
+  constructor() {}
 
   ngOnInit() {}
 
