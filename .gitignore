@@ -30,3 +30,7 @@ npm-debug.log*
 /platforms
 /plugins
 /www
+/.vs/slnx.sqlite
+/.vs/ProjectSettings.json
+/.vs/IonicFrontend/config/applicationhost.config
+/.vs/IonicFrontend/v16/.suo
