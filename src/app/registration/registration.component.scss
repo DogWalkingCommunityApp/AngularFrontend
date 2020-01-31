@@ -1,11 +1,4 @@
-.textfeld{
-    width: 100%;
-    padding: 8px 18px!important;
-    margin: 6px 4px;
-    box-sizing: border-box;
-    border: 2px solid grey;
-    border-radius: 10px;
-  }
+@import "../../sass/forms-styles";
 
   .datepicker, .checkbox {
       margin: 0 20px;

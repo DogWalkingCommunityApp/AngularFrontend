@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import jssha from 'jssha';
 import config from '../environment.json';
+import { RegisterResponse } from './registration.interfaces';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -18,7 +20,9 @@ export class RegistrationComponent{
   private birthdate;
   private licenseAgreement;
 
-  constructor() { 
+  private response: (null | RegisterResponse);
+
+  constructor(private router: Router) { 
   }
 
   async onRegistration() {
@@ -37,6 +41,7 @@ export class RegistrationComponent{
       birthdate
     }
 
+    try {
     const response = await fetch(config.serverBaseUrl + 'register', {
       method: 'POST',
       headers: {
@@ -46,9 +51,20 @@ export class RegistrationComponent{
       body: JSON.stringify(profile)
     })
 
-    const responseData = await response.json();
+      const responseData: RegisterResponse = await response.json();
+    
+      this.handleResponse(responseData);
+    } catch(e) {
+      this.handleResponse({ success: false, message: 'The serer did not respond' })
+    }
+  }
 
-    console.log(responseData)
+  handleResponse(response: RegisterResponse) {
+    this.response = response;
+
+    if (response.success) {
+      this.router.navigate(['/login']);
+    }
   }
 
 }
