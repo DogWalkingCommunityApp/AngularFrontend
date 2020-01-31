@@ -7,13 +7,14 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
-import { MapComponent } from './map/map.component'
+import { MapComponent } from './map/map.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { PictureUploaderComponent } from './picture-uploader/picture-uploader.component';
+import { DogIndexCardComponent } from './dog-index-card/dog-index-card.component';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import {FormsModule} from '@angular/forms';
@@ -29,6 +30,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     LoginComponent,
     RegistrationComponent,
     PictureUploaderComponent,
+    DogIndexCardComponent,
     MustMatchDirective
   ],
   entryComponents: [],
