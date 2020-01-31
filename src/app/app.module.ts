@@ -7,8 +7,9 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
-import { MapComponent } from './map/map.component'
+import { MapComponent } from './map/map.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ProfileComponent} from './profile/profile.component';
 
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
@@ -27,13 +28,15 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     MapComponent,
     MainComponent,
     LoginComponent,
+    ProfileComponent,
     RegistrationComponent,
     PictureUploaderComponent,
-    MustMatchDirective
+    MustMatchDirective,
   ],
   entryComponents: [],
   imports: [
     BrowserModule,
+    RouterModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     SocketIoModule.forRoot(config),
