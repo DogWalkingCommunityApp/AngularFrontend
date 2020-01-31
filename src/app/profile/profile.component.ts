@@ -10,10 +10,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(private dataStoreService: DataStoreService) {}
 
-  get UserData() {
-      return this.dataStoreService.userData;
-  }
-
+  public userData = this.dataStoreService.userData;
   ngOnInit() {}
 
 }
