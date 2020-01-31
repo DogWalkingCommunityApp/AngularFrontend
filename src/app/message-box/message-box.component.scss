@@ -1,0 +1,24 @@
+$height: 50px;
+
+.green {
+    background-color: rgb(25, 139, 25);
+}
+
+.red {
+    background-color: rgb(212, 38, 38);
+}
+
+.message-box-wrapper {
+    width: 100%;
+    height: $height;
+    color: white;
+    margin: auto;
+    border-radius: 20px;
+}
+
+.message-box-wrapper p {
+    margin: auto;
+    line-height: $height;
+    text-align: center;
+    font-size: 1.5em;
+}

@@ -1,10 +1,11 @@
 <ion-content class="registration-page">
-  <form #form="ngForm" [mustMatch]="[['password', 'confirmPassword'], ['email', 'confirmEmail'], ['license-agreement']]">
+  <form #form="ngForm" [mustMatch]="[['password', 'confirmPassword'], ['email', 'confirmEmail'], ['license-agreement']]" [validateValue]="[['validateEmail', 'email'], ['validatePassword', 'password'], ['validateBirthday', 'birthdate']]">
     <ion-grid>
       <ion-row justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-
-            <img class="logo" src="/assets/floof_logo_final.svg" alt=""/>
+          
+          <img class="logo" src="../../assets/floof_logo_final.svg" alt=""/>
+          <app-message-box *ngIf="response" [message]="response.message" [colorClass]="response.success ? 'green' : 'red'"></app-message-box>
 
 
           <div>
@@ -30,7 +31,7 @@
               <ion-input class="textfeld" name="confirmPassword" type="password" placeholder="Confirm Passwort" [(ngModel)]="confirmPassword" required></ion-input>
             </ion-item>
             <ion-item class="datepicker">
-              <ion-label>MM DD YYYY</ion-label>
+              <ion-label>Geburtstag</ion-label>
               <ion-datetime displayFormat="MM DD YYYY" name="birthdate" placeholder="Select Birthday" [(ngModel)]="birthdate" required></ion-datetime>
             </ion-item>
             <ion-item class="checkbox">
