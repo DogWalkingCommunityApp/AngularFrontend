@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {RouteReuseStrategy, RouterModule} from '@angular/router';
+import { RouteReuseStrategy, RouterModule } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -18,8 +18,8 @@ import { PictureUploaderComponent } from './picture-uploader/picture-uploader.co
 import { MessageBoxComponent } from './message-box/message-box.component';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
-import {FormsModule} from '@angular/forms';
-import {PasswortVergessenComponent} from './passwort-vergessen/passwort-vergessen.component';
+import { FormsModule } from '@angular/forms';
+import { PasswortVergessenComponent } from './passwort-vergessen/passwort-vergessen.component';
 import { MustMatchDirective } from './must-match.directive';
 import { ValidateValueDirective } from './validate-value.directive';
 
