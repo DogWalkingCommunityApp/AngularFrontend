@@ -5,6 +5,7 @@
     <ion-grid>
       <ion-row justify-content-center>
         <img height="150 px" width="250 px" src="../../assets/floof_logo_final.svg" alt=""/>
+        <app-message-box *ngIf="response" [message]="response.message" [colorClass]="response.success ? 'green' : 'red'"></app-message-box>
       </ion-row>
       <ion-row justify-content-center>
           <div>
@@ -23,7 +24,7 @@
           </ion-row>
       <ion-row>
         <ion-col text-right>
-          <ion-button class="button" type="submit" [disabled]="form.invalid" (click)="onLogin()" routerLink="/main">Login</ion-button>
+          <ion-button class="button" type="submit" [disabled]="form.invalid" (click)="onLogin()">Login</ion-button>
         </ion-col>
         <ion-col text-left>
           <ion-button class="button" type="submit" routerLink="/registration" >Registrieren</ion-button>
