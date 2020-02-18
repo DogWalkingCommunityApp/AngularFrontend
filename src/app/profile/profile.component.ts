@@ -13,18 +13,19 @@ export class ProfileComponent implements OnInit {
   constructor(private dataStore: DataStoreService, public matDialog: MatDialog) {
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
-    openModal() {
-        const dialogConfig = new MatDialogConfig();
-        // The user can't close the dialog by clicking outside its body
-        dialogConfig.disableClose = false;
-        dialogConfig.id = 'modal-component'; // css in global.scss
-        dialogConfig.height = '350px';
-        dialogConfig.width = '600px';
-        // https://material.angular.io/components/dialog/overview
-        const modalDialog = this.matDialog.open(ModalComponent, dialogConfig);
-    }
+   openModal() {
+      const dialogConfig = new MatDialogConfig();
+      // The user can't close the dialog by clicking outside its body
+      dialogConfig.disableClose = false;
+      dialogConfig.id = 'modal-component'; // css in global.scss
+      dialogConfig.height = '350px';
+      dialogConfig.width = '600px';
+       // https://material.angular.io/components/dialog/overview
+      const modalDialog = this.matDialog.open(ModalComponent, dialogConfig);
+   }
 
     logout() {
         // logout user

@@ -40,7 +40,7 @@
                 "input": "src/global.scss"
               }
             ],
-            "scripts": [],
+            "scripts": ["node_modules/@jaames/iro/dist/iro.js"],
             "webWorkerTsConfig": "tsconfig.worker.json"
           },
           "configurations": {
