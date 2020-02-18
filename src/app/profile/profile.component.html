@@ -1,28 +1,55 @@
-<div>
-  <img height="50 px" src="../../assets/floof_logo_final.svg" alt=""/>
-  {{dataStore.userData.vorname}}
-  {{dataStore.userData.name}}
-  <button>
-    <i class="material-icons">
-      exit_to_app
-    </i>
-  </button>
-  {{dataStore.userData.username}}
-  {{dataStore.userData.email}}
-  <button>
-    <i class="material-icons">
-      settings
-    </i>
-  </button>
-  <button>
-    <i class="material-icons">
-      palette
-    </i>
-  </button>
-  <button>
-    <img src="../../assets/icon/addDogIcon.svg" alt="addDogIcon" height="25 px">
-  </button>
-  <button>
-    <img src="../../assets/icon/liveMapIcon.svg" alt="liveMapIcon" height="50 px">
-  </button>
+<div class="grid-container">
+  <div id="profile-header" class="grid-item">
+
+    <div>
+      <img src="../../assets/floof_logo_final.svg" alt="" class="profile-pic"/>
+    </div>
+
+    <div>
+      <h1>
+        {{dataStore.userData.vorname}}
+        {{dataStore.userData.name}}
+      </h1>
+    </div>
+
+    <div id="logout">
+      <a routerLink="/main" class="small-btn">
+        <i class="material-icons">exit_to_app</i>
+      </a>
+    </div>
+
+    <div>
+      {{dataStore.userData.username}}
+    </div>
+
+    <div>
+      {{dataStore.userData.email}}
+    </div>
+
+    <div>
+      <a routerLink="/main" class="small-btn">
+        <i class="material-icons">settings</i>
+      </a>
+      <a routerLink="/main" class="small-btn">
+        <i class="material-icons">palette</i>
+      </a>
+      <a routerLink="/main" class="small-btn">
+        <img src="../../assets/icon/addDogIcon.svg" alt="addDogIcon" height="25 px">
+      </a>
+    </div>
+
+  </div>
+
+  <div id="dog-cards" class="grid-item">
+    <p>dog card component</p>
+  </div>
+
+  <div id="profile-footer" class="grid-item">
+    <button class="large-btn">
+      <a routerLink="/main" routerLinkActive="active">
+        <img src="../../assets/icon/liveMapIcon.svg" alt="liveMapIcon">
+      </a>
+    </button>
+  </div>
 </div>
+
