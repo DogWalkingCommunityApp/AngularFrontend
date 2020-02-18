@@ -13,9 +13,9 @@
     </div>
 
     <div id="logout">
-      <a routerLink="/login" class="small-btn">
+      <button class="small-btn" (click)="logout()">
         <i class="material-icons">exit_to_app</i>
-      </a>
+      </button>
     </div>
 
     <div class="user-data">
@@ -30,9 +30,9 @@
       <a routerLink="#" class="small-btn">
         <i class="material-icons">settings</i>
       </a>
-      <a routerLink="#" class="small-btn">
-        <i class="material-icons">palette</i>
-      </a>
+
+      <button mat-flat-button (click)="openModal()"><i class="material-icons palette-btn">palette</i></button>
+
       <a routerLink="#" class="small-btn">
         <img src="../../assets/icon/addDogIcon.svg" alt="addDogIcon" height="25px">
       </a>

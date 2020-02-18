@@ -22,6 +22,10 @@ import { FormsModule } from '@angular/forms';
 import { PasswortVergessenComponent } from './passwort-vergessen/passwort-vergessen.component';
 import { MustMatchDirective } from './must-match.directive';
 import { ValidateValueDirective } from './validate-value.directive';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ModalComponent } from './modal/modal.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
@@ -33,20 +37,24 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     LoginComponent,
     PasswortVergessenComponent,
     ProfileComponent,
+    ModalComponent,
     RegistrationComponent,
     PictureUploaderComponent,
     MessageBoxComponent,
     MustMatchDirective,
     ValidateValueDirective
   ],
-  entryComponents: [],
+  entryComponents: [ModalComponent],
   imports: [
     BrowserModule,
     RouterModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     SocketIoModule.forRoot(config),
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatDialogModule
   ],
   providers: [
     StatusBar,
