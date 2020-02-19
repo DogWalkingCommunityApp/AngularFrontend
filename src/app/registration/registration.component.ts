@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import jssha from 'jssha';
 import config from '../environment.json';
+import { RegisterResponse } from './registration.interfaces';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss'],
 })
-export class RegistrationComponent{
+export class RegistrationComponent {
   private username: string;
   private name: string;
   private vorname: string;
@@ -17,8 +19,9 @@ export class RegistrationComponent{
   private confirmPassword: string;
   private birthdate;
   private licenseAgreement;
+  private response: (null | RegisterResponse);
 
-  constructor() {  }
+  constructor(private router: Router) { }
 
   async onRegistration() {
     const { username, name, vorname, email, birthdate } = this;
@@ -34,8 +37,9 @@ export class RegistrationComponent{
       email,
       password,
       birthdate
-    }
+    };
 
+    try {
     const response = await fetch(config.serverBaseUrl + 'register', {
       method: 'POST',
       headers: {
@@ -43,11 +47,22 @@ export class RegistrationComponent{
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: JSON.stringify(profile)
-    })
+    });
 
-    const responseData = await response.json();
+    const responseData: RegisterResponse = await response.json();
 
-    console.log(responseData)
+    this.handleResponse(responseData);
+    } catch (e) {
+      this.handleResponse({ success: false, message: 'The serer did not respond' });
+    }
+  }
+
+  handleResponse(response: RegisterResponse) {
+    this.response = response;
+
+    if (response.success) {
+      this.router.navigate(['/login']);
+    }
   }
 
 }
