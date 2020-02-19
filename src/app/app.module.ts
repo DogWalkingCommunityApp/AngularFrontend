@@ -26,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalComponent } from './modal/modal.component';
+import { UploadProfilePictureComponent } from './upload-profile-picture/upload-profile-picture.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
@@ -42,9 +43,13 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     PictureUploaderComponent,
     MessageBoxComponent,
     MustMatchDirective,
-    ValidateValueDirective
+    ValidateValueDirective,
+    UploadProfilePictureComponent,
   ],
-  entryComponents: [ModalComponent],
+  entryComponents: [
+    ModalComponent,
+    UploadProfilePictureComponent
+  ],
   imports: [
     BrowserModule,
     RouterModule,

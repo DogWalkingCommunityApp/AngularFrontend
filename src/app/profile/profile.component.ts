@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataStoreService } from '../data-store.service';
-import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
-import {ModalComponent} from '../modal/modal.component';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ModalComponent } from '../modal/modal.component';
+import { UploadProfilePictureComponent } from '../upload-profile-picture/upload-profile-picture.component';
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +17,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
   }
 
-   openModal() {
+   openModal(target: string) {
       const dialogConfig = new MatDialogConfig();
       // The user can't close the dialog by clicking outside its body
       dialogConfig.disableClose = false;
@@ -24,7 +25,12 @@ export class ProfileComponent implements OnInit {
       dialogConfig.height = '350px';
       dialogConfig.width = '600px';
        // https://material.angular.io/components/dialog/overview
-      const modalDialog = this.matDialog.open(ModalComponent, dialogConfig);
+      if (target === 'palette') {
+           const modalDialog = this.matDialog.open(ModalComponent, dialogConfig);
+          // tslint:disable-next-line:align
+      } else if (target === 'upload') {
+           const modalDialog = this.matDialog.open(UploadProfilePictureComponent, dialogConfig);
+      }
    }
 
     logout() {

@@ -1,0 +1,11 @@
+<header id="modal-header">
+  <h1 id="modal-title">Profilbild ändern</h1>
+</header>
+<section id="modal-body">
+  <i id="add-photo-icon" class="material-icons">add_a_photo</i>
+  <button mat-raised-button id="modal-upload-button" (click)="chooseFile()">Profilbild auswählen</button>
+</section>
+<footer>
+  <button mat-raised-button id="modal-cancel-button" (click)="closeModal()">Verwerfen</button>
+  <button mat-raised-button id="modal-save-button" (click)="save()">Speichern</button>
+</footer>
