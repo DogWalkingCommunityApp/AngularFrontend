@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { FileUploadService} from '../file-upload.service';
 
 @Component({
   selector: 'app-upload-profile-picture',
@@ -8,13 +9,19 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class UploadProfilePictureComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<UploadProfilePictureComponent>) { }
+  fileToUpload: File = null;
+
+  constructor(public dialogRef: MatDialogRef<UploadProfilePictureComponent>, public fileUploadService: FileUploadService) { }
 
   ngOnInit() {}
 
     save() {
-      alert('Neues Profilbild speichern ...');
-      // save selected color to database
+      this.fileUploadService.postFile(this.fileToUpload).subscribe(data => {
+        // do something, if upload success
+        alert('Upload success');
+      }, error => {
+        console.log(error);
+      });
       this.closeModal();
     }
 
@@ -22,7 +29,7 @@ export class UploadProfilePictureComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  chooseFile() {
-
+  handleFileInput(files: FileList) {
+    this.fileToUpload = files.item(0);
   }
 }
