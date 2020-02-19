@@ -9,11 +9,11 @@ import {Socket} from "ngx-socket-io";
 })
 export class MainComponent implements OnInit {
 
-  private messages: string[] = [];
-  private message: string;
-  private ping: string;
-  private username: string = "admin0";
-  private pingMessages: string[] = [ "Hi", "Wie gehts?", "Möchte Gassi gehen" ];
+  public messages: string[] = [];
+  public message: string;
+  public ping: string;
+  public username: string = "admin0";
+  public pingMessages: string[] = [ "Hi", "Wie gehts?", "Möchte Gassi gehen" ];
 
   constructor(private dataStore: DataStoreService, private socket: Socket) {
     this.socket.on('getMessage', async (data) => {

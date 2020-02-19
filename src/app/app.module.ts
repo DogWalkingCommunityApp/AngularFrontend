@@ -24,7 +24,7 @@ import { ValidateValueDirective } from './validate-value.directive';
 import { PushNotificationService} from "./push-notification.service";
 import { environment} from "../environments/environment";
 import { HttpClientModule } from '@angular/common/http'
-import {ServiceWorkerModule} from "@angular/service-worker";
+import {ServiceWorkerModule, SwRegistrationOptions} from "@angular/service-worker";
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
@@ -49,15 +49,17 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     SocketIoModule.forRoot(config),
     FormsModule,
     HttpClientModule,
-      ServiceWorkerModule.register('/ngsw-worker.js', {
-        enabled: environment.production,
-      })
+      ServiceWorkerModule.register('/ngsw-worker.js')
   ],
   providers: [
     StatusBar,
     SplashScreen,
     [PushNotificationService],
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    {
+      provide: SwRegistrationOptions,
+      useFactory: () => ({enabled: environment.production}),
+    }
   ],
   bootstrap: [AppComponent]
 })
