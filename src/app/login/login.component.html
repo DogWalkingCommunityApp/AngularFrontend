@@ -4,24 +4,38 @@
   <form #form="ngForm">
     <ion-grid>
       <ion-row justify-content-center>
-        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-
-            <img src="/assets/floof_logo_final.svg" alt=""/>
-
-
+        <img height="150 px" width="250 px" src="../../assets/floof_logo_final.svg" alt=""/>
+        <app-message-box *ngIf="response" [message]="response.message" [colorClass]="response.success ? 'green' : 'red'"></app-message-box>
+      </ion-row>
+      <ion-row justify-content-center>
           <div>
             <ion-item lines="none">
-              <ion-input class="textfeld" name="benutzername" type="text" placeholder="Benutzername" ngModel required></ion-input>
+              <ion-input class="textfeld" name="benutzername" type="text" placeholder="Benutzername" [(ngModel)]="login" required></ion-input>
             </ion-item>
             <ion-item lines="none">
-              <ion-input class="textfeld" name="passwort" type="password" placeholder="Passwort" ngModel required></ion-input>
+              <ion-input class="textfeld" name="passwort" type="password" placeholder="Passwort" [(ngModel)]="password" required></ion-input>
             </ion-item>
           </div>
-          <div >
-            <ion-button type="submit" [disabled]="form.invalid" routerLink="/main">Login</ion-button>
-            <ion-button type="submit"  routerLink="/registration">Registrieren</ion-button>
-          </div>
+      </ion-row>
+          <ion-row justify-content-center>
+            <ion-label routerLink="/passwortVergessen">
+              Passwort vergessen
+            </ion-label>
+          </ion-row>
+      <ion-row>
+        <ion-col text-right>
+          <ion-button class="button" type="submit" [disabled]="form.invalid" (click)="onLogin()">Login</ion-button>
         </ion-col>
+        <ion-col text-left>
+          <ion-button class="button" type="submit" routerLink="/registration" >Registrieren</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-center>
+        <ion-item lines="none">
+          <ion-checkbox color="dark"></ion-checkbox>
+          <ion-label>Eingeloggt bleiben</ion-label>
+
+        </ion-item>
       </ion-row>
     </ion-grid>
   </form>

@@ -1,0 +1,24 @@
+<form #form="ngForm">
+  <ion-grid>
+    <ion-row justify-content-center>
+      <img height="150 px" width="250 px" src="/assets/floof_logo_final.svg" alt=""/>
+    </ion-row>
+    <p text-center align="justify">
+
+      Gib die E-Mail-Adresse ein, die mit<br />
+      deinem Konto verbunden ist, und<br />
+      wir schicken dir einen Link, um<br />
+      dein Passwort zurückzusetzen.
+    </p>
+    <ion-row justify-content-center>
+        <ion-item lines="none">
+          <ion-input class="textfeld" name="emailAdresse" type="text" placeholder="E-Mail-Adresse"></ion-input>
+        </ion-item>
+    </ion-row>
+    <ion-row>
+    <ion-col text-center>
+      <ion-button class="button" type="submit" routerLink="/login" >Senden</ion-button>
+    </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
