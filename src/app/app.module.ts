@@ -21,6 +21,10 @@ import {FormsModule} from '@angular/forms';
 import {PasswortVergessenComponent} from './passwort-vergessen/passwort-vergessen.component';
 import { MustMatchDirective } from './must-match.directive';
 import { ValidateValueDirective } from './validate-value.directive';
+import { PushNotificationService} from "./push-notification.service";
+import { environment} from "../environments/environment";
+import { HttpClientModule } from '@angular/common/http'
+import {ServiceWorkerModule, SwRegistrationOptions} from "@angular/service-worker";
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
@@ -43,12 +47,19 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     IonicModule.forRoot(),
     AppRoutingModule,
     SocketIoModule.forRoot(config),
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+      ServiceWorkerModule.register('/ngsw-worker.js')
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    [PushNotificationService],
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    {
+      provide: SwRegistrationOptions,
+      useFactory: () => ({enabled: environment.production}),
+    }
   ],
   bootstrap: [AppComponent]
 })

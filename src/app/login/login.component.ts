@@ -13,10 +13,10 @@ import { DataStoreService } from '../data-store.service.js';
 })
 export class LoginComponent {
 
-  private login: string;
-  private password: string;
+  public login: string;
+  public password: string;
 
-  private response: ( null | RegisterResponse );
+  public response: ( null | RegisterResponse );
 
   constructor(private router: Router, private dataStore: DataStoreService) { }
 

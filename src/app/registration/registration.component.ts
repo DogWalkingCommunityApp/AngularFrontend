@@ -10,17 +10,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./registration.component.scss'],
 })
 export class RegistrationComponent{
-  private username:string;
-  private name:string;
-  private vorname:string;
-  private email:string;
-  private confirmEmail:string;
-  private password:string;
-  private confirmPassword:string;
-  private birthdate;
-  private licenseAgreement;
+  public username:string;
+  public name:string;
+  public vorname:string;
+  public email:string;
+  public confirmEmail:string;
+  public password:string;
+  public confirmPassword:string;
+  public birthdate;
+  public licenseAgreement;
 
-  private response: (null | RegisterResponse);
+  public response: (null | RegisterResponse);
 
   constructor(private router: Router) { 
   }
