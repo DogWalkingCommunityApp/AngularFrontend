@@ -24,3 +24,18 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+/* Overwrite the styles of the mat-dialog-container element globally, but only for those
+that have an id of `modal-component` */
+/*https://stackoverflow.com/a/48689004/9263761*/
+mat-dialog-container#modal-component {
+  border-radius: 11px;
+  background-color: white;
+}
+
+h1 {
+  color: #414141;
+  font-family: Arial, sans-serif;
+  font-size: 1em;
+  font-weight: bold;
+}

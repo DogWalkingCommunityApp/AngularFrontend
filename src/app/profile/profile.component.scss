@@ -1,0 +1,89 @@
+.small-btn {
+   background-color: white;
+   color: #414141;
+   border: none;
+   padding: 12px 16px;
+   font-size: 16px;
+   cursor: pointer;
+ }
+
+.large-btn{
+  background-color: #e5e5e5;
+  color: #414141;
+  border-radius: 50px;
+  border: none;
+  padding: 3px 3px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 2px 2px 10px grey;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  float: bottom;
+}
+
+.palette-btn {
+  background-color: white;
+  color: #414141;
+  border: none;
+  cursor: pointer;
+}
+
+.profile-pic {
+  border-radius: 5em;
+  background-color: white;
+  border: #414141 solid 0.1em;
+  height: 7em;
+  width: 7em;
+  float: left;
+}
+
+#logout {
+  float: right;
+}
+
+p {
+  color: #414141;
+  font-family: Arial, sans-serif;
+  font-size: 1em;
+}
+
+#profile-header {
+  position: sticky;
+  padding: 10px;
+  margin: 10px;
+}
+
+#dog-cards {
+  background-color: #a2a4ab;
+  height: 20em;
+  padding: 10px;
+  margin: 10px;
+  overflow-y: auto;
+}
+
+#profile-footer {
+  padding: 10px;
+  margin: 10px;
+  height: 90px;
+  position:fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto;
+}
+
+.grid-item {
+
+}
+
+.user-data {
+  color: #414141;
+  font-family: Arial, sans-serif;
+  font-size: 0.85em;
+  padding: 0.1em;
+}
