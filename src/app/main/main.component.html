@@ -1,21 +1,2 @@
 <header></header>
-<ion-grid>
-    <ion-row>
-        <ion-item>
-            <ion-select [(ngModel)]="ping" placeholder="Message" style="max-width: min-content">
-                <ion-select-option *ngFor="let ping of pingMessages" [value]="ping">{{ping}}</ion-select-option>
-            </ion-select>
-        </ion-item>
-    </ion-row>
-    <ion-row>
-        <ion-item>
-            <ion-button class="button" type="submit" (click)="sendMessage()">Senden</ion-button>
-        </ion-item>
-    </ion-row>
-    <ion-row *ngFor="let msg of messages">
-        <ion-item lines="none">
-            <ion-text class="textfeld" color="dark">{{msg}}</ion-text>
-        </ion-item>
-    </ion-row>
-</ion-grid>
 <app-map></app-map>
