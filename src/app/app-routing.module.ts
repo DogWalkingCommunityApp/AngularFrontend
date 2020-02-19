@@ -5,6 +5,7 @@ import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { DogIndexCardComponent } from './dog-index-card/dog-index-card.component';
+import { AddDogFormComponent } from './add-dog-form/add-dog-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'dogIndexCard', component: DogIndexCardComponent },
+  { path: 'addDogForm', component: AddDogFormComponent },
 ];
 
 @NgModule({

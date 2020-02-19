@@ -8,18 +8,17 @@ import config from '../environment.json';
   styleUrls: ['./registration.component.scss'],
 })
 export class RegistrationComponent{
-  private username:string;
-  private name:string;
-  private vorname:string;
-  private email:string;
-  private confirmEmail:string;
-  private password:string;
-  private confirmPassword:string;
+  private username: string;
+  private name: string;
+  private vorname: string;
+  private email: string;
+  private confirmEmail: string;
+  private password: string;
+  private confirmPassword: string;
   private birthdate;
   private licenseAgreement;
 
-  constructor() { 
-  }
+  constructor() {  }
 
   async onRegistration() {
     const { username, name, vorname, email, birthdate } = this;

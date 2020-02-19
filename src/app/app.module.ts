@@ -19,6 +19,7 @@ import { DogIndexCardComponent } from './dog-index-card/dog-index-card.component
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import {FormsModule} from '@angular/forms';
 import { MustMatchDirective } from './must-match.directive';
+import {AddDogFormComponent} from './add-dog-form/add-dog-form.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
@@ -31,6 +32,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     RegistrationComponent,
     PictureUploaderComponent,
     DogIndexCardComponent,
+    AddDogFormComponent,
     MustMatchDirective
   ],
   entryComponents: [],
