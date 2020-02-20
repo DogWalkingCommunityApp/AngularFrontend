@@ -11,6 +11,7 @@ export class FileUploadService {
 
   constructor(private dataStore: DataStoreService) { }
 
+  // TODO: refuse files that are too large
   postFile(fileToUpload: File): Observable<boolean> {
     const endpoint = 'http://localhost:3000/profile/updateProfilePic';
     const formData: FormData = new FormData();
