@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import config from './environment.json';
-import { RegisterResponse } from './registration/registration.interfaces.js';
+import config from './../environment.json';
+import { RegisterResponse } from './../registration/registration.interfaces.js';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -74,7 +74,7 @@ export class DataStoreService {
     if (response.success) {
       this.authToken = response.data.authToken;
       this.userData = response.data.userData;
-
+      console.log(this.userData)
       if (this.router.routerState.snapshot.url === '/login') {
         this.router.navigate(['/main']);
       }

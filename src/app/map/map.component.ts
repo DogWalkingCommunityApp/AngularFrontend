@@ -1,6 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { MapCoordinates } from './map.interfaces';
-import { TrackingService } from '../tracking.service';
+import { TrackingService } from '../services/tracking.service';
 
 @Component({
   selector: 'app-map',

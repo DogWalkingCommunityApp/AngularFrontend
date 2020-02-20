@@ -21,10 +21,12 @@ import {FormsModule} from '@angular/forms';
 import {PasswortVergessenComponent} from './passwort-vergessen/passwort-vergessen.component';
 import { MustMatchDirective } from './must-match.directive';
 import { ValidateValueDirective } from './validate-value.directive';
-import { PushNotificationService} from "./push-notification.service";
+import { PushNotificationService} from "./services/push-notification.service";
 import { environment} from "../environments/environment";
 import { HttpClientModule } from '@angular/common/http'
 import {ServiceWorkerModule, SwRegistrationOptions} from "@angular/service-worker";
+
+import { DataStoreService } from './services/data-store.service';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
@@ -59,7 +61,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     {
       provide: SwRegistrationOptions,
       useFactory: () => ({enabled: environment.production}),
-    }
+    },
+    DataStoreService
   ],
   bootstrap: [AppComponent]
 })

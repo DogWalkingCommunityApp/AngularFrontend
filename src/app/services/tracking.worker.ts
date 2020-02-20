@@ -1,5 +1,5 @@
 /// <reference lib="webworker" />
-import { CALC_ORIENTATION_CHANGE, DEVICE_ORIENTATION } from './constants';
+import { CALC_ORIENTATION_CHANGE, DEVICE_ORIENTATION, TRACKING_USERS_ARRAY } from './../constants';
 
 let trackingInterval;
 
@@ -15,6 +15,9 @@ const reducer = (message) => {
   switch(message.type) {
     case CALC_ORIENTATION_CHANGE:
       calcOrientationChange(message.orientationData);
+      break;
+    case TRACKING_USERS_ARRAY:
+      handleTrackingUsersData(message.data);
       break;
   }
 
@@ -56,4 +59,8 @@ const calcOrientationChange = (data) => {
   compassHeading *= 180 / Math.PI;
 
   postMessage({ type: DEVICE_ORIENTATION, heading: compassHeading });
+}
+
+const handleTrackingUsersData = (data) => {
+  console.log(data)
 }

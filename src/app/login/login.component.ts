@@ -3,7 +3,7 @@ import jssha from 'jssha';
 import config from '../environment.json';
 import { RegisterResponse } from '../registration/registration.interfaces.js';
 import { Router } from '@angular/router';
-import { DataStoreService } from '../data-store.service.js';
+import { DataStoreService } from '../services/data-store.service.js';
 
 
 @Component({

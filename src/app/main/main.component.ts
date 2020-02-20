@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataStoreService } from '../data-store.service';
+import { DataStoreService } from '../services/data-store.service';
 import {Socket} from "ngx-socket-io";
 
 @Component({
