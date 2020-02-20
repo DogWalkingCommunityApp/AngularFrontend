@@ -4,6 +4,7 @@ import { DEVICE_ORIENTATION, TRACKING_USERS_ARRAY } from './../constants';
 import { BehaviorSubject } from 'rxjs';
 import { DataStoreService } from './data-store.service';
 import { Socket } from 'ngx-socket-io';
+import { WorkerFilteredData } from './tracking';
 export const CALC_ORIENTATION_CHANGE = 'calculateCompassHeading';
 
 type TrackingCallback = (coords: MapCoordinates) => void;
@@ -19,6 +20,7 @@ export class TrackingService {
   public coordinates: MapCoordinates;
   private serverTrackingInterval: any;
   private worker: Worker;
+  public filteredTrackingData: BehaviorSubject<WorkerFilteredData> = new BehaviorSubject(null);
 
   constructor(private dataStore: DataStoreService, private socket: Socket) {
     // TODO: Currently no use wor the webworker, but late on we want to use it for the exact position calculation of the other users
@@ -94,6 +96,9 @@ export class TrackingService {
       case DEVICE_ORIENTATION:
         this.compass.next(message.heading);
         break;
+      case TRACKING_USERS_ARRAY:
+        this.filteredTrackingData.next(message.data);
+        break;
     }
    }
 
@@ -102,14 +107,12 @@ export class TrackingService {
       if (status.success) {
         console.log(status.message)
         this.socketReady = true;
-
-        this.activateServerTracking();
       }
     })
 
     socket.on('trackLocationArray', (trackingArray) => {
       console.log(trackingArray)
-      this.worker.postMessage({ type: TRACKING_USERS_ARRAY, data: trackingArray })
+      this.worker.postMessage({ type: TRACKING_USERS_ARRAY, data: { trackingArray, coordinates: this.coordinates } })
     })
    }
 

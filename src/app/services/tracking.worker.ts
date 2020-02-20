@@ -1,5 +1,6 @@
 /// <reference lib="webworker" />
 import { CALC_ORIENTATION_CHANGE, DEVICE_ORIENTATION, TRACKING_USERS_ARRAY } from './../constants';
+import { getDistance } from 'geolib';
 
 let trackingInterval;
 
@@ -61,6 +62,38 @@ const calcOrientationChange = (data) => {
   postMessage({ type: DEVICE_ORIENTATION, heading: compassHeading });
 }
 
-const handleTrackingUsersData = (data) => {
-  console.log(data)
+let previousUsers: number[] = [];
+
+const handleTrackingUsersData = ({ trackingArray, coordinates, range = 5 }) => {
+  const filteredData = {};
+  const currentUsers: number[] = [];
+  let newUsers, removedUsers;
+
+  // TODO: Exclude own userId
+  for(let cell of trackingArray) {
+    for (let user in cell) {
+      const userObj = cell[user];
+      const distance = getDistance({ latitude: userObj.lat, longitude: userObj.lng }, { latitude: coordinates.lat, longitude: coordinates.lng })
+    
+      if (distance <= range*1000) {
+        filteredData[userObj.userData.id] = userObj;
+        currentUsers.push(userObj.userData.id);
+      }
+    }
+  }
+
+  
+  if(previousUsers.length !== Object.keys(filteredData).length) {
+    removedUsers = previousUsers.filter((userId) => {
+      return currentUsers.indexOf(userId) === -1;
+    })
+
+    newUsers = currentUsers.filter((userId) => {
+      return previousUsers.indexOf(userId) === -1;
+    })
+  }
+
+  previousUsers = currentUsers;
+  
+  postMessage({ type: TRACKING_USERS_ARRAY, data: { filteredData, removedUsers, newUsers } });
 }
