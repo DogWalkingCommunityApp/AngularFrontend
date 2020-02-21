@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
-import { MapCoordinates } from './map/map.interfaces';
-import { DEVICE_ORIENTATION } from './constants';
+import { MapCoordinates } from './../map/map.interfaces';
+import { DEVICE_ORIENTATION, TRACKING_USERS_ARRAY } from './../constants';
 import { BehaviorSubject } from 'rxjs';
+import { DataStoreService } from './data-store.service';
+import { Socket } from 'ngx-socket-io';
+import { WorkerFilteredData, IWorkerMessage } from './tracking';
 export const CALC_ORIENTATION_CHANGE = 'calculateCompassHeading';
 
 type TrackingCallback = (coords: MapCoordinates) => void;
@@ -13,15 +16,28 @@ export class TrackingService {
   private watchLocationId: number;
   private trackingCallbacks: { [key: string]: TrackingCallback} = {};
   public compass: BehaviorSubject<number> = new BehaviorSubject(0);
+  private socketReady: boolean = false;
+  public coordinates: MapCoordinates;
+  private serverTrackingInterval: any;
+  private worker: Worker;
+  public filteredTrackingData: BehaviorSubject<WorkerFilteredData> = new BehaviorSubject(null);
+  private jump: boolean = false;
 
-  constructor() {
+  constructor(private dataStore: DataStoreService, private socket: Socket) {
     // TODO: Currently no use wor the webworker, but late on we want to use it for the exact position calculation of the other users
     if (typeof Worker !== 'undefined') {
       // Create a new
       const worker = new Worker('./tracking.worker', { type: 'module' });
+      this.worker = worker;
+
       worker.onmessage = ({ data }) => {
         this.workerReducer(data);
       };
+
+      if (dataStore.authToken) {
+        socket.emit('authenticateSocket', dataStore.authToken);
+      }
+
       window.addEventListener('deviceorientation', (event) => {
         const { alpha, beta, gamma } = event;
         worker.postMessage({ type: CALC_ORIENTATION_CHANGE, orientationData: { alpha, beta, gamma } });
@@ -30,6 +46,9 @@ export class TrackingService {
       // Web Workers are not supported in this environment.
       // You should add a fallback so that your program still executes correctly.
     }
+
+    // Register a route which should allow to listen for the authentification response
+    this.registerSocketRoutes(socket);
    }
 
    public startTracking(callback: TrackingCallback, callee: string): void {
@@ -39,7 +58,7 @@ export class TrackingService {
       
         this.watchLocationId = navigator.geolocation.watchPosition((geoLocation: Position) => { 
             const coords: MapCoordinates = { lat: geoLocation.coords.latitude, lng: geoLocation.coords.longitude };
-    
+            this.coordinates = coords;
             this.runCallbacks(coords);
           })
       } else {
@@ -73,11 +92,48 @@ export class TrackingService {
      }
    }
 
-   private workerReducer(message): void {
+   private workerReducer(message: IWorkerMessage): void {
     switch(message.type) {
       case DEVICE_ORIENTATION:
         this.compass.next(message.heading);
         break;
+      case TRACKING_USERS_ARRAY:
+        this.jump = message.data.jump;
+        this.filteredTrackingData.next(message.data);
+        break;
     }
+   }
+
+   private registerSocketRoutes(socket: Socket) {
+    socket.on('authenticateSocket', (status) => {
+      if (status.success) {
+        this.socketReady = true;
+      }
+    })
+
+    socket.on('trackLocationArray', (data) => {
+      const { trackingArray, gpsKey } = data;
+      this.worker.postMessage({ type: TRACKING_USERS_ARRAY, data: { trackingArray, coordinates: this.coordinates, gpsKey } })
+    })
+   }
+
+   public activateServerTracking(): void {
+    this.serverTrackingInterval = setInterval(() => {
+      if (this.socketReady && this.coordinates) {
+        const { lat, lng } = this.coordinates;
+        const jumpCell = this.jump;
+
+        if(jumpCell) {
+          this.jump = false;
+        }
+
+        this.socket.emit('trackLocation', { lat, lng, jumpCell });
+      }
+    }, 1000)
+   }
+
+   public deActivateServerTracking(): void {
+     clearInterval(this.serverTrackingInterval);
+     this.socket.emit('stopTracking')
    }
 }

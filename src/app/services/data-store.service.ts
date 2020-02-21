@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import config from './environment.json';
-import { RegisterResponse } from './registration/registration.interfaces';
+import { RegisterResponse } from './../registration/registration.interfaces.js';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -8,7 +8,9 @@ import { Router } from '@angular/router';
 })
 export class DataStoreService {
   // TODO: Add Types for these
+  // tslint:disable-next-line:variable-name
   private _authToken: any = {};
+  // tslint:disable-next-line:variable-name
   private _userData: any = {};
 
   constructor(private router: Router) {
@@ -74,8 +76,7 @@ export class DataStoreService {
     if (response.success) {
       this.authToken = response.data.authToken;
       this.userData = response.data.userData;
-
-      console.log('Log: ', response.data.userData);
+      console.log(this.userData)
       if (this.router.routerState.snapshot.url === '/login') {
         this.router.navigate(['/main']);
       }

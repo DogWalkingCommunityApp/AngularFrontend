@@ -2,7 +2,9 @@
   <div id="profile-header" class="grid-item">
 
     <div>
-      <img src="../../assets/floof_logo_final.svg" alt="" class="profile-pic"/>
+      <button mat-flat-button (click)="openModal('upload')">
+        <img src="../../assets/floof_logo_final.svg" alt="" class="profile-pic"/>
+      </button>
     </div>
 
     <div>
@@ -31,7 +33,7 @@
         <i class="material-icons">settings</i>
       </a>
 
-      <button mat-flat-button (click)="openModal()"><i class="material-icons palette-btn">palette</i></button>
+      <button mat-flat-button (click)="openModal('palette')"><i class="material-icons palette-btn">palette</i></button>
 
       <a routerLink="#" class="small-btn">
         <img src="../../assets/icon/addDogIcon.svg" alt="addDogIcon" height="25px">
