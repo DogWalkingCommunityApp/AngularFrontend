@@ -4,6 +4,7 @@ import { DEVICE_ORIENTATION, TRACKING_USERS_ARRAY } from './../constants';
 import { BehaviorSubject } from 'rxjs';
 import { DataStoreService } from './data-store.service';
 import { Socket } from 'ngx-socket-io';
+import { WorkerFilteredData, IWorkerMessage } from './tracking';
 export const CALC_ORIENTATION_CHANGE = 'calculateCompassHeading';
 
 type TrackingCallback = (coords: MapCoordinates) => void;
@@ -19,6 +20,8 @@ export class TrackingService {
   public coordinates: MapCoordinates;
   private serverTrackingInterval: any;
   private worker: Worker;
+  public filteredTrackingData: BehaviorSubject<WorkerFilteredData> = new BehaviorSubject(null);
+  private jump: boolean = false;
 
   constructor(private dataStore: DataStoreService, private socket: Socket) {
     // TODO: Currently no use wor the webworker, but late on we want to use it for the exact position calculation of the other users
@@ -89,10 +92,14 @@ export class TrackingService {
      }
    }
 
-   private workerReducer(message): void {
+   private workerReducer(message: IWorkerMessage): void {
     switch(message.type) {
       case DEVICE_ORIENTATION:
         this.compass.next(message.heading);
+        break;
+      case TRACKING_USERS_ARRAY:
+        this.jump = message.data.jump;
+        this.filteredTrackingData.next(message.data);
         break;
     }
    }
@@ -100,16 +107,13 @@ export class TrackingService {
    private registerSocketRoutes(socket: Socket) {
     socket.on('authenticateSocket', (status) => {
       if (status.success) {
-        console.log(status.message)
         this.socketReady = true;
-
-        this.activateServerTracking();
       }
     })
 
-    socket.on('trackLocationArray', (trackingArray) => {
-      console.log(trackingArray)
-      this.worker.postMessage({ type: TRACKING_USERS_ARRAY, data: trackingArray })
+    socket.on('trackLocationArray', (data) => {
+      const { trackingArray, gpsKey } = data;
+      this.worker.postMessage({ type: TRACKING_USERS_ARRAY, data: { trackingArray, coordinates: this.coordinates, gpsKey } })
     })
    }
 
@@ -117,7 +121,13 @@ export class TrackingService {
     this.serverTrackingInterval = setInterval(() => {
       if (this.socketReady && this.coordinates) {
         const { lat, lng } = this.coordinates;
-        this.socket.emit('trackLocation', { lat, lng, jumpCell: false });
+        const jumpCell = this.jump;
+
+        if(jumpCell) {
+          this.jump = false;
+        }
+
+        this.socket.emit('trackLocation', { lat, lng, jumpCell });
       }
     }, 1000)
    }
