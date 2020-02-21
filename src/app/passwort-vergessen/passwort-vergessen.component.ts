@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import config from '../environment.json';
+import config from '../services/environment.json';
 import {AlertController} from '@ionic/angular';
 
 @Component({
