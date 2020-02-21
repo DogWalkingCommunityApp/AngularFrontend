@@ -19,9 +19,7 @@ export class DataStoreService {
       this._authToken = JSON.parse(savedAuthToken);
       this.initialLogin();
     } else {
-      if (this.router.routerState.snapshot.url !== '/login') {
-        this.router.navigate(['/login']);
-      }
+      this.routeToLogin();
     }
    }
 
@@ -63,8 +61,11 @@ export class DataStoreService {
 
         if (responseData.success) {
           this.handleResponse(responseData)
+        } else {
+          this.routeToLogin();
         };
       } catch (e) {
+        this.routeToLogin();
         console.log(e)
       }
     }
@@ -82,6 +83,12 @@ export class DataStoreService {
       if (this.router.routerState.snapshot.url !== '/login') {
         this.router.navigate(['/login']);
       }
+    }
+  }
+
+  routeToLogin() {
+    if (this.router.routerState.snapshot.url !== '/login') {
+      this.router.navigate(['/login']);
     }
   }
 }
