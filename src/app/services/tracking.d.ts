@@ -6,4 +6,11 @@ export interface WorkerFilteredData {
     };
     removedUsers: number[];
     newUsers: number[];
+    jump: boolean;
+}
+
+export interface IWorkerMessage {
+    type: string;
+    data?: WorkerFilteredData;
+    heading?: any;
 }

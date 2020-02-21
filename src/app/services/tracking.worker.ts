@@ -1,6 +1,6 @@
 /// <reference lib="webworker" />
 import { CALC_ORIENTATION_CHANGE, DEVICE_ORIENTATION, TRACKING_USERS_ARRAY } from './../constants';
-import { getDistance } from 'geolib';
+import { getDistance, isPointInPolygon } from 'geolib';
 
 let trackingInterval;
 
@@ -63,11 +63,17 @@ const calcOrientationChange = (data) => {
 }
 
 let previousUsers: number[] = [];
+let currentGpsCell: any = undefined;
+let jumpCellCalcBoundry: number = 1; 
 
-const handleTrackingUsersData = ({ trackingArray, coordinates, range = 5 }) => {
+const handleTrackingUsersData = ({ trackingArray, coordinates, range = 5, gpsKey }) => {
   const filteredData = {};
   const currentUsers: number[] = [];
   let newUsers, removedUsers;
+
+  if (gpsKey) {
+    currentGpsCell = JSON.parse(gpsKey);
+  }
 
   // TODO: Exclude own userId
   for(let cell of trackingArray) {
@@ -94,6 +100,22 @@ const handleTrackingUsersData = ({ trackingArray, coordinates, range = 5 }) => {
   }
 
   previousUsers = currentUsers;
+
+  let jump = false;
+  if(jumpCellCalcBoundry % 10 === 0) {
+    jump = checkIfJumpOccurs(coordinates)
+  } else {
+    jumpCellCalcBoundry++;
+  }
   
-  postMessage({ type: TRACKING_USERS_ARRAY, data: { filteredData, removedUsers, newUsers } });
+  postMessage({ type: TRACKING_USERS_ARRAY, data: { filteredData, removedUsers, newUsers, jump } });
+}
+
+
+const checkIfJumpOccurs = (coordinates) => {
+  const { lat, lng } = coordinates;
+
+  const geoLibCoords = { longitude: lng, latitude: lat };
+
+  return !isPointInPolygon(geoLibCoords, currentGpsCell);
 }

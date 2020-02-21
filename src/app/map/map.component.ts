@@ -22,10 +22,6 @@ export class MapComponent implements AfterViewInit {
     this.platform = new this.HereMap.service.Platform({
       'apikey': 'GNibHURLINdyh-P9iBwlK50E3_swhICr_t7zW9pLQ9Y'
     });
-
-    this.setToVisible();
-
-    setTimeout(this.setToInvisible.bind(this), 20000)
   }
 
   ngAfterViewInit() {
@@ -219,7 +215,6 @@ export class MapComponent implements AfterViewInit {
   }
 
   setToInvisible() {
-    console.log('INVISIBLE')
     this.dataSubscription.unsubscribe();
 
     this.TrackingService.deActivateServerTracking();
