@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import config from './../environment.json';
+import config from './environment.json';
 import { RegisterResponse } from './../registration/registration.interfaces.js';
 import { Router } from '@angular/router';
 
@@ -8,7 +8,9 @@ import { Router } from '@angular/router';
 })
 export class DataStoreService {
   // TODO: Add Types for these
+  // tslint:disable-next-line:variable-name
   private _authToken: any = {};
+  // tslint:disable-next-line:variable-name
   private _userData: any = {};
 
   constructor(private router: Router) {
@@ -45,11 +47,11 @@ export class DataStoreService {
   async initialLogin() {
     if (this.authToken) {
       try {
-        const userData = { 
+        const userData = {
           authId: this.authToken.id,
           login: null,
           password: null
-        }
+        };
 
         const response = await fetch(config.serverBaseUrl + 'login', {
           method: 'POST',
@@ -62,10 +64,10 @@ export class DataStoreService {
         const responseData: RegisterResponse = await response.json();
 
         if (responseData.success) {
-          this.handleResponse(responseData)
-        };
+          this.handleResponse(responseData);
+        }
       } catch (e) {
-        console.log(e)
+        console.log(e);
       }
     }
   }

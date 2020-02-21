@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import jssha from 'jssha';
-import config from '../environment.json';
+import config from '../services/environment.json';
 import { RegisterResponse } from './registration.interfaces';
 import { Router } from '@angular/router';
 

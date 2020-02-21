@@ -1,0 +1,15 @@
+<header id="modal-header">
+  <h1 id="modal-title">Profilbild ändern</h1>
+</header>
+<section id="modal-body">
+  <i id="add-photo-icon" class="material-icons">add_a_photo</i>
+  <div class="form-group">
+    <input type="file"
+           id="file"
+           (change)="handleFileInput($event.target.files)">
+  </div>
+</section>
+<footer>
+  <button mat-raised-button id="modal-cancel-button" (click)="closeModal()">Verwerfen</button>
+  <button mat-raised-button id="modal-save-button" (click)="save()">Speichern</button>
+</footer>
