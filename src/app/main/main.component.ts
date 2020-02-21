@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataStoreService } from '../services/data-store.service';
 import {Socket} from "ngx-socket-io";
+import {AlertController} from '@ionic/angular';
 
 @Component({
   selector: 'app-main',
@@ -14,6 +15,7 @@ export class MainComponent implements OnInit {
   public ping: string;
   public username: string = "admin0";
   public pingMessages: string[] = [ "Hi", "Wie gehts?", "Möchte Gassi gehen" ];
+  private isVisible: boolean;
 
   constructor(private dataStore: DataStoreService, private socket: Socket) {
     this.socket.on('getMessage', async (data) => {
@@ -35,5 +37,12 @@ export class MainComponent implements OnInit {
       //this.socket.emit("sendMessage", this.message + ";" + this.username);
       //this.messages.push(this.message);
     //}
+  }
+
+  async onChange() {
+    this.isVisible = !this.isVisible;
+    if(this.isVisible){
+
+    }
   }
 }
