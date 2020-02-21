@@ -27,6 +27,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalComponent } from './modal/modal.component';
 import { UploadProfilePictureComponent } from './upload-profile-picture/upload-profile-picture.component';
+import { PushNotificationService} from "./services/push-notification.service";
+import { environment} from "../environments/environment";
+import { HttpClientModule } from '@angular/common/http'
+import {ServiceWorkerModule, SwRegistrationOptions} from "@angular/service-worker";
+
+import { DataStoreService } from './services/data-store.service';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
@@ -59,12 +65,20 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     FormsModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule,
+      ServiceWorkerModule.register('/ngsw-worker.js')
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    [PushNotificationService],
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    {
+      provide: SwRegistrationOptions,
+      useFactory: () => ({enabled: environment.production}),
+    },
+    DataStoreService
   ],
   bootstrap: [AppComponent]
 })

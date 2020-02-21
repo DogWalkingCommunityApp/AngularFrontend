@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { FileUploadService} from '../file-upload.service';
+import { FileUploadService} from '../services/file-upload.service';
 
 @Component({
   selector: 'app-upload-profile-picture',
