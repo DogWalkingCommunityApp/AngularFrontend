@@ -1,5 +1,5 @@
 <header>
-    <ion-toggle color="success"></ion-toggle>
+    <ion-toggle (ionChange)="onChange()" [checked]="isVisible"  color="success"></ion-toggle>
     <img src="/assets/WetterPlaceholder.svg">
     <button class="small-btn">
         <i class="material-icons">live_help</i>
