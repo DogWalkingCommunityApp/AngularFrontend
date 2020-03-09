@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataStoreService } from '../data-store.service';
+import { DataStoreService } from '../services/data-store.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
 import { UploadProfilePictureComponent } from '../upload-profile-picture/upload-profile-picture.component';
