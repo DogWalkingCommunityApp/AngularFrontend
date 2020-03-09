@@ -5,6 +5,7 @@ import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
 import {PasswortVergessenComponent} from './passwort-vergessen/passwort-vergessen.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { ListComponent } from './list/list.component';
 import { ProfileComponent} from './profile/profile.component';
 import { ModalComponent } from './modal/modal.component';
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'passwortVergessen', component: PasswortVergessenComponent},
   { path: 'registration', component: RegistrationComponent },
   { path: 'modal', component: ModalComponent},
+  { path: 'list', component: ListComponent},
 ];
 
 @NgModule({
