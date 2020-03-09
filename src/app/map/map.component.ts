@@ -2,6 +2,7 @@ import { Component, AfterViewInit } from '@angular/core';
 import { MapCoordinates } from './map.interfaces';
 import { TrackingService } from '../services/tracking.service';
 import { serverBaseUrl } from '../services/environment.json';
+import { Options } from 'ng5-slider';
 
 @Component({
   selector: 'app-map',
@@ -16,7 +17,14 @@ export class MapComponent implements AfterViewInit {
   private map;
   private dataSubscription;
 
-  constructor(private TrackingService: TrackingService) { 
+  public sliderOptions: Options = {
+    floor: 1,
+    ceil: 10,
+    step: 1,
+    vertical: true
+  };
+
+  constructor(private trackingService: TrackingService) { 
     this.HereMap = (window as any).H
 
     this.platform = new this.HereMap.service.Platform({
@@ -53,22 +61,12 @@ export class MapComponent implements AfterViewInit {
     
     
         const behavior = new this.HereMap.mapevents.Behavior(new this.HereMap.mapevents.MapEvents(map));
-        //const ui = this.HereMap.ui.UI.createDefault(map, defaultLayers);
-    
-/*
-        const icon = new this.HereMap.map.Icon('assets/icon/direction-marker.svg');
-        const marker = new this.HereMap.map.Marker({ lat: geoLocation.coords.latitude, lng: geoLocation.coords.longitude }, { icon: icon });
-        const group = new this.HereMap.map.Group();
-        console.log(icon)
-
-        map.addObject(group);
-        group.addObject(marker);*/
 
         this.map = map;
         this.userMarker = this.addMarker(map, coords, 'assets/icon/direction-marker.svg', 'map-marker-user');
 
         this.startTracking();
-      })
+      }, (err) => console.log(err), { enableHighAccuracy: true })
     }
   }
 
@@ -103,7 +101,7 @@ export class MapComponent implements AfterViewInit {
     });
     
     
-    this.TrackingService.compass.subscribe((heading: number) => {
+    this.trackingService.compass.subscribe((heading: number) => {
       const value = `transform: rotate(${Math.round(heading)}deg)`;
       const element = document.querySelector('.map-marker-user');
       element && element.setAttribute('style', value);
@@ -163,13 +161,15 @@ export class MapComponent implements AfterViewInit {
 
   startTracking() {
     // Send a callback and a callee string
-    this.TrackingService.startTracking((coords: MapCoordinates)=> {
+    this.trackingService.startTracking((coords: MapCoordinates)=> {
       this.userMarker.setGeometry(coords);
     }, 'userIcon')
   }
 
+
+  // Activate the server tracking and show the users position to other users as well as other user on the map for the user
   setToVisible() {
-    this.dataSubscription = this.TrackingService.filteredTrackingData.subscribe((trackingData) => {
+    this.dataSubscription = this.trackingService.filteredTrackingData.subscribe((trackingData) => {
       if (!this.map || !trackingData) {
         return;
       }
@@ -211,13 +211,14 @@ export class MapComponent implements AfterViewInit {
       })
     }) 
 
-    this.TrackingService.activateServerTracking();
+    this.trackingService.activateServerTracking();
   }
 
+  // Deactivate server sided tracking and do not show any other users on the map anymore
   setToInvisible() {
     this.dataSubscription.unsubscribe();
 
-    this.TrackingService.deActivateServerTracking();
+    this.trackingService.deActivateServerTracking();
 
     const markersArray = Object.keys(this.usersMarkers).map( markerKey => {
       return this.usersMarkers[markerKey];
@@ -225,5 +226,15 @@ export class MapComponent implements AfterViewInit {
 
     this.map.removeObjects(markersArray);
     this.usersMarkers = undefined;
+  }
+
+  // Slider related functions
+  sliderHandler(event) {
+    this.trackingService.range = event.value;
+    console.log(this.trackingService.range)
+  }
+
+  get range() {
+    return this.trackingService.range;
   }
 }
