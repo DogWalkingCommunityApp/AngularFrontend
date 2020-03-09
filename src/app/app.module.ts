@@ -5,6 +5,7 @@ import { RouteReuseStrategy, RouterModule } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Ng5SliderModule } from 'ng5-slider';
 
 import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
@@ -66,6 +67,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     BrowserAnimationsModule,
     MatButtonModule,
     MatDialogModule,
+    Ng5SliderModule,
     HttpClientModule,
       ServiceWorkerModule.register('/ngsw-worker.js')
   ],
