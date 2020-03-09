@@ -44,8 +44,8 @@ export class LoginComponent {
 
       const responseData: RegisterResponse = await response.json();
       this.handleResponse(responseData);
-    } catch(e) {
-      this.handleResponse({ success: false, message: 'The serer did not respond' })
+    } catch (e) {
+      this.handleResponse({ success: false, message: 'The serer did not respond' });
     }
   }
 

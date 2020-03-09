@@ -33,6 +33,7 @@ import { HttpClientModule } from '@angular/common/http'
 import {ServiceWorkerModule, SwRegistrationOptions} from "@angular/service-worker";
 
 import { DataStoreService } from './services/data-store.service';
+import {EditProfilComponent} from './edit-profil/edit-profil.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
@@ -50,7 +51,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     MessageBoxComponent,
     MustMatchDirective,
     ValidateValueDirective,
-    UploadProfilePictureComponent,
+    EditProfilComponent,
+    UploadProfilePictureComponent
   ],
   entryComponents: [
     ModalComponent,

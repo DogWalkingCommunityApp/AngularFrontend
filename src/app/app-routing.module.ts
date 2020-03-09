@@ -7,6 +7,7 @@ import {PasswortVergessenComponent} from './passwort-vergessen/passwort-vergesse
 import { RegistrationComponent } from './registration/registration.component';
 import { ProfileComponent} from './profile/profile.component';
 import { ModalComponent } from './modal/modal.component';
+import { EditProfilComponent} from './edit-profil/edit-profil.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'passwortVergessen', component: PasswortVergessenComponent},
   { path: 'registration', component: RegistrationComponent },
   { path: 'modal', component: ModalComponent},
+  { path: 'editProfil', component: EditProfilComponent},
 ];
 
 @NgModule({
