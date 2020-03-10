@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { RouteReuseStrategy, RouterModule } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -11,12 +12,17 @@ import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ProfileComponent} from './profile/profile.component';
+import { ListComponent } from './list/list.component';
 
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { PictureUploaderComponent } from './picture-uploader/picture-uploader.component';
 import { MessageBoxComponent } from './message-box/message-box.component';
+import { FriendListComponent } from './list/friend-list/friend-list.component';
+import { DogListComponent } from './list/dog-list/dog-list.component';
+import { RoutesListComponent } from './list/routes-list/routes-list.component';
+import { BlockedListComponent } from './list/blocked-list/blocked-list.component';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { FormsModule } from '@angular/forms';
@@ -52,6 +58,11 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     MustMatchDirective,
     ValidateValueDirective,
     UploadProfilePictureComponent,
+    FriendListComponent,
+    DogListComponent,
+    RoutesListComponent,
+    BlockedListComponent,
+    ListComponent
   ],
   entryComponents: [
     ModalComponent,
@@ -60,6 +71,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
   imports: [
     BrowserModule,
     RouterModule,
+    CommonModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     SocketIoModule.forRoot(config),

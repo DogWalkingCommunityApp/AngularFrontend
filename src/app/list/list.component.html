@@ -1,27 +1,47 @@
 <header>
   <nav class="list-navigation">
-    <button>
+    <button [class.active]="selectedList === constants.FRIEND_LIST" (click)="selectList(constants.FRIEND_LIST)">
       <i class="material-icons">
         supervisor_account
         </i>
     </button>
-    <button>
+    <button [class.active]="selectedList === constants.DOG_LIST" (click)="selectList(constants.DOG_LIST)">
       <i class="material-icons">
         pets
         </i>
     </button>
-    <button>
+    <button [class.active]="selectedList === constants.ROUTES_LIST" (click)="selectList(constants.ROUTES_LIST)">
       <i class="material-icons">
         map
         </i>
     </button>
-    <button>
+    <button [class.active]="selectedList === constants.BLOCKED_LIST" (click)="selectList(constants.BLOCKED_LIST)">
       <i class="material-icons">
         pan_tool
         </i>
     </button>
   </nav>
-  <section class="filter"></section>
 </header>
-<section class="list-content"></section>
-<footer></footer>
+<section class="lists">
+  <app-friend-list *ngIf="selectedList === constants.FRIEND_LIST"></app-friend-list>
+  <app-dog-list *ngIf="selectedList === constants.DOG_LIST"></app-dog-list>
+  <app-routes-list *ngIf="selectedList === constants.ROUTES_LIST"></app-routes-list>
+  <app-blocked-list *ngIf="selectedList === constants.BLOCKED_LIST"></app-blocked-list>
+</section>
+<footer>
+  <button class="footer-buttons">
+    <i class="material-icons">
+      account_box
+      </i>
+  </button>
+  <button class="footer-buttons" routerLink="/main">
+    <i class="material-icons">
+      public
+      </i>
+  </button>
+  <button class="footer-buttons">
+    <i class="material-icons">
+      chat
+      </i>
+  </button>
+</footer>
