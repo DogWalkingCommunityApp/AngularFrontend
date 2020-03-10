@@ -5,6 +5,7 @@ import { RouteReuseStrategy, RouterModule } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Ng5SliderModule } from 'ng5-slider';
 
 import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
@@ -29,7 +30,7 @@ import { ModalComponent } from './modal/modal.component';
 import { UploadProfilePictureComponent } from './upload-profile-picture/upload-profile-picture.component';
 import { PushNotificationService} from "./services/push-notification.service";
 import { environment} from "../environments/environment";
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 
 import { DataStoreService } from './services/data-store.service';
 import {PushNotificationComponent} from "./push-notification/push-notification.component";
@@ -67,6 +68,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     BrowserAnimationsModule,
     MatButtonModule,
     MatDialogModule,
+    Ng5SliderModule,
     HttpClientModule
   ],
   providers: [

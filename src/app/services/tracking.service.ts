@@ -22,6 +22,7 @@ export class TrackingService {
   private worker: Worker;
   public filteredTrackingData: BehaviorSubject<WorkerFilteredData> = new BehaviorSubject(null);
   private jump: boolean = false;
+  private _range: number = 5;
 
   constructor(private dataStore: DataStoreService, private socket: Socket) {
     // TODO: Currently no use wor the webworker, but late on we want to use it for the exact position calculation of the other users
@@ -74,6 +75,7 @@ export class TrackingService {
      this.watchLocationId = undefined;
    }
 
+   // Functions used to register and unregister from the location tracking for any other component
    private addCallback(callback: TrackingCallback, callee: string): void {
       if (!this.trackingCallbacks[callee]) {
         this.trackingCallbacks[callee] = callback;
@@ -92,6 +94,9 @@ export class TrackingService {
      }
    }
 
+   // <----------------------------------------------------------------------------------------------->
+
+   // Reducer for the Web Worker
    private workerReducer(message: IWorkerMessage): void {
     switch(message.type) {
       case DEVICE_ORIENTATION:
@@ -113,10 +118,11 @@ export class TrackingService {
 
     socket.on('trackLocationArray', (data) => {
       const { trackingArray, gpsKey } = data;
-      this.worker.postMessage({ type: TRACKING_USERS_ARRAY, data: { trackingArray, coordinates: this.coordinates, gpsKey } })
+      this.worker.postMessage({ type: TRACKING_USERS_ARRAY, data: { trackingArray, coordinates: this.coordinates, range: this._range, gpsKey } })
     })
    }
 
+   // Server sided tracking functionality
    public activateServerTracking(): void {
     this.serverTrackingInterval = setInterval(() => {
       if (this.socketReady && this.coordinates) {
@@ -127,7 +133,7 @@ export class TrackingService {
           this.jump = false;
         }
 
-        this.socket.emit('trackLocation', { lat, lng, jumpCell });
+        this.socket.emit('trackLocation', { lat, lng, jumpCell, range: Math.floor(this._range/2) });
       }
     }, 1000)
    }
@@ -136,4 +142,14 @@ export class TrackingService {
      clearInterval(this.serverTrackingInterval);
      this.socket.emit('stopTracking')
    }
+
+
+   // Getter/Setter
+   set range(value: number) {
+     this._range = value;
+   }
+
+   get range():number {
+    return this._range;
+  }
 }
