@@ -3,6 +3,9 @@ import { DataStoreService } from '../services/data-store.service';
 import {Socket} from "ngx-socket-io";
 import {AlertController} from '@ionic/angular';
 import {TrackingService} from '../services/tracking.service';
+import config from '../services/environment.json';
+import {RegisterResponse} from '../registration/registration.interfaces';
+
 
 @Component({
   selector: 'app-main',
@@ -10,6 +13,8 @@ import {TrackingService} from '../services/tracking.service';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
+
+  public response: (null | RegisterResponse);
 
   public messages: string[] = [];
   public message: string;
@@ -25,6 +30,7 @@ export class MainComponent implements OnInit {
           this.ping = "";
       }
     });
+    this.isVisible = false;
   }
 
   ngOnInit() {}
@@ -49,4 +55,38 @@ export class MainComponent implements OnInit {
       this.tracking.deActivateServerTracking();
     }
   }
+
+  async onLogout() {
+    const authId = this.dataStore.authToken.id;
+    try {
+      const response = await fetch(config.serverBaseUrl + 'logout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ authId })
+      })
+      console.log(authId);
+      const responseData: RegisterResponse = await response.json();
+
+      this.handleResponse(responseData);
+    } catch(e) {
+      this.handleResponse({ success: false, message: 'The server did not respond' })
+    }
+  }
+
+  handleResponse(response: RegisterResponse) {
+    this.response = response;
+    console.log((response));
+    if (response.success) {
+      this.dataStore.logout();
+
+    }
+  }
+
+
+
+
+
+
 }
