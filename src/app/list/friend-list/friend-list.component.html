@@ -1,0 +1,7 @@
+<section class="filter">
+    <input placeholder="Nutzername ..." [(ngModel)]="userNameSearch">
+    <input placeholder="Hundename ..." [(ngModel)]="dogNameSearch">
+</section>
+<section class="list-content">
+    <app-people-cards *ngFor="let friend of friendsData" [profileData]="friend"></app-people-cards>
+</section>
