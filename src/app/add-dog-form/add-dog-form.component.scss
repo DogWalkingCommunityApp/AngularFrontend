@@ -42,7 +42,22 @@ input{
   position: relative;
 }
 
+.addPictureDiv{
 
+}
+
+.addPictureCircle p{
+  margin-top: 2em;
+}
+
+.addPictureCircle{
+  background-color: #C4C4C4;
+  border: dashed 1px black;
+  border-radius: 50%;
+  width:7em;
+  height:7em;
+  text-align: center;
+}
 
 #saveCancelDiv{
   display: inline-block;
