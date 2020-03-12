@@ -16,24 +16,26 @@ import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { PictureUploaderComponent } from './picture-uploader/picture-uploader.component';
+import { DogIndexCardComponent } from './dog-index-card/dog-index-card.component';
 import { MessageBoxComponent } from './message-box/message-box.component';
-
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
-import { FormsModule } from '@angular/forms';
-import { PasswortVergessenComponent } from './passwort-vergessen/passwort-vergessen.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {PasswortVergessenComponent} from './passwort-vergessen/passwort-vergessen.component';
 import { MustMatchDirective } from './must-match.directive';
+import {AddDogFormComponent} from './add-dog-form/add-dog-form.component';
 import { ValidateValueDirective } from './validate-value.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalComponent } from './modal/modal.component';
 import { UploadProfilePictureComponent } from './upload-profile-picture/upload-profile-picture.component';
-import { PushNotificationService} from "./services/push-notification.service";
-import { environment} from "../environments/environment";
-import { HttpClientModule } from '@angular/common/http'
-import {ServiceWorkerModule, SwRegistrationOptions} from "@angular/service-worker";
+import { PushNotificationService} from './services/push-notification.service';
+import { environment} from '../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
+import {ServiceWorkerModule, SwRegistrationOptions} from '@angular/service-worker';
 
 import { DataStoreService } from './services/data-store.service';
+
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
@@ -48,8 +50,21 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     ModalComponent,
     RegistrationComponent,
     PictureUploaderComponent,
-    MessageBoxComponent,
+    DogIndexCardComponent,
+    AddDogFormComponent,
     MustMatchDirective,
+    MessageBoxComponent,
+    ValidateValueDirective
+  ],
+  entryComponents: [],
+    imports: [
+        BrowserModule,
+        IonicModule.forRoot(),
+        AppRoutingModule,
+        SocketIoModule.forRoot(config),
+        FormsModule,
+        ReactiveFormsModule
+    ],
     ValidateValueDirective,
     UploadProfilePictureComponent,
   ],
