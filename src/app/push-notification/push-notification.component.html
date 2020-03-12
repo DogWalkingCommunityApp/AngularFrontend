@@ -1,5 +1,15 @@
 <header>
-  <ion-label id="not">
-    {{notification}}
-  </ion-label>
+  <div class="mat-card" id="not" (click)="OnPushClick()">
+    <ion-row>
+      <ion-label class="text">
+        {{notification}}
+      </ion-label>
+    </ion-row>
+  </div>
+  <div id="ans" hidden=hidden>
+      <select [(ngModel)]="ping">
+        <option *ngFor="let ping of pingMessages">{{ping}}</option>
+      </select>
+      <ion-button (click)="OnAnsClick()">Send</ion-button>
+  </div>
 </header>

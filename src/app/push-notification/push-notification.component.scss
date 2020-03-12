@@ -1,0 +1,28 @@
+div {
+  background-color: #0ec254;
+  position: center;
+  text-align: center;
+}
+
+select {
+  background-color: #0ec254;
+  position: center;
+}
+
+@keyframes slidedown {
+  0% {
+    height: 0px;
+  }
+  25% {
+    height: 5px;
+  }
+  50% {
+    height: 10px;
+  }
+  75% {
+    height: 15px;
+  }
+  100% {
+    height: auto;
+  }
+}
