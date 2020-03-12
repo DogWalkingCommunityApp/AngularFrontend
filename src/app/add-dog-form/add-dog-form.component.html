@@ -1,0 +1,76 @@
+<div class="tempDevDIV">
+  <div class="tempPhoneSimulate1"><!--[formGroup]="myGroup"-->
+    <form #dogForm="ngForm" >
+      <app-message-box *ngIf="response" [message]="response.message" [colorClass]="response.success ? 'green' : 'red'"></app-message-box>
+      <div class="addPicCancelSaveDiv">
+
+        <div class="addPictureDiv">
+          <div class="addPictureCircle">
+            <p>Bild <br>
+              hinzufügen</p>
+          </div>
+          <ion-icon name="ios-add-circle-outline" id="addButton"></ion-icon>
+        </div>
+
+        <div id="saveCancelDiv">
+          <ion-button color="success" *ngIf="dogRace && dogBirthDate && dogSize && dogName && dogGender" (click)="onSubmit($event)">Speichern</ion-button>
+          <ion-button color="danger" (click)="clearInputs(dogForm)">Verwerfen</ion-button>
+        </div>
+
+      </div>
+
+      <div class="inputDiv">
+
+      <ion-item>
+      <ion-input placeholder="Hundename angeben"  [(ngModel)]="dogName" name="dogName" > </ion-input>  <!--  -->
+      </ion-item>
+
+        <ion-item>
+          <ion-label>Geschlecht</ion-label>
+          <ion-select placeholder="Auswählen"  [(ngModel)]="dogGender" name="dogGender"> <!--  -->
+            <ion-select-option *ngFor="let gender of genders" >{{gender}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Alter</ion-label>
+          <ion-datetime value="01-01-2000" display-format="DD.MM.YYYY" placeholder="Geburtstag" [(ngModel)]="dogBirthDate"  name="dogBirthDate"></ion-datetime> <!-- -->
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Höhe</ion-label>
+          <ion-range min="10" max="150" pin color="secondary"  [(ngModel)]="dogSize" name="dogSize" > <!--  -->
+            <ion-label slot="start" size="small" name="contrast">10 cm</ion-label>
+            <ion-label slot="end" name="contrast">150 cm</ion-label>
+          </ion-range>
+        </ion-item>
+
+          <ion-item *ngIf="dogGender ==='männlich'">
+            <ion-label>kastriert</ion-label>
+            <ion-checkbox color="dark" [(ngModel)]="neutered" name="neutered"></ion-checkbox>
+          </ion-item>
+
+            <ion-item *ngIf="dogGender ==='weiblich'">
+              <ion-label>sterilisiert</ion-label>
+              <ion-checkbox color="dark" [(ngModel)]="neutered" name="neutered"></ion-checkbox>
+            </ion-item>
+
+          <ion-item *ngIf="dogGender ==='weiblich'">
+            <ion-label>läufig</ion-label>
+            <ion-checkbox color="dark"></ion-checkbox>
+          </ion-item>
+
+        <ion-item>
+          <ion-label>Rasse/Mix</ion-label>
+          <ion-select multiple="true" [(ngModel)]="dogRace" name="dogRace" > <!--  -->
+            <ion-select-option *ngFor="let race of races" >{{race}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-textarea rows="6" class="textInput" id="dogDescription" placeholder="Beschreibung hinzufügen ..." [(ngModel)]="dogDescription" name="dogDescription"></ion-textarea>
+
+      </div>
+    </form>
+  </div>
+
+</div>

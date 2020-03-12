@@ -1,8 +1,10 @@
+import { IUserData } from "./data";
+
 export interface WorkerFilteredData {
     filteredData: {
         lat: number;
         lng: number;
-        userData: any;
+        userData: IUserData;
     };
     removedUsers: number[];
     newUsers: number[];

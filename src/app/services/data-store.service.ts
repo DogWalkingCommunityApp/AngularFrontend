@@ -2,16 +2,19 @@ import { Injectable } from '@angular/core';
 import config from './environment.json';
 import { RegisterResponse } from './../registration/registration.interfaces.js';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
+import { IUserData } from './data.js';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataStoreService {
   // TODO: Add Types for these
-  // tslint:disable-next-line:variable-name
   private _authToken: any = {};
-  // tslint:disable-next-line:variable-name
   private _userData: any = {};
+  private updateTimeout: any;
+  public friendsData: BehaviorSubject<IUserData[]> = new BehaviorSubject(null);
+  private _dogData: any = {};
 
   constructor(private router: Router) {
     const savedAuthToken = localStorage.getItem('authToken');
@@ -25,11 +28,19 @@ export class DataStoreService {
     }
    }
 
+  set userDogData(dogData: any) {
+    this._dogData = dogData;
+  }
+
+  get userDogData() {
+    return this._dogData;
+  }
+
   get userData() {
     return this._userData;
   }
 
-  set userData(userData: any) {
+  set userData(userData: IUserData) {
     this._userData = userData;
   }
 
@@ -62,13 +73,13 @@ export class DataStoreService {
         const responseData: RegisterResponse = await response.json();
 
         if (responseData.success) {
-          this.handleResponse(responseData)
+          this.handleResponse(responseData);
         } else {
           this.routeToLogin();
-        };
+        }
       } catch (e) {
         this.routeToLogin();
-        console.log(e)
+        console.log(e);
       }
     }
   }
@@ -77,14 +88,14 @@ export class DataStoreService {
     if (response.success) {
       this.authToken = response.data.authToken;
       this.userData = response.data.userData;
-      console.log(this.userData)
+      this.userData.friends = [1, 2, 3, 4]; // TODO: DUMMY DATA! REMOVE!
       if (this.router.routerState.snapshot.url === '/login') {
         this.router.navigate(['/main']);
+      } else if (this.router.routerState.snapshot.url === '/list') {
+        this.updateFriendsData();
       }
     } else {
-      if (this.router.routerState.snapshot.url !== '/login') {
-        this.router.navigate(['/login']);
-      }
+      this.routeToLogin();
     }
   }
 
@@ -92,5 +103,36 @@ export class DataStoreService {
     if (this.router.routerState.snapshot.url !== '/login') {
       this.router.navigate(['/login']);
     }
+  }
+
+  async updateFriendsData() {
+    clearTimeout(this.updateTimeout);
+    try {
+      const response = await fetch(config.serverBaseUrl + 'getFriends', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ friends: this.userData.friends })
+      });
+
+      const responseData: RegisterResponse = await response.json();
+      console.log('DATA', responseData, this.userData.friends)
+      if (responseData.success) {
+        this.friendsData.next(responseData.data);
+      } else {
+        this.updateTimeout = setTimeout(this.updateFriendsData, 2000);
+      };
+    } catch (e) {
+      this.updateTimeout = setTimeout(this.updateFriendsData, 2000);
+      console.log(e)
+    }
+  }
+  
+  logout() {
+    this.authToken = null;
+    this.userData = null;
+    localStorage.removeItem('authToken');
+    this.routeToLogin();
   }
 }

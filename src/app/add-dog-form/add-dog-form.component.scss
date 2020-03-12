@@ -1,0 +1,87 @@
+.tempDevDIV{
+  padding: 1em 32.4%;
+}
+
+.tempPhoneSimulate1{
+  border:0.5px solid gray;
+  width:360px;
+  height:640px;
+  padding:2em;
+  display: inline-block;
+}
+
+.tempPhoneSimulate2{
+  border:0.5px solid gray;
+  width:360px;
+  height:640px;
+  padding:2em;
+  position: absolute;
+  float: right;
+  right:5em;
+  display:inline-block;
+}
+
+input{
+  border: 1px solid black;
+  border-radius: 5px;
+  padding:0.25em;
+}
+
+.textInput{
+  width:100%;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding:0.25em;
+}
+
+.dogDescription{
+  //height:10em;
+}
+
+.addPicCancelSaveDiv{
+  position: relative;
+}
+
+.addPictureDiv{
+
+}
+
+.addPictureCircle p{
+  margin-top: 2em;
+}
+
+.addPictureCircle{
+  background-color: #C4C4C4;
+  border: dashed 1px black;
+  border-radius: 50%;
+  width:7em;
+  height:7em;
+  text-align: center;
+}
+
+#saveCancelDiv{
+  display: inline-block;
+  width:min-content;
+  text-align: center;
+  position: absolute;
+  top:2em;
+  right:0;
+}
+
+.inputDiv{
+  position: relative;
+  top: -2em;
+}
+
+#addButton{
+  font-size:2.5em;
+  position: relative;
+  top: -1em;
+  left: 2em;
+}
+
+//#dogDescription::-webkit-input-placeholder{
+//  position: relative;
+//  top: -4em;
+//}
+
