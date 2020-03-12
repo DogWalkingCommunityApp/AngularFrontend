@@ -1,12 +1,13 @@
 $maxFontSize: 96px;
 $fontSize: 16vw;
+$maxWidth: 500px;
 
 nav {
     display: flex;
     flex-wrap: wrap;
     width: 88vw;
     margin: auto;
-    max-width: 500px;
+    max-width: $maxWidth;
     justify-content: space-between;
 }
 
@@ -40,7 +41,7 @@ footer {
     display: flex;
     flex-wrap: wrap;
     margin: auto;
-    max-width: 500px;
+    max-width: $maxWidth;
     justify-content: center;
 }
 
@@ -60,6 +61,8 @@ footer i {
     min-height: calc(100vh - 346px);
     box-sizing: border-box;
     overflow: hidden;
+    margin: auto;
+    max-width: $maxWidth;
 }
 
 @media screen and (min-width: 534px) {

@@ -13,6 +13,7 @@ import { MapComponent } from './map/map.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ProfileComponent} from './profile/profile.component';
 import { ListComponent } from './list/list.component';
+import { PeopleCardsComponent } from './people-cards/people-cards.component';
 
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
@@ -62,7 +63,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     DogListComponent,
     RoutesListComponent,
     BlockedListComponent,
-    ListComponent
+    ListComponent,
+    PeopleCardsComponent
   ],
   entryComponents: [
     ModalComponent,

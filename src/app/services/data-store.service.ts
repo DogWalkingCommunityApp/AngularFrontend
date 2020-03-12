@@ -3,6 +3,7 @@ import config from './environment.json';
 import { RegisterResponse } from './../registration/registration.interfaces.js';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { IUserData } from './data.js';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class DataStoreService {
   private _authToken: any = {};
   private _userData: any = {};
   private updateTimeout: any;
-  public friendsData: BehaviorSubject<any[]> = new BehaviorSubject(null);
+  public friendsData: BehaviorSubject<IUserData[]> = new BehaviorSubject(null);
 
   constructor(private router: Router) {
     const savedAuthToken = localStorage.getItem('authToken');
@@ -30,7 +31,7 @@ export class DataStoreService {
     return this._userData;
   }
 
-  set userData(userData: any) {
+  set userData(userData: IUserData) {
     this._userData = userData;
   }
 
@@ -81,6 +82,8 @@ export class DataStoreService {
       this.userData.friends = [1, 2, 3, 4]; // TODO: DUMMY DATA! REMOVE!
       if (this.router.routerState.snapshot.url === '/login') {
         this.router.navigate(['/main']);
+      } else if (this.router.routerState.snapshot.url === '/list') {
+        this.updateFriendsData();
       }
     } else {
       this.routeToLogin();

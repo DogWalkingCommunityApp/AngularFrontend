@@ -1,3 +1,15 @@
-<p>
-  people-cards works!
-</p>
+<article>
+  <div class="profile-image">
+    <img src="{{serverBaseUrl + ( profileData.profileImg[0] === '/' ? profileData.profileImg.substring(1, profileData.profileImg.length) : profileData.profileImg)}}">
+  </div>
+  <div class="content">
+    <p>{{profileData.vorname}} {{profileData.name}}</p>
+    <div class="dogs"></div>
+    <div class="online-status" [class.online]="profileData.visible"></div>
+    <button (click)="deleteFriend()">
+      <i class="material-icons">
+        delete_forever
+        </i>
+    </button>
+  </div>
+</article>

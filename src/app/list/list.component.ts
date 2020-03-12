@@ -17,7 +17,6 @@ export class ListComponent {
   constructor(private dataStoreService: DataStoreService) { }
 
   selectList(list: string) {
-    console.log(list)
     this.selectedList = list;
   }
 }

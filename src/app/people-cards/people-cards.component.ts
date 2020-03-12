@@ -1,14 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { IUserData } from '../services/data';
+import { serverBaseUrl } from '../services/environment.json';
 
 @Component({
   selector: 'app-people-cards',
   templateUrl: './people-cards.component.html',
   styleUrls: ['./people-cards.component.scss'],
 })
-export class PeopleCardsComponent implements OnInit {
+export class PeopleCardsComponent {
+  @Input() profileData: IUserData;
 
-  constructor() { }
+  public serverBaseUrl: string = serverBaseUrl;
 
-  ngOnInit() {}
+  constructor() { 
+  }
+
+  deleteFriend() {
+    // TODO: Implement function when friends are actually ready
+  }
 
 }
