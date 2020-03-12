@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import jssha from 'jssha';
-import config from '../environment.json';
+import config from '../services/environment.json';
 import { RegisterResponse } from '../registration/registration.interfaces.js';
 import { Router } from '@angular/router';
-import { DataStoreService } from '../data-store.service.js';
+import { DataStoreService } from '../services/data-store.service.js';
 
 
 @Component({
@@ -13,10 +13,10 @@ import { DataStoreService } from '../data-store.service.js';
 })
 export class LoginComponent {
 
-  private login: string;
-  private password: string;
+  public login: string;
+  public password: string;
 
-  private response: ( null | RegisterResponse );
+  public response: ( null | RegisterResponse );
 
   constructor(private router: Router, private dataStore: DataStoreService) { }
 

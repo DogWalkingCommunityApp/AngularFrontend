@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import config from './environment.json';
-import { RegisterResponse } from './registration/registration.interfaces';
+import { RegisterResponse } from './../registration/registration.interfaces.js';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -8,7 +8,9 @@ import { Router } from '@angular/router';
 })
 export class DataStoreService {
   // TODO: Add Types for these
+  // tslint:disable-next-line:variable-name
   private _authToken: any = {};
+  // tslint:disable-next-line:variable-name
   private _userData: any = {};
   private _dogData: any = {};
 
@@ -20,9 +22,7 @@ export class DataStoreService {
       this._authToken = JSON.parse(savedAuthToken);
       this.initialLogin();
     } else {
-      if (this.router.routerState.snapshot.url !== '/login') {
-        this.router.navigate(['/login']);
-      }
+      this.routeToLogin();
     }
    }
 
@@ -72,8 +72,11 @@ export class DataStoreService {
 
         if (responseData.success) {
           this.handleResponse(responseData);
+        } else {
+          this.routeToLogin();
         }
       } catch (e) {
+        this.routeToLogin();
         console.log(e);
       }
     }
@@ -83,7 +86,7 @@ export class DataStoreService {
     if (response.success) {
       this.authToken = response.data.authToken;
       this.userData = response.data.userData;
-
+      console.log(this.userData);
       if (this.router.routerState.snapshot.url === '/login') {
         this.router.navigate(['/main']);
       }
@@ -92,5 +95,18 @@ export class DataStoreService {
         this.router.navigate(['/login']);
       }
     }
+  }
+
+  routeToLogin() {
+    if (this.router.routerState.snapshot.url !== '/login') {
+      this.router.navigate(['/login']);
+    }
+  }
+
+  logout() {
+    this.authToken = null;
+    this.userData = null;
+    localStorage.removeItem('authToken');
+    this.routeToLogin();
   }
 }

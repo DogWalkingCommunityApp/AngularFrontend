@@ -12,12 +12,12 @@
     </p>
     <ion-row justify-content-center>
         <ion-item lines="none">
-          <ion-input class="textfeld" name="emailAdresse" type="text" placeholder="E-Mail-Adresse"></ion-input>
+          <ion-input class="textfeld" name="emailAdresse" type="text" placeholder="E-Mail-Adresse" [(ngModel)]="email"></ion-input>
         </ion-item>
     </ion-row>
     <ion-row>
     <ion-col text-center>
-      <ion-button class="button" type="submit" routerLink="/login" >Senden</ion-button>
+      <ion-button class="button" type="submit"  (click)="onSend()" routerLink="/login" >Senden</ion-button>
     </ion-col>
     </ion-row>
   </ion-grid>

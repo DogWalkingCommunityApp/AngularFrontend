@@ -8,6 +8,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class PictureUploaderComponent implements OnInit {
   private image: (string | ArrayBuffer) = 'http://localhost:3000/images/placeholder.svg';
 
+
   @Output() imageEmitter = new EventEmitter<string | ArrayBuffer>();
 
   constructor() { }
