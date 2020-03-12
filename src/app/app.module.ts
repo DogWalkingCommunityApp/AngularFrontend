@@ -40,9 +40,9 @@ import { UploadProfilePictureComponent } from './upload-profile-picture/upload-p
 import { PushNotificationService} from './services/push-notification.service';
 import { environment} from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
-import {ServiceWorkerModule, SwRegistrationOptions} from '@angular/service-worker';
 
 import { DataStoreService } from './services/data-store.service';
+import {PushNotificationComponent} from "./push-notification/push-notification.component";
 
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
@@ -64,6 +64,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     MessageBoxComponent,
     ValidateValueDirective,
     UploadProfilePictureComponent,
+    PushNotificationComponent,
     FriendListComponent,
     DogListComponent,
     RoutesListComponent,
@@ -87,18 +88,13 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     MatButtonModule,
     MatDialogModule,
     Ng5SliderModule,
-    HttpClientModule,
-      ServiceWorkerModule.register('/ngsw-worker.js')
+    HttpClientModule
     ],
   providers: [
     StatusBar,
     SplashScreen,
     [PushNotificationService],
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    {
-      provide: SwRegistrationOptions,
-      useFactory: () => ({enabled: environment.production}),
-    },
     DataStoreService
   ],
   bootstrap: [AppComponent]
