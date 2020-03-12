@@ -93,4 +93,11 @@ export class DataStoreService {
       this.router.navigate(['/login']);
     }
   }
+
+  logout(){
+    this.authToken = null;
+    this.userData = null;
+    localStorage.removeItem('authToken');
+    this.routeToLogin();
+  }
 }
