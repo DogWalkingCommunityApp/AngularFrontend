@@ -54,38 +54,27 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     AddDogFormComponent,
     MustMatchDirective,
     MessageBoxComponent,
-    ValidateValueDirective
-  ],
-  entryComponents: [],
-    imports: [
-        BrowserModule,
-        IonicModule.forRoot(),
-        AppRoutingModule,
-        SocketIoModule.forRoot(config),
-        FormsModule,
-        ReactiveFormsModule
-    ],
     ValidateValueDirective,
-    UploadProfilePictureComponent,
-  ],
-  entryComponents: [
-    ModalComponent,
     UploadProfilePictureComponent
   ],
-  imports: [
-    BrowserModule,
-    RouterModule,
-    IonicModule.forRoot(),
-    AppRoutingModule,
-    SocketIoModule.forRoot(config),
-    FormsModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatDialogModule,
-    Ng5SliderModule,
-    HttpClientModule,
-      ServiceWorkerModule.register('/ngsw-worker.js')
+  entryComponents: [
+      ModalComponent,
+    UploadProfilePictureComponent
   ],
+    imports: [
+      BrowserModule,
+      RouterModule,
+      IonicModule.forRoot(),
+      AppRoutingModule,
+      SocketIoModule.forRoot(config),
+      FormsModule,
+      BrowserAnimationsModule,
+      MatButtonModule,
+      MatDialogModule,
+      Ng5SliderModule,
+      HttpClientModule,
+      ServiceWorkerModule.register('/ngsw-worker.js')
+    ],
   providers: [
     StatusBar,
     SplashScreen,
