@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 import { Dog } from '../dog';
-import config from '../environment.json';
+import config from '../services/environment.json';
 import {RegisterResponse} from '../registration/registration.interfaces';
 import { Router } from '@angular/router';
 import { PictureUploaderComponent } from '../picture-uploader/picture-uploader.component';
