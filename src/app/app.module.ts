@@ -69,7 +69,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     RoutesListComponent,
     BlockedListComponent,
     ListComponent,
-    PeopleCardsComponent
+    PeopleCardsComponent,
     PushNotificationComponent
   ],
   entryComponents: [
