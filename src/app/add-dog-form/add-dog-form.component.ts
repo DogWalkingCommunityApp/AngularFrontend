@@ -13,6 +13,7 @@ import { PictureUploaderComponent } from '../picture-uploader/picture-uploader.c
 })
 export class AddDogFormComponent implements OnInit {
   // TODO: es muss noch abgefragt werden, ob der User einen Hund mit dem gegebenen Namen schon hat.
+  // TODO: Wohin soll verwiesen werden, wenn hund hinzugefügt wurde.
     dogName = Dog.dogName;
     dogBirthDate = Dog.dogBirthDate;
     dogSize = Dog.dogSize;
@@ -51,9 +52,6 @@ export class AddDogFormComponent implements OnInit {
       this.genders = ['männlich', 'weiblich'];
       this.races = ['Terrier', 'Schäferhund', 'Collie', 'Border-Collie' ];
   }
-  onChange(deviceValue) {
-    console.log(deviceValue);
-  }
 
     clearInputs(form: NgForm) {
         form.resetForm();
@@ -84,7 +82,6 @@ export class AddDogFormComponent implements OnInit {
             });
 
             const responseData: RegisterResponse = await response.json();
-            console.log(response);
             this.handleResponse(responseData);
         } catch (e) {
             this.handleResponse({ success: false, message: 'The server did not respond' });
