@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import jssha from 'jssha';
 import config from '../services/environment.json';
-import { RegisterResponse } from '../registration/registration.interfaces.js';
+import { RegisterResponse } from '../registration/registration.interfaces';
 import { Router } from '@angular/router';
-import { DataStoreService } from '../services/data-store.service.js';
+import { DataStoreService } from '../services/data-store.service';
 
 
 @Component({
