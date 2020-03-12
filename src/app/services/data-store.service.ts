@@ -14,6 +14,7 @@ export class DataStoreService {
   private _userData: any = {};
   private updateTimeout: any;
   public friendsData: BehaviorSubject<IUserData[]> = new BehaviorSubject(null);
+  private _dogData: any = {};
 
   constructor(private router: Router) {
     const savedAuthToken = localStorage.getItem('authToken');
@@ -26,6 +27,14 @@ export class DataStoreService {
       this.routeToLogin();
     }
    }
+
+  set userDogData(dogData: any) {
+    this._dogData = dogData;
+  }
+
+  get userDogData() {
+    return this._dogData;
+  }
 
   get userData() {
     return this._userData;
@@ -64,13 +73,13 @@ export class DataStoreService {
         const responseData: RegisterResponse = await response.json();
 
         if (responseData.success) {
-          this.handleResponse(responseData)
+          this.handleResponse(responseData);
         } else {
           this.routeToLogin();
-        };
+        }
       } catch (e) {
         this.routeToLogin();
-        console.log(e)
+        console.log(e);
       }
     }
   }
@@ -118,5 +127,12 @@ export class DataStoreService {
       this.updateTimeout = setTimeout(this.updateFriendsData, 2000);
       console.log(e)
     }
+  }
+  
+  logout() {
+    this.authToken = null;
+    this.userData = null;
+    localStorage.removeItem('authToken');
+    this.routeToLogin();
   }
 }

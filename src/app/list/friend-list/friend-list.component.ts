@@ -29,7 +29,7 @@ export class FriendListComponent {
       friendsData = friendsData.filter((friend) => {
         const fullName = `${friend.vorname} ${friend.name}`;
 
-        return (fullName.indexOf(this.userNameSearch) !== -1);
+        return (fullName.toLowerCase().indexOf(this.userNameSearch.toLowerCase()) !== -1);
       })
     }
 
