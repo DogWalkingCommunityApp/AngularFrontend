@@ -17,7 +17,7 @@ import { PictureUploaderComponent } from './picture-uploader/picture-uploader.co
 import { DogIndexCardComponent } from './dog-index-card/dog-index-card.component';
 import { MessageBoxComponent } from './message-box/message-box.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PasswortVergessenComponent} from './passwort-vergessen/passwort-vergessen.component';
 import { MustMatchDirective } from './must-match.directive';
 import {AddDogFormComponent} from './add-dog-form/add-dog-form.component';
@@ -42,13 +42,14 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     ValidateValueDirective
   ],
   entryComponents: [],
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot(),
-    AppRoutingModule,
-    SocketIoModule.forRoot(config),
-    FormsModule
-  ],
+    imports: [
+        BrowserModule,
+        IonicModule.forRoot(),
+        AppRoutingModule,
+        SocketIoModule.forRoot(config),
+        FormsModule,
+        ReactiveFormsModule
+    ],
   providers: [
     StatusBar,
     SplashScreen,

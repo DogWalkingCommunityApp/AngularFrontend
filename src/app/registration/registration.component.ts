@@ -41,19 +41,19 @@ export class RegistrationComponent {
 
     try {
     const response = await fetch(config.serverBaseUrl + 'register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: JSON.stringify(profile)
-    });
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify(profile)
+      });
 
     const responseData: RegisterResponse = await response.json();
 
     this.handleResponse(responseData);
     } catch (e) {
-      this.handleResponse({ success: false, message: 'The serer did not respond' });
+      this.handleResponse({ success: false, message: 'The server did not respond' });
     }
   }
 

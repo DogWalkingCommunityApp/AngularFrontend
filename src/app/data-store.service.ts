@@ -10,6 +10,7 @@ export class DataStoreService {
   // TODO: Add Types for these
   private _authToken: any = {};
   private _userData: any = {};
+  private _dogData: any = {};
 
   constructor(private router: Router) {
     const savedAuthToken = localStorage.getItem('authToken');
@@ -24,6 +25,14 @@ export class DataStoreService {
       }
     }
    }
+
+  set userDogData(dogData: any) {
+    this._dogData = dogData;
+  }
+
+  get userDogData() {
+    return this._dogData;
+  }
 
   get userData() {
     return this._userData;

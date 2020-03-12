@@ -1,5 +1,5 @@
 .tempDevDIV{
-  padding: 1em 32.4em;
+  padding: 1em 32.4%;
 }
 
 .tempPhoneSimulate1{
@@ -42,22 +42,7 @@ input{
   position: relative;
 }
 
-.addPictureCircle{
-  width:7.5em;
-  height:7.5em;
-  border-radius: 50%;
-  background-color: darkgray;
-  text-align: center;
-}
 
-.addPictureCircle p{
-  position: relative;
-  top: 25%;
-}
-
-.addPictureDiv{
-  display: inline-block;
-}
 
 #saveCancelDiv{
   display: inline-block;
