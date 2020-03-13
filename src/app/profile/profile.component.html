@@ -7,11 +7,20 @@
       </button>
     </div>
 
-    <div>
-      <h1>
-        {{dataStore.userData.vorname}}
-        {{dataStore.userData.name}}
-      </h1>
+    <div class="profile-data">
+      <div>
+        <h1>
+          {{dataStore.userData.vorname}}
+          {{dataStore.userData.name}}
+        </h1>
+      </div>
+      <div class="user-data">
+        {{dataStore.userData.username}}
+      </div>
+  
+      <div class="user-data">
+        {{dataStore.userData.email}}
+      </div>
     </div>
 
     <div id="logout">
@@ -20,15 +29,8 @@
       </button>
     </div>
 
-    <div class="user-data">
-      {{dataStore.userData.username}}
-    </div>
 
-    <div class="user-data">
-      {{dataStore.userData.email}}
-    </div>
-
-    <div>
+    <div class="profile-buttons">
       <a routerLink="#" class="small-btn">
         <i class="material-icons">settings</i>
       </a>
