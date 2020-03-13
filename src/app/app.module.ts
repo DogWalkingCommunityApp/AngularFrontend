@@ -64,13 +64,13 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     MessageBoxComponent,
     ValidateValueDirective,
     UploadProfilePictureComponent,
+    PushNotificationComponent,
     FriendListComponent,
     DogListComponent,
     RoutesListComponent,
     BlockedListComponent,
     ListComponent,
-    PeopleCardsComponent,
-    PushNotificationComponent
+    PeopleCardsComponent
   ],
   entryComponents: [
       ModalComponent,
@@ -89,7 +89,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     MatDialogModule,
     Ng5SliderModule,
     HttpClientModule
-  ],
+    ],
   providers: [
     StatusBar,
     SplashScreen,
