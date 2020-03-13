@@ -12,6 +12,7 @@ export class DataStoreService {
   private _authToken: any = {};
   // tslint:disable-next-line:variable-name
   private _userData: any = {};
+  private _dogData: any = {};
 
   constructor(private router: Router) {
     const savedAuthToken = localStorage.getItem('authToken');
@@ -21,11 +22,17 @@ export class DataStoreService {
       this._authToken = JSON.parse(savedAuthToken);
       this.initialLogin();
     } else {
-      if (this.router.routerState.snapshot.url !== '/login') {
-        this.router.navigate(['/login']);
-      }
+      this.routeToLogin();
     }
    }
+
+  set userDogData(dogData: any) {
+    this._dogData = dogData;
+  }
+
+  get userDogData() {
+    return this._dogData;
+  }
 
   get userData() {
     return this._userData;
@@ -65,8 +72,11 @@ export class DataStoreService {
 
         if (responseData.success) {
           this.handleResponse(responseData);
+        } else {
+          this.routeToLogin();
         }
       } catch (e) {
+        this.routeToLogin();
         console.log(e);
       }
     }
@@ -76,7 +86,7 @@ export class DataStoreService {
     if (response.success) {
       this.authToken = response.data.authToken;
       this.userData = response.data.userData;
-      console.log(this.userData)
+      console.log(this.userData);
       if (this.router.routerState.snapshot.url === '/login') {
         this.router.navigate(['/main']);
       }
@@ -85,5 +95,18 @@ export class DataStoreService {
         this.router.navigate(['/login']);
       }
     }
+  }
+
+  routeToLogin() {
+    if (this.router.routerState.snapshot.url !== '/login') {
+      this.router.navigate(['/login']);
+    }
+  }
+
+  logout() {
+    this.authToken = null;
+    this.userData = null;
+    localStorage.removeItem('authToken');
+    this.routeToLogin();
   }
 }
