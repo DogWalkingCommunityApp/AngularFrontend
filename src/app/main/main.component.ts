@@ -12,10 +12,10 @@ import {RegisterResponse} from '../registration/registration.interfaces';
 })
 export class MainComponent implements OnInit {
 
+  public response: (null | RegisterResponse);
   private isVisible: boolean;
 
   constructor(private dataStore: DataStoreService, private tracking: TrackingService) {
-
     this.isVisible = false;
   }
 
@@ -58,10 +58,4 @@ export class MainComponent implements OnInit {
 
     }
   }
-
-
-
-
-
-
 }
