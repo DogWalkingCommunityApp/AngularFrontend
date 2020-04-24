@@ -43,6 +43,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { DataStoreService } from './services/data-store.service';
 import {PushNotificationComponent} from "./push-notification/push-notification.component";
+import { WeatherComponent } from "./weather/weather.component";
 
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
@@ -70,7 +71,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     RoutesListComponent,
     BlockedListComponent,
     ListComponent,
-    PeopleCardsComponent
+    PeopleCardsComponent,
+    WeatherComponent
   ],
   entryComponents: [
       ModalComponent,

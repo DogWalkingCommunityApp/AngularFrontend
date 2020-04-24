@@ -1,13 +1,44 @@
 <header>
-    <div text-center>
-        <ion-toggle float-left (ionChange)="onChange()" [checked]="isVisible"  color="success"></ion-toggle>
-        <img margin-vertical src="/assets/WetterPlaceholder.svg">
-        <button float-right class="small-btn" (click)="onLogout()">
-            <i class="material-icons">exit_to_app</i>
-        </button>
-        <button float-right class="small-btn">
-            <i class="material-icons">live_help</i>
-        </button>
-    </div>
+    <ion-toggle float-left (ionChange)="onChange()" [checked]="isVisible"  color="success"></ion-toggle>
+    <app-weather margin-vertical></app-weather>
+    <button float-right class="small-btn">
+        <i class="material-icons">live_help</i>
+    </button>
+    <button float-right class="small-btn" (click)="onLogout()">
+        <i class="material-icons">exit_to_app</i>
+    </button>
 </header>
+
 <app-map></app-map>
+
+<footer >
+
+<input id="check" type="checkbox" >
+
+    <label class="main title" for="check" >
+        <a class="button">
+            <i class="material-icons">menu</i>
+        </a>
+    </label>
+
+
+<!--Buttons that link with the other pages -->
+<div class="icons">
+    <a class="button" href="#" >
+        <i class="material-icons">map</i>
+    </a>
+    <a class="button" href="#" >
+        <i class="material-icons">person_pin</i>
+    </a>
+    <a class="button" href="#">
+        <i class="material-icons">pets</i>
+    </a>
+    <a class="button" href="#">
+        <i class="material-icons">people_alt</i>
+    </a>
+    <a class="button" href="#">
+        <i class="material-icons">message</i>
+    </a>
+</div>
+
+</footer>
