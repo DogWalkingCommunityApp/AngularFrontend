@@ -13,6 +13,8 @@ import {RegisterResponse} from '../registration/registration.interfaces';
 export class MainComponent implements OnInit {
 
   private isVisible: boolean;
+  private submenu: boolean;
+  public response: ( null | RegisterResponse );
 
   constructor(private dataStore: DataStoreService, private tracking: TrackingService) {
 
@@ -33,6 +35,7 @@ export class MainComponent implements OnInit {
 
   async onLogout() {
     const authId = this.dataStore.authToken.id;
+
     try {
       const response = await fetch(config.serverBaseUrl + 'logout', {
         method: 'POST',
@@ -41,7 +44,7 @@ export class MainComponent implements OnInit {
         },
         body: JSON.stringify({ authId })
       })
-      console.log(authId);
+
       const responseData: RegisterResponse = await response.json();
 
       this.handleResponse(responseData);
@@ -60,8 +63,8 @@ export class MainComponent implements OnInit {
   }
 
 
-
-
-
+    onClick() {
+        this.submenu = true;
+    }
 
 }

@@ -55,7 +55,6 @@ export class LoginComponent {
     if (response.success) {
       this.dataStore.authToken = response.data.authToken;
       this.dataStore.userData = response.data.userData;
-
       this.router.navigate(['/main']);
     }
   }
