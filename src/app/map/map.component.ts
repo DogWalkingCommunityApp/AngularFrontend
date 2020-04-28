@@ -85,6 +85,10 @@ export class MapComponent implements AfterViewInit {
     const changeOpacityToOne = (evt) => {
       evt.target.style.opacity = 1;
     };
+
+    const openProfile = (evt) => {
+      document.open('http://localhost:4200/profile')
+    };
   
     //create dom icon and add/remove opacity listeners
     var domIcon = new this.HereMap.map.DomIcon(outerElement, {
@@ -92,11 +96,13 @@ export class MapComponent implements AfterViewInit {
       onAttach: (clonedElement, domIcon, domMarker) => {
         clonedElement.addEventListener('mouseover', changeOpacity);
         clonedElement.addEventListener('mouseout', changeOpacityToOne);
+        clonedElement.addEventListener('click', openProfile);
       },
       // the function is called every time marker leaves the viewport
       onDetach: (clonedElement, domIcon, domMarker) => {
         clonedElement.removeEventListener('mouseover', changeOpacity);
         clonedElement.removeEventListener('mouseout', changeOpacityToOne);
+        clonedElement.removeEventListener('click', openProfile);
       }
     });
     
