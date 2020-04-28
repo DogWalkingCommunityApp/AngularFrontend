@@ -15,7 +15,6 @@ export class MainComponent implements OnInit {
   public response: (null | RegisterResponse);
   private isVisible: boolean;
   private submenu: boolean;
-  public response: ( null | RegisterResponse );
 
   constructor(private dataStore: DataStoreService, private tracking: TrackingService) {
     this.isVisible = false;
