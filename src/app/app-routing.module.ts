@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'passwortVergessen', component: PasswortVergessenComponent},
   { path: 'registration', component: RegistrationComponent },
   { path: 'modal', component: ModalComponent},
-  { path: 'list', component: ListComponent},
+  { path: 'list/:list', component: ListComponent},
   { path: 'dogIndexCard', component: DogIndexCardComponent },
   { path: 'addDogForm', component: AddDogFormComponent }
 ];

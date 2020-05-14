@@ -3,6 +3,7 @@ import { DataStoreService } from '../services/data-store.service';
 import {TrackingService} from '../services/tracking.service';
 import config from '../services/environment.json';
 import {RegisterResponse} from '../registration/registration.interfaces';
+import { DOG_LIST, FRIEND_LIST, ROUTES_LIST, BLOCKED_LIST } from '../list/icon.constants';
 
 
 @Component({
@@ -11,6 +12,9 @@ import {RegisterResponse} from '../registration/registration.interfaces';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
+  public constants: { [key:string]: string } = {
+    DOG_LIST, FRIEND_LIST, ROUTES_LIST, BLOCKED_LIST
+  }
 
   public response: (null | RegisterResponse);
   private isVisible: boolean;

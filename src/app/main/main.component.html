@@ -29,13 +29,13 @@
     <a class="button" href="#" >
         <i class="material-icons">map</i>
     </a>
-    <a class="button" href="#" >
+    <a class="button" routerLink="/profile" >
         <i class="material-icons">person_pin</i>
     </a>
-    <a class="button" href="#">
+    <a class="button" [routerLink]="['/list', constants.DOG_LIST]">
         <i class="material-icons">pets</i>
     </a>
-    <a class="button" href="#">
+    <a class="button" [routerLink]="['/list', constants.FRIEND_LIST]">
         <i class="material-icons">people_alt</i>
     </a>
     <a class="button" href="#">
