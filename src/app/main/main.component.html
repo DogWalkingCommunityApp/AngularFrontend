@@ -1,7 +1,7 @@
 <header>
-    <ion-toggle (ionChange)="onChange()" [checked]="isVisible"  color="success"></ion-toggle>
-    <app-weather></app-weather>
-    <button class="small-btn">
+    <ion-toggle float-left (ionChange)="onChange()" [checked]="isVisible"  color="success"></ion-toggle>
+    <app-weather margin-vertical></app-weather>
+    <button float-right class="small-btn">
         <i class="material-icons">live_help</i>
     </button>
     <button float-right class="small-btn" (click)="onLogout()">
