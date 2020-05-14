@@ -3,7 +3,7 @@
 
 #map {
     width: 100vw;
-    height: calc(100% - #{$headerHeight});
+    height: 100%;
 }
 
 ::ng-deep .map-marker-user {
