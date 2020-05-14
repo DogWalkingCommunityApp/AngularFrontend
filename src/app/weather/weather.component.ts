@@ -10,12 +10,13 @@ import {MapCoordinates} from "../map/map.interfaces";
 })
 export class WeatherComponent implements OnInit {
   public weatherData: any;
-  private count: number;
+  private count: number = 100;
 
   constructor(private weatherService: WeatherService,
               private trackingService: TrackingService) {
     this.trackingService.startTracking((coords: MapCoordinates)=> {
-      if(this.count >= 100 && this.count === 0) {
+      if(this.count >= 100) {
+        this.count = 0;
         this.sendToAPIXU(coords.lat + ", " + coords.lng);
       }
       this.count++;

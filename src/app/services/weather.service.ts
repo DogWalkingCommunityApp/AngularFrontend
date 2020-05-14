@@ -9,6 +9,7 @@ export class WeatherService {
   constructor(private http: HttpClient) { }
 
   getWeather(location) {
+    console.log('test')
     return this.http.get(
         'http://api.weatherstack.com/current\n' +
         '?access_key=6d9a31f3a79232ce9de0470dcc9f74a2\n' +
