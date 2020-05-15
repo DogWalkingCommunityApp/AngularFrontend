@@ -25,7 +25,7 @@ export class MapComponent implements AfterViewInit {
   };
 
   constructor(private trackingService: TrackingService) { 
-    this.HereMap = (window as any).H
+    this.HereMap = (window as any).H;
 
     this.platform = new this.HereMap.service.Platform({
       'apikey': 'GNibHURLINdyh-P9iBwlK50E3_swhICr_t7zW9pLQ9Y'
@@ -66,6 +66,10 @@ export class MapComponent implements AfterViewInit {
         this.userMarker = this.addMarker(map, coords, 'assets/icon/direction-marker.svg', 'map-marker-user');
 
         this.startTracking();
+
+        this.trackingService.trackingActive.subscribe(isActive => {
+          isActive ? this.setToVisible() : this.setToInvisible();
+        })
       }, (err) => console.log(err), { enableHighAccuracy: true })
     }
   }
@@ -85,6 +89,10 @@ export class MapComponent implements AfterViewInit {
     const changeOpacityToOne = (evt) => {
       evt.target.style.opacity = 1;
     };
+
+    const openProfile = (evt) => {
+      document.open('http://localhost:4200/profile')
+    };
   
     //create dom icon and add/remove opacity listeners
     var domIcon = new this.HereMap.map.DomIcon(outerElement, {
@@ -92,11 +100,13 @@ export class MapComponent implements AfterViewInit {
       onAttach: (clonedElement, domIcon, domMarker) => {
         clonedElement.addEventListener('mouseover', changeOpacity);
         clonedElement.addEventListener('mouseout', changeOpacityToOne);
+        clonedElement.addEventListener('click', openProfile);
       },
       // the function is called every time marker leaves the viewport
       onDetach: (clonedElement, domIcon, domMarker) => {
         clonedElement.removeEventListener('mouseover', changeOpacity);
         clonedElement.removeEventListener('mouseout', changeOpacityToOne);
+        clonedElement.removeEventListener('click', openProfile);
       }
     });
     
@@ -175,7 +185,7 @@ export class MapComponent implements AfterViewInit {
       }
 
       let { filteredData, removedUsers = [], newUsers = [] } = trackingData;
-
+      
       if (!this.usersMarkers) {
         removedUsers = [];
         (newUsers as any) = Object.keys(filteredData);
@@ -210,15 +220,15 @@ export class MapComponent implements AfterViewInit {
         this.usersMarkers[userKey] = this.addUserMarker(this.map, coords, imagePath, 'userIcon');
       })
     }) 
-
-    this.trackingService.activateServerTracking();
   }
 
   // Deactivate server sided tracking and do not show any other users on the map anymore
   setToInvisible() {
-    this.dataSubscription.unsubscribe();
+    if (!(this.usersMarkers || this.dataSubscription)) {
+      return;
+    }
 
-    this.trackingService.deActivateServerTracking();
+    this.dataSubscription.unsubscribe();
 
     const markersArray = Object.keys(this.usersMarkers).map( markerKey => {
       return this.usersMarkers[markerKey];
@@ -231,7 +241,6 @@ export class MapComponent implements AfterViewInit {
   // Slider related functions
   sliderHandler(event) {
     this.trackingService.range = event.value;
-    console.log(this.trackingService.range)
   }
 
   get range() {

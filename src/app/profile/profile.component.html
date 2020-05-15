@@ -7,6 +7,15 @@
       </button>
     </div>
 
+    <div id="chat">
+      <select [(ngModel)]="ping">
+        <option *ngFor="let ping of pingMessages">{{ping}}</option>
+      </select>
+      <button class="small-btn" (click)="chat()">
+        <i class="material-icons">sms</i>
+      </button>
+    </div>
+
     <div>
       <h1>
         {{dataStore.userData.vorname}}

@@ -2,3 +2,18 @@ ion-content {
     display: flex;
     flex-direction: column;
 }
+
+app-push-notification {
+    z-index: 5;
+    position: absolute;
+    top: 0;
+    left: auto;
+    width: 100%;
+}
+
+router-outlet {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+}

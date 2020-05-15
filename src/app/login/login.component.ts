@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import jssha from 'jssha';
 import config from '../services/environment.json';
-import { RegisterResponse } from '../registration/registration.interfaces.js';
+import { RegisterResponse } from '../registration/registration.interfaces';
 import { Router } from '@angular/router';
 import { DataStoreService } from '../services/data-store.service.js';
+import {Socket} from "ngx-socket-io";
 
 
 @Component({
@@ -18,7 +19,7 @@ export class LoginComponent {
 
   public response: ( null | RegisterResponse );
 
-  constructor(private router: Router, private dataStore: DataStoreService) { }
+  constructor(private router: Router, private dataStore: DataStoreService, private socket: Socket) { }
 
 
   async onLogin() {
@@ -41,6 +42,7 @@ export class LoginComponent {
         },
         body: JSON.stringify(loginData)
       });
+      this.socket.emit("chatLogin", this.login);
 
       const responseData: RegisterResponse = await response.json();
       this.handleResponse(responseData);
@@ -55,7 +57,6 @@ export class LoginComponent {
     if (response.success) {
       this.dataStore.authToken = response.data.authToken;
       this.dataStore.userData = response.data.userData;
-
       this.router.navigate(['/main']);
     }
   }

@@ -1,0 +1,76 @@
+$maxFontSize: 96px;
+$fontSize: 16vw;
+$maxWidth: 500px;
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    width: 88vw;
+    margin: auto;
+    max-width: $maxWidth;
+    justify-content: space-between;
+}
+
+button {
+    background: none;
+    display: flex;
+    justify-content: center;
+    width: 20vw;
+    max-width: 120px;
+    height: 20vw;
+    max-height: 120px;
+    border-bottom: 5px solid grey;
+}
+
+i {
+    font-size: $fontSize;
+}
+
+button.active {
+    border-bottom: 5px solid black;
+}
+
+header {
+    height: 21vw;
+    max-height: 126px;
+}
+
+footer {
+    height: 32vw;
+    max-height: 220px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    max-width: $maxWidth;
+    justify-content: center;
+}
+
+footer button {
+    border: none;
+    border-radius: 60px;
+    background: #b4b4b4;
+    margin: 5px;
+}
+
+footer i {
+    font-size: 14vw;
+}
+
+.lists {
+    height: calc(100vh - 54vw);
+    min-height: calc(100vh - 346px);
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: auto;
+    max-width: $maxWidth;
+}
+
+@media screen and (min-width: 534px) {
+    i {
+       font-size: $maxFontSize;
+    }
+
+    footer i {
+        font-size: 72px;
+    }
+  }
