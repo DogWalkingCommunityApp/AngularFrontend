@@ -15,14 +15,16 @@ type TrackingCallback = (coords: MapCoordinates) => void;
 export class TrackingService {
   private watchLocationId: number;
   private trackingCallbacks: { [key: string]: TrackingCallback} = {};
-  public compass: BehaviorSubject<number> = new BehaviorSubject(0);
   private socketReady: boolean = false;
   public coordinates: MapCoordinates;
   private serverTrackingInterval: any;
   private worker: Worker;
-  public filteredTrackingData: BehaviorSubject<WorkerFilteredData> = new BehaviorSubject(null);
   private jump: boolean = false;
   private _range: number = 5;
+  
+  public compass: BehaviorSubject<number> = new BehaviorSubject(0);
+  public filteredTrackingData: BehaviorSubject<WorkerFilteredData> = new BehaviorSubject(null);
+  public trackingActive: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(private dataStore: DataStoreService, private socket: Socket) {
     // TODO: Currently no use wor the webworker, but late on we want to use it for the exact position calculation of the other users
@@ -136,11 +138,14 @@ export class TrackingService {
         this.socket.emit('trackLocation', { lat, lng, jumpCell, range: Math.floor(this._range/2) });
       }
     }, 1000)
+
+    this.trackingActive.next(true);
    }
 
    public deActivateServerTracking(): void {
      clearInterval(this.serverTrackingInterval);
-     this.socket.emit('stopTracking')
+     this.socket.emit('stopTracking');
+     this.trackingActive.next(false);
    }
 
 
