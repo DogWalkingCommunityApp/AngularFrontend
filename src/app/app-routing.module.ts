@@ -9,6 +9,7 @@ import { DogIndexCardComponent } from './dog-index-card/dog-index-card.component
 import { AddDogFormComponent } from './add-dog-form/add-dog-form.component';
 import { ProfileComponent} from './profile/profile.component';
 import { ModalComponent } from './modal/modal.component';
+import {StrangersProfileComponent} from './strangers-profile/strangers-profile.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'main', component: MainComponent },
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent},
+  { path: 'strangersProfile', component: StrangersProfileComponent},
   { path: 'passwortVergessen', component: PasswortVergessenComponent},
   { path: 'registration', component: RegistrationComponent },
   { path: 'dogIndexCard', component: DogIndexCardComponent },

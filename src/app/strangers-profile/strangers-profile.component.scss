@@ -1,11 +1,11 @@
 .small-btn {
-   background-color: white;
-   color: #414141;
-   border: none;
-   padding: 12px 16px;
-   font-size: 16px;
-   cursor: pointer;
- }
+  background-color: white;
+  color: #414141;
+  border: none;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
 
 .large-btn{
   background-color: #e5e5e5;
@@ -23,11 +23,10 @@
   float: bottom;
 }
 
-.palette-btn {
-  background-color: white;
-  color: #414141;
-  border: none;
-  cursor: pointer;
+.userNameDiv {
+  position: relative;
+  left: 1em;
+  top: -1em;
 }
 
 .profile-pic {
@@ -60,6 +59,36 @@ p {
   height: 50vh;
   position: relative;
   display: block;
+}
+
+.addBlockUserDiv{
+  display: inline-flex;
+}
+
+.addButtonDiv{
+  text-align: center;
+  margin:0.5em
+}
+
+.blockButtonDiv{
+  text-align: center;
+  margin:0.5em
+}
+
+.addButtonDiv p{
+font-size: 0.5em;
+}
+
+.blockButtonDiv p{
+  font-size: 0.5em;
+}
+
+.blockUserIcon{
+  font-size: 2em;
+}
+
+.addFriendIcon{
+  font-size: 2em;
 }
 
 .dogIndexCardDiv{

@@ -35,6 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {ServiceWorkerModule, SwRegistrationOptions} from '@angular/service-worker';
 
 import { DataStoreService } from './services/data-store.service';
+import {StrangersProfileComponent} from './strangers-profile/strangers-profile.component';
 
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
@@ -47,6 +48,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     LoginComponent,
     PasswortVergessenComponent,
     ProfileComponent,
+    StrangersProfileComponent,
     ModalComponent,
     RegistrationComponent,
     PictureUploaderComponent,
