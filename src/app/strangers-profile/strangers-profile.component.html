@@ -1,0 +1,83 @@
+<div class="grid-container">
+  <div id="profile-header" class="grid-item">
+
+    <div>
+        <img src="../../assets/floof_logo_final.svg" alt="" class="profile-pic"/>
+    </div>
+
+    <div class="userNameDiv">
+      <h1>
+        <!--{{dataStore.userData.vorname}}
+        {{dataStore.userData.name}} -->
+        Michael Burnham
+      </h1>
+    </div>
+
+    <div class="addBlockUserDiv">
+
+      <div class="addButtonDiv">
+        <button>
+          <ion-icon ios="ios-person-add" class="addFriendIcon" md="md-person-add"></ion-icon>
+        </button>
+        <p>Freund hinzufügen</p>
+      </div>
+
+      <div class="blockButtonDiv">
+        <button>
+          <ion-icon ios="ios-person-add" class="blockUserIcon" md="md-person-add"></ion-icon>
+        </button>
+        <p>Benutzer blockieren</p>
+      </div>
+
+    </div>
+    <!--
+        <div id="logout">
+          <button class="small-btn" (click)="logout()">
+            <i class="material-icons">exit_to_app</i>
+          </button>
+        </div>
+
+
+        <div class="user-data">
+          {{dataStore.userData.username}}
+        </div>
+
+        <div class="user-data">
+          {{dataStore.userData.email}}
+        </div>
+    -->
+
+      </div>
+
+      <div class="messages">
+        <ion-select placeholder="Pushnachricht">
+          <ion-select-option></ion-select-option>
+        </ion-select>
+      </div>
+
+      <div id="dog-cards" class="grid-item">
+        <div class="dogIndexCardDiv">
+          <app-dog-index-card></app-dog-index-card>
+        </div>
+        <div class="dogIndexCardDiv">
+          <app-dog-index-card></app-dog-index-card>
+        </div>
+        <div class="dogIndexCardDiv">
+          <app-dog-index-card></app-dog-index-card>
+        </div>
+        <div class="dogIndexCardDiv">
+          <app-dog-index-card></app-dog-index-card>
+        </div>
+        <div class="dogIndexCardDiv">
+          <app-dog-index-card></app-dog-index-card>
+        </div>
+      </div>
+
+      <div id="profile-footer" class="grid-item">
+        <button class="large-btn">
+          <a routerLink="/main" routerLinkActive="active">
+            <img src="../../assets/icon/liveMapIcon.svg" alt="liveMapIcon">
+          </a>
+        </button>
+      </div>
+    </div>

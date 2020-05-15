@@ -42,6 +42,7 @@ import { environment} from "../environments/environment";
 import { HttpClientModule } from '@angular/common/http';
 
 import { DataStoreService } from './services/data-store.service';
+import {StrangersProfileComponent} from './strangers-profile/strangers-profile.component';
 import {PushNotificationComponent} from "./push-notification/push-notification.component";
 import { WeatherComponent } from "./weather/weather.component";
 
@@ -56,6 +57,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     LoginComponent,
     PasswortVergessenComponent,
     ProfileComponent,
+    StrangersProfileComponent,
     ModalComponent,
     RegistrationComponent,
     PictureUploaderComponent,

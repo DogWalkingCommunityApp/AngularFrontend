@@ -29,7 +29,7 @@ export class DogIndexCardComponent implements OnInit {
     this.male = false;
     this.female = true;
     this.neutered = false;
-    this.ownProfileView = false;
+    this.ownProfileView = true;
 
 
     if (this.female) {
@@ -47,7 +47,7 @@ export class DogIndexCardComponent implements OnInit {
   }
 
 
-  toggle() {
+  toggleDescription() {
     this.descriptionVisible = !this.descriptionVisible;
   }
 }

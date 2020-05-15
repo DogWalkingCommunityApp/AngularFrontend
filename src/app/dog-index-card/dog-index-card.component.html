@@ -1,5 +1,4 @@
-<ion-content class="dogIndexCard">
-  <div class="tempDevDIV">
+
   <div class="indexCard">
     <img class="dogProfilePic" src="/assets/pics/Doge.png" alt="Profile Picture">
     <div class="dogCredentials">
@@ -8,9 +7,12 @@
       {{neuteredText}}{{genderText}}
     </p>
     </div>
-      <ion-icon (click)="toggle()" class="arrow cursorPointer"
+    <div class="iconsRight">
+
+      <ion-icon (click)="toggleDescription()" class="arrow cursorPointer"
                 [name]="descriptionVisible ? 'arrow-dropup' :'arrow-dropdown'">
       </ion-icon>
+      <div class="lowerIconsRight">
     <div *ngIf="ownProfileView;then ownProfile else strangersProfile"></div>
     <ng-template #strangersProfile>
       <svg  name="dogNote" class="dogNotationButton cursorPointer" width="24" height="30" viewBox="0 0 24 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -18,18 +20,15 @@
       </svg>
     </ng-template>
       <ng-template #ownProfile>
-        <svg name="changeDogInfo" class="changeDogInfoButton cursorPointer" width=30 height="30" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M-0.000671387 20.5826V26H5.41675L21.4017 10.015L15.9843 4.59758L-0.000671387 20.5826ZM25.5768 5.83998C26.1402 5.27657 26.1402 4.35922 25.5768 3.79581L22.2035 0.422559C21.6401 -0.140853 20.7228 -0.140853 20.1594 0.422559L17.5157 3.06626L22.9331 8.48368L25.5768 5.83998Z" fill="black"/>
-        </svg>
         <svg name="deleteDog" class="deleteDogButton cursorPointer" width="24" height="30" viewBox="0 0 18 23" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M1.28571 20.4444C1.28571 21.85 2.44286 23 3.85714 23H14.1429C15.5571 23 16.7143 21.85 16.7143 20.4444V5.11111H1.28571V20.4444ZM4.455 11.3467L6.27429 9.53861L9 12.2475L11.7257 9.53861L13.545 11.3467L10.8193 14.0556L13.545 16.7644L11.7257 18.5725L9 15.8636L6.27429 18.5725L4.455 16.7644L7.18071 14.0556L4.455 11.3467ZM13.5 1.27778L12.2143 0H5.78571L4.5 1.27778H0V3.83333H18V1.27778H13.5Z" fill="black"/>
         </svg>
+        <svg name="changeDogInfo" class="changeDogInfoButton cursorPointer" width=30 height="30" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M-0.000671387 20.5826V26H5.41675L21.4017 10.015L15.9843 4.59758L-0.000671387 20.5826ZM25.5768 5.83998C26.1402 5.27657 26.1402 4.35922 25.5768 3.79581L22.2035 0.422559C21.6401 -0.140853 20.7228 -0.140853 20.1594 0.422559L17.5157 3.06626L22.9331 8.48368L25.5768 5.83998Z" fill="black"/>
+        </svg>
       </ng-template>
+    </div>
+    </div>
 
-
-
-
-    <div [class]="descriptionVisible ? 'dogDescription displayBlock' :'dogDescription displayNone'">{{description}}</div>
+    <div [class]="descriptionVisible ? 'dogDescription displayInLineBlock' :'dogDescription displayNone'">{{description}}</div>
   </div>
-  </div>
-</ion-content>

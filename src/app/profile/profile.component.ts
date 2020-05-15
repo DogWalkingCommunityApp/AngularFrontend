@@ -3,6 +3,7 @@ import { DataStoreService } from '../services/data-store.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
 import { UploadProfilePictureComponent } from '../upload-profile-picture/upload-profile-picture.component';
+import { DogIndexCardComponent } from '../dog-index-card/dog-index-card.component';
 import {push_notification} from "../push-notification/push-notification";
 import {Socket} from "ngx-socket-io";
 

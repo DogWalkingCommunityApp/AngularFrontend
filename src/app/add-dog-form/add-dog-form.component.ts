@@ -35,7 +35,7 @@ export class AddDogFormComponent implements OnInit {
     genders: any[];
       races: any[];
     private dogFormGroup: FormGroup;
-    constructor(private router: Router) {
+    constructor() {
       /*  this.dogFormGroup = new FormGroup({
             name: new FormControl(),
             gender: new FormControl(),
