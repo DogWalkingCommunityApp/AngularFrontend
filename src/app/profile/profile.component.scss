@@ -2,9 +2,11 @@
    background-color: white;
    color: #414141;
    border: none;
-   padding: 12px 16px;
    font-size: 16px;
    cursor: pointer;
+  position: relative;
+  top: 7px;
+  margin: 0px 5px;
  }
 
 .large-btn{
@@ -23,6 +25,28 @@
   float: bottom;
 }
 
+.userCredentials {
+  position: relative;
+}
+
+.userCredentialsWithButtons {
+  position: absolute;
+  left: 135px;
+  top: 0;
+}
+
+.userNameDiv {
+  position: relative;
+}
+
+.userEmailDiv {
+  position: relative;
+}
+
+.userNameAndSurnameDiv {
+  position: relative;
+}
+
 .palette-btn {
   background-color: white;
   color: #414141;
@@ -34,8 +58,8 @@
   border-radius: 5em;
   background-color: white;
   border: #414141 solid 0.1em;
-  height: 7em;
-  width: 7em;
+  height: 8em;
+  width: 8em;
   float: left;
 }
 
@@ -89,4 +113,8 @@ p {
   font-family: Arial, sans-serif;
   font-size: 0.85em;
   padding: 0.1em;
+}
+
+.cursorPointer:hover{
+  cursor: pointer;
 }

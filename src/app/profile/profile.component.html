@@ -1,43 +1,29 @@
 <div class="grid-container">
   <div id="profile-header" class="grid-item">
-
     <div>
-      <button mat-flat-button (click)="openModal('upload')">
+      <button mat-flat-button style="padding: 0;" (click)="openModal('upload')">
         <img src="../../assets/floof_logo_final.svg" alt="" class="profile-pic"/>
       </button>
     </div>
-
-    <div id="chat">
-      <select [(ngModel)]="ping">
-        <option *ngFor="let ping of pingMessages">{{ping}}</option>
-      </select>
-      <button class="small-btn" (click)="chat()">
-        <i class="material-icons">sms</i>
-      </button>
-    </div>
-
-    <div>
+    <div class="userCredentialsWithButtons">
+    <div class="userCredentials">
+    <div class="userNameAndSurnameDiv">
       <h1>
         {{dataStore.userData.vorname}}
         {{dataStore.userData.name}}
       </h1>
     </div>
-
-    <div id="logout">
-      <button class="small-btn" (click)="logout()">
-        <i class="material-icons">exit_to_app</i>
-      </button>
-    </div>
-
+    <div class="userNameDiv">
     <div class="user-data">
       {{dataStore.userData.username}}
     </div>
-
+    </div>
+      <div class="userEmailDiv">
     <div class="user-data">
       {{dataStore.userData.email}}
     </div>
-
-    <div>
+    </div>
+    </div>
       <a routerLink="#" class="small-btn">
         <i class="material-icons">settings</i>
       </a>
@@ -47,6 +33,19 @@
       <a routerLink="#" class="small-btn">
         <img src="../../assets/icon/addDogIcon.svg" alt="addDogIcon" height="25px">
       </a>
+    </div>
+    <div id="logout">
+      <button class="small-btn" (click)="logout()">
+        <i class="material-icons">exit_to_app</i>
+      </button>
+    </div>
+    <div id="chat">
+      <select [(ngModel)]="ping">
+        <option *ngFor="let ping of pingMessages">{{ping}}</option>
+      </select>
+      <button class="small-btn" (click)="chat()">
+        <i class="material-icons">sms</i>
+      </button>
     </div>
 
   </div>
