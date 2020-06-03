@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DogIndexCardComponent } from '../dog-index-card/dog-index-card.component';
+import { StrangersDogIndexCardComponent } from '../strangers-dog-index-card/strangers-dog-index-card.component';
 @Component({
   selector: 'app-strangers-profile',
   templateUrl: './strangers-profile.component.html',
@@ -10,7 +10,6 @@ export class StrangersProfileComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    // DogIndexCardComponent.ownProfileView = true;
   }
 
 }
