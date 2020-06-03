@@ -4,8 +4,8 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
 import { UploadProfilePictureComponent } from '../upload-profile-picture/upload-profile-picture.component';
 import { DogIndexCardComponent } from '../dog-index-card/dog-index-card.component';
-import {push_notification} from "../push-notification/push-notification";
-import {Socket} from "ngx-socket-io";
+import {push_notification} from '../push-notification/push-notification';
+import {Socket} from 'ngx-socket-io';
 
 @Component({
   selector: 'app-profile',
@@ -14,8 +14,8 @@ import {Socket} from "ngx-socket-io";
 })
 export class ProfileComponent implements OnInit {
 
-    public ping: string = "HI!";
-    public pingMessages: string[] = [ "Hi", "Wie gehts?", "Möchte Gassi gehen" ];
+    public ping = 'HI!';
+    public pingMessages: string[] = [ 'Hi', 'Wie gehts?', 'Möchte Gassi gehen' ];
     public toUserId: number;
     public fromUserId: number;
     public fromUserName: string;
@@ -51,9 +51,9 @@ export class ProfileComponent implements OnInit {
         this.fromUserId = this.dataStore.userData.id;
         this.fromUserName = this.dataStore.userData.username;
         this.toUserId = 3;
-        if(this.ping != undefined && this.fromUserId != undefined){
+        if (this.ping != undefined && this.fromUserId != undefined) {
             this.pushNotification = new push_notification(this.ping, this.toUserId, this.fromUserId, this.fromUserName);
-            this.socket.emit("sendMessage", this.pushNotification);
+            this.socket.emit('sendMessage', this.pushNotification);
             this.ping = undefined;
         }
     }
