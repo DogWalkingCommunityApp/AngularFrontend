@@ -15,11 +15,11 @@
       <div class="lowerIconsRight">
     <div *ngIf="ownProfileView;then ownProfile else strangersProfile"></div>
     <ng-template #strangersProfile>
-      <img src="../../assets/icon/noteButton.svg" alt="addDogIcon" class="dogNotationButton cursorPointer">
+      <img src="../../assets/icon/noteButton.svg" alt="addDogIcon" class="dogNotationButton cursorPointer" name="dogNote">
     </ng-template>
       <ng-template #ownProfile>
-        <img src="../../assets/icon/trash.svg" alt="addDogIcon" class="deleteDogButton cursorPointer">
-        <img src="../../assets/icon/change.svg" alt="addDogIcon" class="changeDogInfoButton cursorPointer">
+        <img src="../../assets/icon/trash.svg" alt="addDogIcon" class="deleteDogButton cursorPointer" name="deleteDog">
+        <img src="../../assets/icon/change.svg" alt="addDogIcon" class="changeDogInfoButton cursorPointer" name="changeDogInfo">
       </ng-template>
     </div>
     </div>
