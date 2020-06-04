@@ -1,6 +1,8 @@
+
+
 .small-btn {
    background-color: white;
-   color: #414141;
+   color: black;
    border: none;
    font-size: 16px;
    cursor: pointer;
@@ -11,7 +13,7 @@
 
 .large-btn{
   background-color: #e5e5e5;
-  color: #414141;
+  color: black;
   border-radius: 50px;
   border: none;
   padding: 3px 3px;
@@ -31,11 +33,13 @@
 
 .userCredentialsWithButtons {
   position: absolute;
-  left: 135px;
-  top: 0;
+  left: 160px;
+  top: 30px;
 }
 
 .userNameDiv {
+  font-size:18px;
+  font-weight: bold;
   position: relative;
 }
 
@@ -49,7 +53,7 @@
 
 .palette-btn {
   background-color: white;
-  color: #414141;
+  color: black;
   border: none;
   cursor: pointer;
 }
@@ -57,7 +61,7 @@
 .profile-pic {
   border-radius: 5em;
   background-color: white;
-  border: #414141 solid 0.1em;
+  border: black solid 0.1em;
   height: 8em;
   width: 8em;
   float: left;
@@ -68,52 +72,96 @@
 }
 
 p {
-  color: #414141;
-  font-family: Arial, sans-serif;
+  //color: black;
+  //font-family: Arial, sans-serif;
   font-size: 1em;
+}
+/*
+.box {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}*/
+
+.box .row {
+  border: 1px dotted grey;
+}
+
+.box .row.header {
+  flex: 0 1 auto;
+}
+
+.box .row.content {
+  display: flex;
+  flex-flow: column;
+  flex: 1 1 auto;
+  overflow-y: auto;
+}
+
+.box .row.footer {
+  flex: 0 1 40px;
 }
 
 #profile-header {
+  /*
   position: sticky;
   padding: 10px;
   margin: 10px;
+     */
+  padding: 25px;
+  flex: 0 1 auto;
 }
 
+
 #dog-cards {
+  /*
   overflow-y: auto;
-  height: 50vh;
+  height: 75vw;
   position: relative;
   display: block;
+  */
+  display: flex;
+  flex-flow: column;
+  flex: 1 1 auto;
+  overflow-y: auto;
 }
 
 .dogIndexCardDiv{
-  margin-bottom: 0.5em;
+  margin-top: 2.5px;
+  margin-bottom: 2.5px;
 }
 
+
 #profile-footer {
+  /*
   padding: 10px;
   margin: 10px;
   height: 90px;
   position:fixed;
   bottom: 0;
   width: 100%;
+  */
+  flex: 0 1 7.5em;
 }
 
 .grid-container {
-  display: grid;
-  grid-template-columns: auto;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
 }
 
 .grid-item {
 
 }
 
+
 .user-data {
-  color: #414141;
-  font-family: Arial, sans-serif;
+  //color: black;
+  //font-family: Arial, sans-serif;
   font-size: 0.85em;
-  padding: 0.1em;
+  padding-top: 0.65em;
 }
+
 
 .cursorPointer:hover{
   cursor: pointer;
