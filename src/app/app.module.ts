@@ -46,38 +46,42 @@ import { DataStoreService } from './services/data-store.service';
 import {StrangersProfileComponent} from './strangers-profile/strangers-profile.component';
 import {PushNotificationComponent} from './push-notification/push-notification.component';
 import { WeatherComponent } from './weather/weather.component';
+import {ReturnToMapButtonComponent} from './return-to-map-button/return-to-map-button.component';
+import {RainBowMenuComponent} from './rain-bow-menu/rain-bow-menu.component';
 
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MapComponent,
-    MainComponent,
-    LoginComponent,
-    PasswortVergessenComponent,
-    ProfileComponent,
-    StrangersProfileComponent,
-    ModalComponent,
-    RegistrationComponent,
-    PictureUploaderComponent,
-    DogIndexCardComponent,
-    StrangersDogIndexCardComponent,
-    AddDogFormComponent,
-    MustMatchDirective,
-    MessageBoxComponent,
-    ValidateValueDirective,
-    UploadProfilePictureComponent,
-    PushNotificationComponent,
-    FriendListComponent,
-    DogListComponent,
-    RoutesListComponent,
-    BlockedListComponent,
-    ListComponent,
-    PeopleCardsComponent,
-    WeatherComponent
-  ],
+    declarations: [
+        AppComponent,
+        MapComponent,
+        MainComponent,
+        LoginComponent,
+        PasswortVergessenComponent,
+        ProfileComponent,
+        StrangersProfileComponent,
+        ModalComponent,
+        RegistrationComponent,
+        PictureUploaderComponent,
+        DogIndexCardComponent,
+        StrangersDogIndexCardComponent,
+        AddDogFormComponent,
+        MustMatchDirective,
+        MessageBoxComponent,
+        ValidateValueDirective,
+        UploadProfilePictureComponent,
+        PushNotificationComponent,
+        FriendListComponent,
+        DogListComponent,
+        RoutesListComponent,
+        BlockedListComponent,
+        ListComponent,
+        PeopleCardsComponent,
+        WeatherComponent,
+        ReturnToMapButtonComponent,
+        RainBowMenuComponent
+    ],
   entryComponents: [
       ModalComponent,
     UploadProfilePictureComponent

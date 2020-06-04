@@ -3,7 +3,6 @@ import { DataStoreService } from '../services/data-store.service';
 import {TrackingService} from '../services/tracking.service';
 import config from '../services/environment.json';
 import {RegisterResponse} from '../registration/registration.interfaces';
-import { DOG_LIST, FRIEND_LIST, ROUTES_LIST, BLOCKED_LIST } from '../list/icon.constants';
 
 
 @Component({
@@ -12,9 +11,6 @@ import { DOG_LIST, FRIEND_LIST, ROUTES_LIST, BLOCKED_LIST } from '../list/icon.c
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
-  public constants: { [key:string]: string } = {
-    DOG_LIST, FRIEND_LIST, ROUTES_LIST, BLOCKED_LIST
-  }
 
   public response: (null | RegisterResponse);
   private isVisible: boolean;
@@ -28,10 +24,9 @@ export class MainComponent implements OnInit {
 
   async onChange() {
     this.isVisible = !this.isVisible;
-    if(this.isVisible){
+    if (this.isVisible) {
       this.tracking.activateServerTracking();
-    }
-    else{
+    } else {
       this.tracking.deActivateServerTracking();
     }
   }
@@ -46,13 +41,13 @@ export class MainComponent implements OnInit {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ authId })
-      })
+      });
 
       const responseData: RegisterResponse = await response.json();
 
       this.handleResponse(responseData);
-    } catch(e) {
-      this.handleResponse({ success: false, message: 'The server did not respond' })
+    } catch (e) {
+      this.handleResponse({ success: false, message: 'The server did not respond' });
     }
   }
 

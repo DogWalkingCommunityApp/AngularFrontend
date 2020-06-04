@@ -6,11 +6,9 @@
     </div>
 
     <div class="userNameDiv">
-      <h1>
         <!--{{dataStore.userData.vorname}}
         {{dataStore.userData.name}} -->
-        Michael Burnham
-      </h1>
+        Username
     </div>
 
     <div class="addBlockUserDiv">
@@ -72,12 +70,7 @@
           <app-strangers-dog-index-card></app-strangers-dog-index-card>
         </div>
       </div>
-
-      <div id="profile-footer" class="grid-item">
-        <button class="large-btn">
-          <a routerLink="/main" routerLinkActive="active">
-            <img src="../../assets/icon/liveMapIcon.svg" alt="liveMapIcon">
-          </a>
-        </button>
-      </div>
+  <div id="profile-footer">
+  <app-return-to-map-button></app-return-to-map-button>
+  </div>
     </div>

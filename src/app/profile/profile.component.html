@@ -1,22 +1,18 @@
 <div class="grid-container">
   <div id="profile-header" class="grid-item">
-    <div>
       <button mat-flat-button style="padding: 0;" (click)="openModal('upload')">
         <img src="../../assets/floof_logo_final.svg" alt="" class="profile-pic"/>
       </button>
-    </div>
     <div class="userCredentialsWithButtons">
     <div class="userCredentials">
+      <div class="userNameDiv">
+          {{dataStore.userData.username}}
+      </div>
     <div class="userNameAndSurnameDiv">
-      <h1>
+      <div class="user-data">
         {{dataStore.userData.vorname}}
         {{dataStore.userData.name}}
-      </h1>
-    </div>
-    <div class="userNameDiv">
-    <div class="user-data">
-      {{dataStore.userData.username}}
-    </div>
+      </div>
     </div>
       <div class="userEmailDiv">
     <div class="user-data">
@@ -68,11 +64,9 @@
     </div>
   </div>
 
-  <div id="profile-footer" class="grid-item">
-    <button class="large-btn">
-      <a routerLink="/main" routerLinkActive="active">
-        <img src="../../assets/icon/liveMapIcon.svg" alt="liveMapIcon">
-      </a>
-    </button>
+  <div id="profile-footer">
+    <app-return-to-map-button></app-return-to-map-button>
   </div>
+
+
 </div>
