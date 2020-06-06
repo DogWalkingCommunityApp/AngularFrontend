@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouteReuseStrategy, RouterModule } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { CustomReuseStrategy } from './router-strategy'
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Ng5SliderModule } from 'ng5-slider';
@@ -104,7 +105,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     StatusBar,
     SplashScreen,
     [PushNotificationService],
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: RouteReuseStrategy, useClass: CustomReuseStrategy },
     DataStoreService
   ],
   bootstrap: [AppComponent]
