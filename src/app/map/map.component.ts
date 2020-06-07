@@ -3,6 +3,7 @@ import { MapCoordinates } from './map.interfaces';
 import { TrackingService } from '../services/tracking.service';
 import { serverBaseUrl } from '../services/environment.json';
 import { Options } from 'ng5-slider';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-map',
@@ -24,7 +25,7 @@ export class MapComponent implements AfterViewInit {
     vertical: true
   };
 
-  constructor(private trackingService: TrackingService) { 
+  constructor(private trackingService: TrackingService, private router: Router) { 
     this.HereMap = (window as any).H;
 
     this.platform = new this.HereMap.service.Platform({
@@ -126,7 +127,7 @@ export class MapComponent implements AfterViewInit {
     return newMarker;
   }
 
-  addUserMarker(map: any, coords: MapCoordinates, imagePath: string, className: string) {
+  addUserMarker(map: any, coords: MapCoordinates, imagePath: string, className: string, id: number) {
     const outerElement = document.createElement('div'),
         innerElement = document.createElement('div'),
         imageElement = document.createElement('img');
@@ -144,6 +145,10 @@ export class MapComponent implements AfterViewInit {
     const changeOpacityToOne = (evt) => {
       evt.target.style.opacity = 1;
     };
+
+    const onClickHandler = () => {
+      this.router.navigate(['/strangersProfile/' + id]);
+    }
   
     // TODO: Here we need the functionality to open the corresponding user profile
     //create dom icon and add/remove opacity listeners
@@ -152,11 +157,13 @@ export class MapComponent implements AfterViewInit {
       onAttach: (clonedElement, domIcon, domMarker) => {
         clonedElement.addEventListener('mouseover', changeOpacity);
         clonedElement.addEventListener('mouseout', changeOpacityToOne);
+        clonedElement.addEventListener('click', onClickHandler);
       },
       // the function is called every time marker leaves the viewport
       onDetach: (clonedElement, domIcon, domMarker) => {
         clonedElement.removeEventListener('mouseover', changeOpacity);
         clonedElement.removeEventListener('mouseout', changeOpacityToOne);
+        clonedElement.removeEventListener('click', onClickHandler);
       }
     });
   
@@ -217,7 +224,7 @@ export class MapComponent implements AfterViewInit {
         const coords: MapCoordinates = { lat: data.lat, lng: data.lng };
         const imagePath = data.userData.profileImg[0] === '/' ? data.userData.profileImg.substring(1, data.userData.profileImg.length) : data.userData.profileImg;
 
-        this.usersMarkers[userKey] = this.addUserMarker(this.map, coords, imagePath, 'userIcon');
+        this.usersMarkers[userKey] = this.addUserMarker(this.map, coords, imagePath, 'userIcon', data.userData.id);
       })
     }) 
   }

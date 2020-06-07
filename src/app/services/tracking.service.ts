@@ -27,7 +27,6 @@ export class TrackingService {
   public trackingActive: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(private dataStore: DataStoreService, private socket: Socket) {
-    // TODO: Currently no use wor the webworker, but late on we want to use it for the exact position calculation of the other users
     if (typeof Worker !== 'undefined') {
       // Create a new
       const worker = new Worker('./tracking.worker', { type: 'module' });
@@ -107,6 +106,7 @@ export class TrackingService {
       case TRACKING_USERS_ARRAY:
         this.jump = message.data.jump;
         this.filteredTrackingData.next(message.data);
+        this.dataStore.availableUsersData = message.data;
         break;
     }
    }
