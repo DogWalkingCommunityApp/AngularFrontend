@@ -15,6 +15,7 @@ export class DataStoreService {
   private updateTimeout: any;
   public friendsData: BehaviorSubject<IUserData[]> = new BehaviorSubject(null);
   private _dogData: any = {};
+  private availableUsers: any = {};
 
   constructor(private router: Router) {
     const savedAuthToken = localStorage.getItem('authToken');
@@ -42,6 +43,31 @@ export class DataStoreService {
 
   set userData(userData: IUserData) {
     this._userData = userData;
+  }
+
+  set availableUsersData(usersData: any) {
+    const newAvailableUsers = Object.assign({}, this.availableUsers);
+
+    for (let userData of Object.values(usersData.filteredData)) {
+      let data = (userData as any).userData;
+      newAvailableUsers[data.id] = data;
+    }
+
+    this.availableUsers = newAvailableUsers;
+  }
+
+  public async dataForUser(id: number) {
+    if (this.availableUsers[id]) {
+      return this.availableUsers[id];
+    } else {
+      let userData = await this.requestData({ identifier: id }, 'getUserData', (userData: any) => {
+        const newAvailableUsers = Object.assign({}, this.availableUsers);
+        newAvailableUsers[userData.id] = userData;
+        this.availableUsers = newAvailableUsers;
+      })
+
+      return userData;
+    }
   }
 
   get authToken() {
@@ -88,7 +114,7 @@ export class DataStoreService {
     if (response.success) {
       this.authToken = response.data.authToken;
       this.userData = response.data.userData;
-      this.userData.friends = [1, 2, 3, 4]; // TODO: DUMMY DATA! REMOVE!
+      this.userData.friends = [0, 1, 2, 3, 4]; // TODO: DUMMY DATA! REMOVE!
       if (this.router.routerState.snapshot.url === '/login') {
         this.router.navigate(['/main']);
       } else if (this.router.routerState.snapshot.url === '/list') {
@@ -117,7 +143,7 @@ export class DataStoreService {
       });
 
       const responseData: RegisterResponse = await response.json();
-      console.log('DATA', responseData, this.userData.friends)
+
       if (responseData.success) {
         this.friendsData.next(responseData.data);
       } else {
@@ -129,6 +155,30 @@ export class DataStoreService {
     }
   }
   
+  async requestData(data: any, route: string, callback?: Function) {
+    try {
+      const response = await fetch(config.serverBaseUrl + route, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      const responseData: RegisterResponse = await response.json();
+
+      if (responseData.success) {
+        if (callback) {
+          callback(responseData.data);
+        }
+
+        return responseData.data;
+      } 
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   logout() {
     this.authToken = null;
     this.userData = null;

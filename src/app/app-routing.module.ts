@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'main', component: MainComponent },
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent},
-  { path: 'strangersProfile', component: StrangersProfileComponent},
+  { path: 'strangersProfile/:id', component: StrangersProfileComponent},
   { path: 'passwortVergessen', component: PasswortVergessenComponent},
   { path: 'registration', component: RegistrationComponent },
   { path: 'modal', component: ModalComponent},
