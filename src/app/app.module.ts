@@ -48,6 +48,7 @@ import {PushNotificationComponent} from './push-notification/push-notification.c
 import { WeatherComponent } from './weather/weather.component';
 import {ReturnToMapButtonComponent} from './return-to-map-button/return-to-map-button.component';
 import {RainBowMenuComponent} from './rain-bow-menu/rain-bow-menu.component';
+import {RouteCardComponent} from './route-card/route-card.component';
 
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
@@ -80,7 +81,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
         PeopleCardsComponent,
         WeatherComponent,
         ReturnToMapButtonComponent,
-        RainBowMenuComponent
+        RainBowMenuComponent,
+        RouteCardComponent
     ],
   entryComponents: [
       ModalComponent,

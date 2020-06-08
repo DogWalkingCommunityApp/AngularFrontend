@@ -10,15 +10,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ListComponent {
 
-  public constants: { [key:string]: string } = {
+  public constants: { [key: string]: string } = {
     DOG_LIST, FRIEND_LIST, ROUTES_LIST, BLOCKED_LIST
-  }
+  };
   public selectedList: string = FRIEND_LIST;
 
   constructor(private dataStoreService: DataStoreService, private route: ActivatedRoute) {
     route.paramMap.subscribe(paramMap => {
-      this.selectedList = paramMap.get('list'); 
-    })
+      this.selectedList = paramMap.get('list');
+    });
    }
 
   selectList(list: string) {

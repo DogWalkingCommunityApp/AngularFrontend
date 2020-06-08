@@ -36,13 +36,11 @@ header {
 }
 
 footer {
-    height: 32vw;
-    max-height: 220px;
-    display: flex;
-    flex-wrap: wrap;
-    margin: auto;
-    max-width: $maxWidth;
-    justify-content: center;
+    height: 100px;
+    width:100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
 }
 
 footer button {
@@ -74,3 +72,6 @@ footer i {
         font-size: 72px;
     }
   }
+
+
+

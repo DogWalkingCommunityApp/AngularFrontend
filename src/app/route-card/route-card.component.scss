@@ -1,4 +1,9 @@
-.cursorPointer{
+.listHeader{
+  text-align: center;
+}
+
+
+.cursorPointer:hover{
   cursor: pointer;
 }
 
@@ -16,7 +21,7 @@
   float: right;
   display: block;
   position: relative;
-  right: 1.5em;
+  right: 0.5em;
 }
 
 .lowerIconsRight{
@@ -42,8 +47,6 @@
 .dogNotationButton{
   position: relative;
   right: -1.3em;
-  width: 30px;
-  height: 30px;
 }
 
 .dogProfilePic{

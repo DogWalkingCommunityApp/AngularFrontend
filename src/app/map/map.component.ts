@@ -8,7 +8,7 @@ import { Options } from 'ng5-slider';
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
-})
+  })
 export class MapComponent implements AfterViewInit {
   private HereMap: any;
   private platform: any;
@@ -21,14 +21,17 @@ export class MapComponent implements AfterViewInit {
     floor: 1,
     ceil: 10,
     step: 1,
-    vertical: true
+    vertical: true,
+    // showTicks: true,
+    showSelectionBarFromValue: 0,
+    // showTicksValues: true
   };
 
-  constructor(private trackingService: TrackingService) { 
+  constructor(private trackingService: TrackingService) {
     this.HereMap = (window as any).H;
 
     this.platform = new this.HereMap.service.Platform({
-      'apikey': 'GNibHURLINdyh-P9iBwlK50E3_swhICr_t7zW9pLQ9Y'
+      apikey: 'GNibHURLINdyh-P9iBwlK50E3_swhICr_t7zW9pLQ9Y'
     });
   }
 
@@ -50,16 +53,16 @@ export class MapComponent implements AfterViewInit {
             pixelRatio: window.devicePixelRatio || 1
           }
         );
-    
-        window.addEventListener('resize', function () {
-          map.getViewPort().resize(); 
+
+        window.addEventListener('resize', function() {
+          map.getViewPort().resize();
         });
-    
+
         setTimeout(() => {
-          map.getViewPort().resize(); 
+          map.getViewPort().resize();
         }, 1000);
-    
-    
+
+
         const behavior = new this.HereMap.mapevents.Behavior(new this.HereMap.mapevents.MapEvents(map));
 
         this.map = map;
@@ -69,8 +72,8 @@ export class MapComponent implements AfterViewInit {
 
         this.trackingService.trackingActive.subscribe(isActive => {
           isActive ? this.setToVisible() : this.setToInvisible();
-        })
-      }, (err) => console.log(err), { enableHighAccuracy: true })
+        });
+      }, (err) => console.log(err), { enableHighAccuracy: true });
     }
   }
 
@@ -79,23 +82,23 @@ export class MapComponent implements AfterViewInit {
         innerElement = document.createElement('div');
 
     innerElement.classList.add(className);
-    
+
     outerElement.appendChild(innerElement);
-    
+
     const changeOpacity = (evt) => {
       evt.target.style.opacity = 0.6;
     };
-    
+
     const changeOpacityToOne = (evt) => {
       evt.target.style.opacity = 1;
     };
 
     const openProfile = (evt) => {
-      document.open('http://localhost:4200/profile')
+      document.open('http://localhost:4200/profile');
     };
-  
-    //create dom icon and add/remove opacity listeners
-    var domIcon = new this.HereMap.map.DomIcon(outerElement, {
+
+    // create dom icon and add/remove opacity listeners
+    const domIcon = new this.HereMap.map.DomIcon(outerElement, {
       // the function is called every time marker enters the viewport
       onAttach: (clonedElement, domIcon, domMarker) => {
         clonedElement.addEventListener('mouseover', changeOpacity);
@@ -109,15 +112,15 @@ export class MapComponent implements AfterViewInit {
         clonedElement.removeEventListener('click', openProfile);
       }
     });
-    
-    
+
+
     this.trackingService.compass.subscribe((heading: number) => {
       const value = `transform: rotate(${Math.round(heading)}deg)`;
       const element = document.querySelector('.map-marker-user');
       element && element.setAttribute('style', value);
-    })
-  
-    var newMarker = new this.HereMap.map.DomMarker(coords, {
+    });
+
+    const newMarker = new this.HereMap.map.DomMarker(coords, {
       icon: domIcon
     });
 
@@ -136,18 +139,18 @@ export class MapComponent implements AfterViewInit {
 
     outerElement.appendChild(innerElement);
     innerElement.appendChild(imageElement);
-    
+
     const changeOpacity = (evt) => {
       evt.target.style.opacity = 0.6;
     };
-    
+
     const changeOpacityToOne = (evt) => {
       evt.target.style.opacity = 1;
     };
-  
+
     // TODO: Here we need the functionality to open the corresponding user profile
-    //create dom icon and add/remove opacity listeners
-    var domIcon = new this.HereMap.map.DomIcon(outerElement, {
+    // create dom icon and add/remove opacity listeners
+    const domIcon = new this.HereMap.map.DomIcon(outerElement, {
       // the function is called every time marker enters the viewport
       onAttach: (clonedElement, domIcon, domMarker) => {
         clonedElement.addEventListener('mouseover', changeOpacity);
@@ -159,8 +162,8 @@ export class MapComponent implements AfterViewInit {
         clonedElement.removeEventListener('mouseout', changeOpacityToOne);
       }
     });
-  
-    var newMarker = new this.HereMap.map.DomMarker(coords, {
+
+    const newMarker = new this.HereMap.map.DomMarker(coords, {
       icon: domIcon
     });
 
@@ -171,9 +174,9 @@ export class MapComponent implements AfterViewInit {
 
   startTracking() {
     // Send a callback and a callee string
-    this.trackingService.startTracking((coords: MapCoordinates)=> {
+    this.trackingService.startTracking((coords: MapCoordinates) => {
       this.userMarker.setGeometry(coords);
-    }, 'userIcon')
+    }, 'userIcon');
   }
 
 
@@ -185,7 +188,7 @@ export class MapComponent implements AfterViewInit {
       }
 
       let { filteredData, removedUsers = [], newUsers = [] } = trackingData;
-      
+
       if (!this.usersMarkers) {
         removedUsers = [];
         (newUsers as any) = Object.keys(filteredData);
@@ -198,19 +201,19 @@ export class MapComponent implements AfterViewInit {
           removedUserMarkers.push(this.usersMarkers[userKey]);
           delete this.usersMarkers[userKey];
         }
-      })
+      });
 
       this.map.removeObjects(removedUserMarkers);
 
       Object.keys(filteredData).forEach( dataKey => {
-        if(this.usersMarkers[dataKey]) {
+        if (this.usersMarkers[dataKey]) {
           const data = filteredData[dataKey];
-          const marker = this.usersMarkers[dataKey]
+          const marker = this.usersMarkers[dataKey];
           const coords: MapCoordinates = { lat: data.lat, lng: data.lng };
 
           marker.setGeometry(coords);
         }
-      })
+      });
 
       newUsers.forEach( userKey => {
         const data = filteredData[userKey];
@@ -218,8 +221,8 @@ export class MapComponent implements AfterViewInit {
         const imagePath = data.userData.profileImg[0] === '/' ? data.userData.profileImg.substring(1, data.userData.profileImg.length) : data.userData.profileImg;
 
         this.usersMarkers[userKey] = this.addUserMarker(this.map, coords, imagePath, 'userIcon');
-      })
-    }) 
+      });
+    });
   }
 
   // Deactivate server sided tracking and do not show any other users on the map anymore
@@ -232,7 +235,7 @@ export class MapComponent implements AfterViewInit {
 
     const markersArray = Object.keys(this.usersMarkers).map( markerKey => {
       return this.usersMarkers[markerKey];
-    })
+    });
 
     this.map.removeObjects(markersArray);
     this.usersMarkers = undefined;
