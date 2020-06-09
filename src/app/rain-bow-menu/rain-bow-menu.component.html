@@ -9,11 +9,16 @@
 
 <!--Buttons that link with the other pages -->
 <div class="icons">
-  <a class="button" href="#" >
+  <a class="button" [routerLink]="['/list', constants.ROUTES_LIST]">
     <i class="material-icons">map</i>
   </a>
   <a class="button" routerLink="/profile" >
     <i class="material-icons">person_pin</i>
+  </a>
+  <a class="button" routerLink="/main" >
+    <i>
+    <img src="../../assets/icon/liveMapIcon.svg" alt="liveMapIcon" class="liveMapIcon">
+    </i>
   </a>
   <a class="button" [routerLink]="['/list', constants.DOG_LIST]">
     <i class="material-icons">pets</i>

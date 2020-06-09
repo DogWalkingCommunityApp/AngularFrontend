@@ -1,64 +1,81 @@
+$height: 15vw;
+$maxHeight: 100px;
+$minHeight: 70px;
+
+article {
+  width: 80%;
+  min-width: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  margin-top: 15px;
+}
+
+.content {
+  background: #F7F7F7;
+  box-shadow: 7px 2px 13px gray;
+  height: $height;
+  min-height: $minHeight;
+  max-height: $maxHeight;
+  margin-left: calc(-#{$height} / 2);
+  padding: 5px;
+  padding-left: calc(#{$height} / 2 + 10px);
+  width: calc(100% - #{$height});
+  border-radius: 10px;
+  display: inline-table;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.profile-image {
+  border-radius: 200px;
+  width: $height;
+  height: $height;
+  max-width: $maxHeight;
+  max-height: $maxHeight;
+  min-width: $minHeight;
+  min-height: $minHeight;
+  overflow: hidden;
+  z-index: 5;
+  background-color: white;
+}
+
+.profile-image img {
+  min-width: 100%;
+  min-height: 100%;
+}
+
 .cursorPointer:hover{
   cursor: pointer;
 }
 
-.indexCard{
-  display: inline-table;
-  margin-left:15%;
-  height: 6em;
-  width:80vw;
-  border-radius: 10px 10px 10px 10px;
-  background-color: #F7F7F7;
-  box-shadow: 0px 5px 20px gray;
-}
-
-.iconsRight{
-  float: right;
-  display: block;
-  position: relative;
-  right: 1.5em;
-}
-
 .lowerIconsRight{
-  position: relative;
-  top: 1em;
+  right: 10px;
+  bottom: 8px;
+  position: absolute;
 }
 
 .changeDogInfoButton{
+  width: 18px;
   position: relative;
 }
 
 .deleteDogButton{
+  width: 15px;
   position: relative;
   right: 1em;
 }
 
 .arrow{
-  position: relative;
-  right: -0.5em;
-  font-size: 35px;
+  position: absolute;
+  right: 10px;
+  top:0px;
 }
 
 .dogNotationButton{
   position: relative;
-  right: -1.3em;
-}
-
-.dogProfilePic{
-  position: relative;
-  left: -45px;
-  border-radius: 50px;
-  width:100px;
-  height:100px;
-  float:left;
-}
-
-.dogCredentials{
-  position: relative;
-  left:-35px;
-  padding:5px;
-  float:left;
-  max-width: 225px;
+  right: -0.3em;
+  width: 25px;
 }
 
 .dogName{
@@ -66,24 +83,70 @@
   font-size:18px;
 }
 
-.displayNone{
-  display:none;
-}
-.displayBlock{
-  display:block;
-}
-
-.displayInLineBlock{
-  display:inline-block;
-}
-
 .dogDescription{
-  position: relative;
   padding: 0.6em;
-  margin: 0.6em;
+  margin-bottom: 35px;
+  margin-right: 10px;
   border: 1px solid #414141;
   border-radius: 0.6em;
   background-color: white;
 }
 
+.dogCredentials{
+  position: relative;
+  top: -15px;
+}
 
+
+@media screen and (min-width: 360px) {
+
+
+  .arrow{
+    font-size: 20px;
+  }
+
+  .deleteDogButton{
+    width: 15px;
+  }
+
+  .changeDogInfoButton {
+    width: 18px;
+  }
+
+}
+
+@media screen and (min-width: 500px) {
+  .arrow{
+    font-size: 30px;
+    right: 10px;
+    top:5px;
+  }
+  .deleteDogButton{
+    width: 17px;
+  }
+
+  .changeDogInfoButton {
+    width: 20px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .content {
+    margin-left: calc(-#{$minHeight} / 2);
+    padding-left: calc(#{$minHeight} / 2 + 10px);
+    width: calc(100% - #{$minHeight});
+  }
+}
+
+@media screen and (min-width: 666px) {
+  .content {
+    margin-left: calc(-#{$maxHeight} / 2);
+    padding-left: calc(#{$maxHeight} / 2 + 10px);
+    width: calc(100% - #{$maxHeight});
+  }
+
+  .dogCredentials{
+    position: relative;
+    top: 0px;
+  }
+}

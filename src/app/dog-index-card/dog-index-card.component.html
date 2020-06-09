@@ -1,28 +1,26 @@
+<article>
+      <div class="profile-image">
+        <img src="/assets/pics/Doge.png" alt="Profile Picture">
+      </div>
+      <div class="content">
+        <div class="dogCredentials">
+          <p><b>{{name}}</b> <br>
+          {{race}}, {{age}},<br>
+          {{neuteredText}}{{genderText}}
+          </p>
+        </div>
+        <div class="iconsRight">
+          <ion-icon (click)="toggleDescription()" class="arrow cursorPointer"
+                    [name]="descriptionVisible ? 'arrow-dropup' :'arrow-dropdown'">
+          </ion-icon>
+          <div class="lowerIconsRight">
+            <img src="../../assets/icon/trash.svg" alt="addDogIcon" class="deleteDogButton cursorPointer" name="deleteDog">
+            <img src="../../assets/icon/change.svg" alt="addDogIcon" class="changeDogInfoButton cursorPointer" name="changeDogInfo">
+          </div>
+        </div>
+        <div [class]="descriptionVisible ? 'dogDescription displayInLineBlock' :'dogDescription displayNone'">{{description}}</div>
+      </div>
+</article>
 
-  <div class="indexCard">
-    <img class="dogProfilePic" src="/assets/pics/Doge.png" alt="Profile Picture">
-    <div class="dogCredentials">
-    <p><b class="dogName">{{name}}</b> <br>
-      {{race}}, {{age}},<br>
-      {{neuteredText}}{{genderText}}
-    </p>
-    </div>
-    <div class="iconsRight">
 
-      <ion-icon (click)="toggleDescription()" class="arrow cursorPointer"
-                [name]="descriptionVisible ? 'arrow-dropup' :'arrow-dropdown'">
-      </ion-icon>
-      <div class="lowerIconsRight">
-    <div *ngIf="ownProfileView;then ownProfile else strangersProfile"></div>
-    <ng-template #strangersProfile>
-      <img src="../../assets/icon/noteButton.svg" alt="addDogIcon" class="dogNotationButton cursorPointer" name="dogNote">
-    </ng-template>
-      <ng-template #ownProfile>
-        <img src="../../assets/icon/trash.svg" alt="addDogIcon" class="deleteDogButton cursorPointer" name="deleteDog">
-        <img src="../../assets/icon/change.svg" alt="addDogIcon" class="changeDogInfoButton cursorPointer" name="changeDogInfo">
-      </ng-template>
-    </div>
-    </div>
 
-    <div [class]="descriptionVisible ? 'dogDescription displayInLineBlock' :'dogDescription displayNone'">{{description}}</div>
-  </div>

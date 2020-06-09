@@ -1,14 +1,9 @@
 <div class="grid-container">
   <div id="profile-header" class="grid-item">
-
-    <div>
         <img src="../../assets/floof_logo_final.svg" alt="" class="profile-pic"/>
-    </div>
-
     <div class="userNameDiv">
-        {{data.username}}
+      {{data.username}}
     </div>
-
     <div class="addBlockUserDiv">
 
       <div class="addButtonDiv">
@@ -26,49 +21,27 @@
       </div>
 
     </div>
-    <!--
-        <div id="logout">
-          <button class="small-btn" (click)="logout()">
-            <i class="material-icons">exit_to_app</i>
-          </button>
-        </div>
 
-
-        <div class="user-data">
-          {{dataStore.userData.username}}
-        </div>
-
-        <div class="user-data">
-          {{dataStore.userData.email}}
-        </div>
-    -->
-
-      </div>
-
-      <div class="messages">
-        <ion-select placeholder="Pushnachricht">
-          <ion-select-option></ion-select-option>
-        </ion-select>
-      </div>
-
-      <div id="dog-cards" class="grid-item">
-        <div class="dogIndexCardDiv">
-          <app-strangers-dog-index-card></app-strangers-dog-index-card>
-        </div>
-        <div class="dogIndexCardDiv">
-          <app-strangers-dog-index-card></app-strangers-dog-index-card>
-        </div>
-        <div class="dogIndexCardDiv">
-          <app-strangers-dog-index-card></app-strangers-dog-index-card>
-        </div>
-        <div class="dogIndexCardDiv">
-          <app-strangers-dog-index-card></app-strangers-dog-index-card>
-        </div>
-        <div class="dogIndexCardDiv">
-          <app-strangers-dog-index-card></app-strangers-dog-index-card>
-        </div>
-      </div>
-  <div id="profile-footer">
-  <app-return-to-map-button></app-return-to-map-button>
-  </div>
+    <div id="chat">
+      <select [(ngModel)]="ping">
+        <option *ngFor="let ping of pingMessages">{{ping}}</option>
+      </select>
+      <button class="small-btn" (click)="chat()">
+        <i class="material-icons">sms</i>
+      </button>
     </div>
+    </div>
+
+      <div class="listContainer">
+          <app-strangers-dog-index-card></app-strangers-dog-index-card>
+          <app-strangers-dog-index-card></app-strangers-dog-index-card>
+          <app-strangers-dog-index-card></app-strangers-dog-index-card>
+          <app-strangers-dog-index-card></app-strangers-dog-index-card>
+          <app-strangers-dog-index-card></app-strangers-dog-index-card>
+      </div>
+  <footer>
+    <div class="profile-footer">
+  <app-rain-bow-menu></app-rain-bow-menu>
+    </div>
+  </footer>
+</div>

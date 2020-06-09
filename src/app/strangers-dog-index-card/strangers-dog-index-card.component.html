@@ -1,6 +1,8 @@
-
-  <div class="indexCard">
-    <img class="dogProfilePic" src="/assets/pics/Doge.png" alt="Profile Picture">
+<article>
+  <div class="profile-image">
+    <img src="/assets/pics/Doge.png" alt="Profile Picture">
+  </div>
+  <div class="content">
     <div class="dogCredentials">
     <p><b class="dogName">{{name}}</b> <br>
       {{race}}, {{age}},<br>
@@ -9,13 +11,14 @@
     </div>
     <div class="iconsRight">
 
-      <ion-icon (click)="toggleDescription()" class="arrow cursorPointer"
+      <ion-icon (click)="toggleDescription()" class="cursorPointer arrow"
                 [name]="descriptionVisible ? 'arrow-dropup' :'arrow-dropdown'">
       </ion-icon>
       <div class="lowerIconsRight">
-      <img src="../../assets/icon/noteButton.svg" alt="noteButton" class="dogNotationButton cursorPointer" name="dogNote">
+      <img src="../../assets/icon/note-pencile.png" alt="noteButton" class="dogNotationButton cursorPointer" name="dogNote">
     </div>
     </div>
 
     <div [class]="descriptionVisible ? 'dogDescription displayInLineBlock' :'dogDescription displayNone'">{{description}}</div>
   </div>
+</article>

@@ -1,3 +1,4 @@
+
 <header>
   <nav class="list-navigation">
     <button [class.active]="selectedList === constants.FRIEND_LIST" [routerLink]="['/list', constants.FRIEND_LIST]">
@@ -29,6 +30,9 @@
   <app-blocked-list *ngIf="selectedList === constants.BLOCKED_LIST"></app-blocked-list>
 </section>
 <footer>
+
+  <app-rain-bow-menu></app-rain-bow-menu>
+  <!--
   <button class="footer-buttons">
     <i class="material-icons">
       account_box
@@ -43,5 +47,5 @@
     <i class="material-icons">
       chat
       </i>
-  </button>
+  </button> -->
 </footer>

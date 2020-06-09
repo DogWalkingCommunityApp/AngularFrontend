@@ -1,0 +1,20 @@
+
+<div class="indexCard">
+  <img class="dogProfilePic" src="/assets/pics/route.jpg" alt="Profile Picture">
+  <div class="dogCredentials">
+    <p><b class="dogName">{{name}}</b>
+    </p>
+  </div>
+  <div class="iconsRight">
+
+    <ion-icon (click)="toggleDescription()" class="arrow cursorPointer"
+              [name]="descriptionVisible ? 'arrow-dropup' :'arrow-dropdown'">
+    </ion-icon>
+    <div class="lowerIconsRight">
+      <img src="../../assets/icon/trash.svg" alt="addDogIcon" class="deleteDogButton cursorPointer" name="deleteDog">
+      <img src="../../assets/icon/change.svg" alt="addDogIcon" class="changeDogInfoButton cursorPointer" name="changeDogInfo">
+    </div>
+  </div>
+
+  <div [class]="descriptionVisible ? 'dogDescription displayInLineBlock' :'dogDescription displayNone'">{{description}}</div>
+</div>
