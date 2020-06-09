@@ -1,0 +1,46 @@
+<ion-content class="edit-profil-page" xmlns:vertical-align="http://www.w3.org/1999/xhtml">
+  <form #form="ngForm" [mustMatch]="[['password', 'confirmPassword'], ['email', 'confirmEmail'], ['license-agreement']]" [validateValue]="[['validateEmail', 'email'], ['validatePassword', 'password'], ['validateBirthday', 'birthdate']]">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+
+          <ion-header>
+            <ion-toolbar>
+              <ion-icon size="large" name="settings"></ion-icon>
+              <ion-title>Profildaten ändern</ion-title>
+            </ion-toolbar>
+          </ion-header>
+          <app-message-box *ngIf="response" [message]="response.message" [colorClass]="response.success ? 'green' : 'red'"></app-message-box>
+
+
+          <div>
+            <ion-item lines="none">
+              <ion-input class="textfeld" name="vorname" type="text" placeholder="Vorname" [(ngModel)]="vorname" ></ion-input>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-input class="textfeld" name="name" type="text" placeholder="Name" [(ngModel)]="name" ></ion-input>
+            </ion-item>
+            <br>
+            <ion-item lines="none">
+              <ion-input class="textfeld" name="password" type="password" placeholder="Passwort" [(ngModel)]="password" ></ion-input>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-input class="textfeld" name="confirmPassword" type="password" placeholder="Confirm Passwort" [(ngModel)]="confirmPassword" ></ion-input>
+            </ion-item>
+            <br>
+            <ion-item lines="none">
+              <ion-input class="textfeld" name="email" type="text" placeholder="E-Mail" [(ngModel)]="email" ></ion-input>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-input class="textfeld" name="confirmEmail" type="text" placeholder="Confirm E-Mail" [(ngModel)]="confirmEmail" ></ion-input>
+            </ion-item>
+            <div class="buttons">
+              <ion-button class="submit-button" type="submit" size="large" color="danger" [disabled]="form.invalid" (click)="onCancel()">Verwerfen</ion-button>
+              <ion-button class="submit-button" type="submit" size="large" color="success" [disabled]="form.invalid" (click)="onEdit()">Speichern</ion-button>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

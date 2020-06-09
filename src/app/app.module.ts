@@ -39,7 +39,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalComponent } from './modal/modal.component';
 import { UploadProfilePictureComponent } from './upload-profile-picture/upload-profile-picture.component';
-import { PushNotificationService } from './services/push-notification.service';
+import { PushNotificationService} from './services/push-notification.service';
 import { environment} from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -49,6 +49,7 @@ import {PushNotificationComponent} from './push-notification/push-notification.c
 import { WeatherComponent } from './weather/weather.component';
 import {ReturnToMapButtonComponent} from './return-to-map-button/return-to-map-button.component';
 import {RainBowMenuComponent} from './rain-bow-menu/rain-bow-menu.component';
+import {EditProfilComponent} from './edit-profil/edit-profil.component';
 
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
@@ -81,7 +82,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
         PeopleCardsComponent,
         WeatherComponent,
         ReturnToMapButtonComponent,
-        RainBowMenuComponent
+        RainBowMenuComponent,
+        EditProfilComponent
     ],
   entryComponents: [
       ModalComponent,
@@ -105,7 +107,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     StatusBar,
     SplashScreen,
     [PushNotificationService],
-    { provide: RouteReuseStrategy, useClass: CustomReuseStrategy },
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     DataStoreService
   ],
   bootstrap: [AppComponent]
