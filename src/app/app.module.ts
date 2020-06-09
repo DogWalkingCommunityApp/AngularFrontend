@@ -37,13 +37,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalComponent } from './modal/modal.component';
 import { UploadProfilePictureComponent } from './upload-profile-picture/upload-profile-picture.component';
-import { PushNotificationService} from "./services/push-notification.service";
-import { environment} from "../environments/environment";
+import { PushNotificationService} from './services/push-notification.service';
+import { environment} from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 
 import { DataStoreService } from './services/data-store.service';
-import {PushNotificationComponent} from "./push-notification/push-notification.component";
-import { WeatherComponent } from "./weather/weather.component";
+import {PushNotificationComponent} from './push-notification/push-notification.component';
+import { WeatherComponent } from './weather/weather.component';
+import {EditProfilComponent} from './edit-profil/edit-profil.component';
 
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
@@ -72,7 +73,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     BlockedListComponent,
     ListComponent,
     PeopleCardsComponent,
-    WeatherComponent
+    WeatherComponent,
+    EditProfilComponent
   ],
   entryComponents: [
       ModalComponent,

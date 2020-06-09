@@ -10,6 +10,7 @@ import { DogIndexCardComponent } from './dog-index-card/dog-index-card.component
 import { AddDogFormComponent } from './add-dog-form/add-dog-form.component';
 import { ProfileComponent} from './profile/profile.component';
 import { ModalComponent } from './modal/modal.component';
+import {EditProfilComponent} from './edit-profil/edit-profil.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'modal', component: ModalComponent},
   { path: 'list/:list', component: ListComponent},
   { path: 'dogIndexCard', component: DogIndexCardComponent },
-  { path: 'addDogForm', component: AddDogFormComponent }
+  { path: 'addDogForm', component: AddDogFormComponent },
+  { path: 'editProfil', component: EditProfilComponent }
 ];
 
 @NgModule({
