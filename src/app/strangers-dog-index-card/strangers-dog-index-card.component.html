@@ -1,6 +1,8 @@
-
-  <div class="indexCard">
-    <img class="dogProfilePic" src="/assets/pics/Doge.png" alt="Profile Picture">
+<article>
+  <div class="profile-image">
+    <img src="/assets/pics/Doge.png" alt="Profile Picture">
+  </div>
+  <div class="content">
     <div class="dogCredentials">
     <p><b class="dogName">{{name}}</b> <br>
       {{race}}, {{age}},<br>
@@ -19,3 +21,4 @@
 
     <div [class]="descriptionVisible ? 'dogDescription displayInLineBlock' :'dogDescription displayNone'">{{description}}</div>
   </div>
+</article>

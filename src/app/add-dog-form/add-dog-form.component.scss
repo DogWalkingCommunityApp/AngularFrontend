@@ -1,24 +1,10 @@
-.tempDevDIV{
-  padding: 1em 32.4%;
-}
-
-.tempPhoneSimulate1{
-  border:0.5px solid gray;
-  width:360px;
-  height:640px;
-  padding:2em;
-  display: inline-block;
-}
-
-.tempPhoneSimulate2{
-  border:0.5px solid gray;
-  width:360px;
-  height:640px;
-  padding:2em;
-  position: absolute;
-  float: right;
-  right:5em;
-  display:inline-block;
+.widthHeightFormatDiv{
+  //height: calc(100vh - 54vw);
+  //min-height: calc(100vh - 346px);
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: auto;
+  max-width: 500px;
 }
 
 input{

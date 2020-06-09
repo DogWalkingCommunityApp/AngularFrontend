@@ -1,6 +1,5 @@
-<div class="tempDevDIV">
-  <div class="tempPhoneSimulate1"><!--[formGroup]="myGroup"-->
-    <form #dogForm="ngForm" >
+<div class="widthHeightFormatDiv">
+<form #dogForm="ngForm" >
       <app-message-box *ngIf="response" [message]="response.message" [colorClass]="response.success ? 'green' : 'red'"></app-message-box>
       <div class="addPicCancelSaveDiv">
 
@@ -14,7 +13,7 @@
 
         <div id="saveCancelDiv">
           <ion-button color="success" *ngIf="dogRace && dogBirthDate && dogSize && dogName && dogGender" (click)="onSubmit($event)">Speichern</ion-button>
-          <ion-button color="danger" (click)="clearInputs(dogForm)">Verwerfen</ion-button>
+          <ion-button color="danger" (click)="clearInputs(dogForm)" routerLink="/profile">Verwerfen</ion-button>
         </div>
 
       </div>
@@ -71,6 +70,4 @@
 
       </div>
     </form>
-  </div>
-
 </div>

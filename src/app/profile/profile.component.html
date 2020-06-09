@@ -26,42 +26,28 @@
 
       <button mat-flat-button (click)="openModal('palette')"><i class="material-icons palette-btn">palette</i></button>
 
-      <a routerLink="#" class="small-btn">
+      <a routerLink="/addDogForm"  class="small-btn">
         <img src="../../assets/icon/addDogIcon.svg" alt="addDogIcon" height="25px">
       </a>
     </div>
     <div id="logout">
-      <button class="small-btn" (click)="logout()">
+      <button class="small-btn" (click)="onLogout()">
         <i class="material-icons">exit_to_app</i>
-      </button>
-    </div>
-    <div id="chat">
-      <select [(ngModel)]="ping">
-        <option *ngFor="let ping of pingMessages">{{ping}}</option>
-      </select>
-      <button class="small-btn" (click)="chat()">
-        <i class="material-icons">sms</i>
       </button>
     </div>
 
   </div>
 
-  <div id="dog-cards" class="grid-item">
-    <div class="dogIndexCardDiv">
+  <div class="listContainer">
       <app-dog-index-card></app-dog-index-card>
-    </div>
-    <div class="dogIndexCardDiv">
       <app-dog-index-card></app-dog-index-card>
-    </div>
-    <div class="dogIndexCardDiv">
       <app-dog-index-card></app-dog-index-card>
-    </div>
-    <div class="dogIndexCardDiv">
       <app-dog-index-card></app-dog-index-card>
-    </div>
-    <div class="dogIndexCardDiv">
       <app-dog-index-card></app-dog-index-card>
-    </div>
+      <app-dog-index-card></app-dog-index-card>
+      <app-dog-index-card></app-dog-index-card>
+      <app-dog-index-card></app-dog-index-card>
+      <app-dog-index-card></app-dog-index-card>
   </div>
 
     <footer>

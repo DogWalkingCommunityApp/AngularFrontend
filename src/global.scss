@@ -28,6 +28,11 @@
 /* Overwrite the styles of the mat-dialog-container element globally, but only for those
 that have an id of `modal-component` */
 /*https://stackoverflow.com/a/48689004/9263761*/
+
+$height: 15vw;
+$maxHeight: 100px;
+$minHeight: 70px;
+
 mat-dialog-container#modal-component {
   border-radius: 11px;
   background-color: white;
@@ -50,4 +55,96 @@ h1 {
 
 #modal-upload-button {
   background-color: #d8d8d8;
+}
+
+.card{
+
+  @media screen and (max-width: 666px) {
+      margin-left: calc(-#{$maxHeight} / 2);
+      padding-left: calc(#{$maxHeight} / 2 + 10px);
+      width: calc(100% - #{$maxHeight});
+  }
+
+  @media screen and (min-width: 360px) {
+      margin-left: calc(-#{$minHeight} / 2);
+      padding-left: calc(#{$minHeight} / 2 + 10px);
+      width: calc(100% - #{$minHeight});
+  }
+    max-width: 400px;
+    display: inline-block;
+    border-radius: 10px 10px 10px 10px;
+    background-color: #F7F7F7;
+    box-shadow: 0px 5px 20px gray;
+    margin-top: 2.5px;
+    margin-bottom: 2.5px;
+}
+/*
+.cardList{
+  @media screen and (max-width: 666px) {
+    margin-left: calc(-#{$maxHeight} / 2);
+  }
+
+  @media screen and (min-width: 360px) {
+    margin-left: calc(-#{$minHeight} / 2);
+  }
+
+  display: flex;
+  flex-flow: column;
+  flex: 1 1 auto;
+  overflow-y: auto;
+}
+*/
+.lists{
+  height: calc(100vh - 54vw);
+  min-height: calc(100vh - 346px);
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: auto;
+  max-width: 500px;
+}
+
+.small-btn {
+  background-color: white;
+  color: black;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  top: 7px;
+  margin: 0px 5px;
+}
+
+.large-btn{
+  background-color: #e5e5e5;
+  color: black;
+  border-radius: 50px;
+  border: none;
+  padding: 3px 3px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 2px 2px 10px grey;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  float: bottom;
+}
+
+.displayNone{
+  display:none;
+}
+.displayBlock{
+  display:block;
+}
+.displayInLineBlock{
+  display:inline-block;
+}
+
+.listContainer {
+  height: calc(100vh - 54vw);
+  min-height: calc(100vh - 346px);
+  box-sizing: border-box;
+  overflow: auto;
+  margin: auto;
+  max-width: 500px;
 }

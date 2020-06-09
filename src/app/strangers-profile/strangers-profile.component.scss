@@ -1,20 +1,9 @@
-
-
-.small-btn {
-  background-color: white;
-  color: #414141;
-  border: none;
-  padding: 12px 16px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
 .userNameDiv {
   font-size: 18px;
   font-weight: bold;
   position: relative;
-  left: 1em;
-  top:5px;
+  left: 71px;
+  top: 10px;
 }
 
 .profile-pic {
@@ -26,42 +15,21 @@
   float: left;
 }
 
-#logout {
-  float: right;
-}
-
 p {
-  //color: #414141;
-  //font-family: Arial, sans-serif;
   font-size: 1em;
 }
 
 #profile-header {
-  /*
-  position: sticky;
-  padding: 10px;
-  margin: 10px;
-     */
   padding: 25px;
   flex: 0 1 auto;
-}
-
-#dog-cards {
-  /*
-  overflow-y: auto;
-  height: 75vw;
-  position: relative;
-  display: block;
-  */
-  display: flex;
-  flex-flow: column;
-  flex: 1 1 auto;
-  overflow-y: auto;
+  box-sizing: border-box;
+  margin: auto;
+  max-width: 500px;
 }
 
 .addBlockUserDiv{
   display: inline-flex;
-  top: 35px;
+  top: 10px;
   position: relative;
 }
 
@@ -91,19 +59,7 @@ font-size: 0.59em;
   font-size: 2em;
 }
 
-.dogIndexCardDiv{
-  margin-top: 2.5px;
-  margin-bottom: 2.5px;
-}
-
-.grid-container {
-  display: flex;
-  flex-flow: column;
-  height: 100%;
-}
-
 footer {
-
   flex: 0 1 7.5em;
 }
 
@@ -111,4 +67,13 @@ footer {
   position: fixed;
   bottom: 52.5px;
   width: 100%;
+  z-index: 5;
 }
+
+  #chat {
+    position: relative;
+    width: 225px;
+    margin: auto;
+  }
+
+

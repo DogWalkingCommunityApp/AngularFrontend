@@ -3,9 +3,8 @@ import { DataStoreService } from '../services/data-store.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
 import { UploadProfilePictureComponent } from '../upload-profile-picture/upload-profile-picture.component';
-import { DogIndexCardComponent } from '../dog-index-card/dog-index-card.component';
-import {push_notification} from '../push-notification/push-notification';
-import {Socket} from 'ngx-socket-io';
+import config from '../services/environment.json';
+import {RegisterResponse} from '../registration/registration.interfaces';
 
 @Component({
   selector: 'app-profile',
@@ -14,14 +13,9 @@ import {Socket} from 'ngx-socket-io';
 })
 export class ProfileComponent implements OnInit {
 
-    public ping = 'HI!';
-    public pingMessages: string[] = [ 'Hi', 'Wie gehts?', 'Möchte Gassi gehen' ];
-    public toUserId: number;
-    public fromUserId: number;
-    public fromUserName: string;
-    public pushNotification: push_notification;
+    public response: (null | RegisterResponse);
 
-  constructor(private dataStore: DataStoreService, public matDialog: MatDialog,  private socket: Socket) {
+  constructor(private dataStore: DataStoreService, public matDialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -43,18 +37,34 @@ export class ProfileComponent implements OnInit {
       }
    }
 
-    logout() {
-        // logout user
-    }
+    async onLogout() {
+        const authId = this.dataStore.authToken.id;
 
-    chat() {
-        this.fromUserId = this.dataStore.userData.id;
-        this.fromUserName = this.dataStore.userData.username;
-        this.toUserId = 3;
-        if (this.ping != undefined && this.fromUserId != undefined) {
-            this.pushNotification = new push_notification(this.ping, this.toUserId, this.fromUserId, this.fromUserName);
-            this.socket.emit('sendMessage', this.pushNotification);
-            this.ping = undefined;
+        try {
+            const response = await fetch(config.serverBaseUrl + 'logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ authId })
+            });
+
+            const responseData: RegisterResponse = await response.json();
+
+            this.handleResponse(responseData);
+        } catch (e) {
+            this.handleResponse({ success: false, message: 'The server did not respond' });
         }
     }
+
+    handleResponse(response: RegisterResponse) {
+        this.response = response;
+        console.log((response));
+        if (response.success) {
+            this.dataStore.logout();
+
+        }
+    }
+
+
 }
