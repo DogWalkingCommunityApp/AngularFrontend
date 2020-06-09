@@ -107,7 +107,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     StatusBar,
     SplashScreen,
     [PushNotificationService],
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: RouteReuseStrategy, useClass: CustomReuseStrategy },
     DataStoreService
   ],
   bootstrap: [AppComponent]
