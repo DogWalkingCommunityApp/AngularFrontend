@@ -35,7 +35,7 @@
               <ion-input class="textfeld" name="confirmEmail" type="text" placeholder="Confirm E-Mail" [(ngModel)]="confirmEmail" ></ion-input>
             </ion-item>
             <div class="buttons">
-              <ion-button class="submit-button" type="submit" size="large" color="danger" [disabled]="form.invalid" (click)="onCancel()">Verwerfen</ion-button>
+              <ion-button class="submit-button" type="submit" size="large" color="danger" routerLink="/profile" [disabled]="form.invalid" (click)="onCancel()">Verwerfen</ion-button>
               <ion-button class="submit-button" type="submit" size="large" color="success" [disabled]="form.invalid" (click)="onEdit()">Speichern</ion-button>
             </div>
           </div>
