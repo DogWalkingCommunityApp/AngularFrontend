@@ -1,5 +1,5 @@
 <article [routerLink]="['/strangersProfile', profileData.id]">
-  <div class="profile-image">
+  <div class="cardImage">
     <img src="{{serverBaseUrl + ( profileData.profileImg[0] === '/' ? profileData.profileImg.substring(1, profileData.profileImg.length) : profileData.profileImg)}}">
   </div>
   <div class="content">

@@ -25,13 +25,13 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-/* Overwrite the styles of the mat-dialog-container element globally, but only for those
-that have an id of `modal-component` */
-/*https://stackoverflow.com/a/48689004/9263761*/
-
 $height: 15vw;
 $maxHeight: 100px;
 $minHeight: 70px;
+
+/* Overwrite the styles of the mat-dialog-container element globally, but only for those
+that have an id of `modal-component` */
+/*https://stackoverflow.com/a/48689004/9263761*/
 
 mat-dialog-container#modal-component {
   border-radius: 11px;
@@ -45,62 +45,123 @@ h1 {
   font-weight: bold;
 }
 
-#modal-save-button {
-  background-color: #86d058;
-}
-
-#modal-cancel-button {
-  background-color: #eb5757;
-}
-
-#modal-upload-button {
-  background-color: #d8d8d8;
-}
-
-.card{
-
-  @media screen and (max-width: 666px) {
-      margin-left: calc(-#{$maxHeight} / 2);
-      padding-left: calc(#{$maxHeight} / 2 + 10px);
-      width: calc(100% - #{$maxHeight});
-  }
-
-  @media screen and (min-width: 360px) {
-      margin-left: calc(-#{$minHeight} / 2);
-      padding-left: calc(#{$minHeight} / 2 + 10px);
-      width: calc(100% - #{$minHeight});
-  }
-    max-width: 400px;
-    display: inline-block;
-    border-radius: 10px 10px 10px 10px;
-    background-color: #F7F7F7;
-    box-shadow: 0px 5px 20px gray;
-    margin-top: 2.5px;
-    margin-bottom: 2.5px;
-}
-/*
-.cardList{
-  @media screen and (max-width: 666px) {
-    margin-left: calc(-#{$maxHeight} / 2);
-  }
-
-  @media screen and (min-width: 360px) {
-    margin-left: calc(-#{$minHeight} / 2);
-  }
-
+article {
+  width: 80%;
+  min-width: 200px;
   display: flex;
-  flex-flow: column;
-  flex: 1 1 auto;
-  overflow-y: auto;
+  flex-wrap: wrap;
+  margin: 15px auto;
 }
-*/
-.lists{
-  height: calc(100vh - 54vw);
+
+footer{
+  height: 100px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 5;
+}
+
+.listContainer {
+  height: calc(100vh - 250px);
   min-height: calc(100vh - 346px);
   box-sizing: border-box;
-  overflow: hidden;
+  overflow: auto;
   margin: auto;
   max-width: 500px;
+}
+
+.content {
+  background: #F7F7F7;
+  box-shadow: 7px 2px 13px gray;
+  height: $height;
+  min-height: $minHeight;
+  max-height: $maxHeight;
+  margin-left: calc(-#{$height} / 2);
+  padding: 5px;
+  padding-left: calc(#{$height} / 2 + 10px);
+  width: calc(100% - #{$height});
+  border-radius: 10px;
+  display: inline-table;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.cardImage {
+  border-radius: 200px;
+  width: $height;
+  height: $height;
+  max-width: $maxHeight;
+  max-height: $maxHeight;
+  min-width: $minHeight;
+  min-height: $minHeight;
+  overflow: hidden;
+  z-index: 5;
+  background-color: white;
+}
+
+.cardImage img {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.cardCredentials{
+  position: relative;
+  top: -15px;
+}
+
+.lowerIconsRight{
+  right: 10px;
+  bottom: 8px;
+  position: absolute;
+}
+
+.arrow{
+  position: absolute;
+  right: 10px;
+  top:0px;
+}
+
+.cardNotationButton{
+  position: relative;
+  right: -0.3em;
+  width: 25px;
+}
+
+.changeCardInfoButton{
+  width: 18px;
+  position: relative;
+}
+
+.deleteCardButton{
+  width: 15px;
+  position: relative;
+  right: 1em;
+}
+
+.cardDescription{
+  padding: 0.6em;
+  margin-bottom: 35px;
+  margin-right: 10px;
+  border: 1px solid #414141;
+  border-radius: 0.6em;
+  background-color: white;
+}
+
+.cursorPointer:hover{
+  cursor: pointer;
+}
+
+.displayNone{
+  display:none;
+}
+
+.displayBlock{
+  display:block;
+}
+
+.displayInLineBlock{
+  display:inline-block;
 }
 
 .small-btn {
@@ -130,21 +191,86 @@ h1 {
   float: bottom;
 }
 
-.displayNone{
-  display:none;
-}
-.displayBlock{
-  display:block;
-}
-.displayInLineBlock{
-  display:inline-block;
+.palette-btn {
+  background-color: white;
+  color: black;
+  border: none;
+  cursor: pointer;
 }
 
-.listContainer {
-  height: calc(100vh - 54vw);
-  min-height: calc(100vh - 346px);
-  box-sizing: border-box;
-  overflow: auto;
-  margin: auto;
-  max-width: 500px;
+.online-status {
+  border: 1px black solid;
+  background-color: #cecece;
+  height: 20px;
+  width: 20px;
+  border-radius: 20px;
+}
+
+.online-status.online {
+  background-color: #27c200;
+}
+
+#modal-save-button {
+  background-color: #86d058;
+}
+
+#modal-cancel-button {
+  background-color: #eb5757;
+}
+
+#modal-upload-button {
+  background-color: #d8d8d8;
+}
+
+@media screen and (min-width: 666px) {
+  .content {
+    margin-left: calc(-#{$maxHeight} / 2);
+    padding-left: calc(#{$maxHeight} / 2 + 10px);
+    width: calc(100% - #{$maxHeight});
+  }
+}
+
+@media screen and (max-width: 466px) {
+  .content {
+    margin-left: calc(-#{$minHeight} / 2);
+    padding-left: calc(#{$minHeight} / 2 + 10px);
+    width: calc(100% - #{$minHeight});
+  }
+}
+
+@media screen and (min-width: 360px) {
+  .arrow{
+    font-size: 20px;
+  }
+
+  .deleteCardButton{
+    width: 15px;
+  }
+
+  .changeCardInfoButton {
+    width: 18px;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .arrow{
+    font-size: 30px;
+    right: 10px;
+    top:5px;
+  }
+
+  .deleteCardButton{
+    width: 17px;
+  }
+
+  .changeCardInfoButton {
+    width: 20px;
+  }
+}
+
+@media screen and (min-width: 466px) {
+  .cardCredentials{
+    position: relative;
+    top: 0px;
+  }
 }
