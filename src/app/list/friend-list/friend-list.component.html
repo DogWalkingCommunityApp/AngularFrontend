@@ -2,6 +2,6 @@
     <input placeholder="Nutzername ..." [(ngModel)]="userNameSearch">
     <input placeholder="Hundename ..." [(ngModel)]="dogNameSearch">
 </section>
-<section class="list-content">
+<section class="listContainer">
     <app-people-cards *ngFor="let friend of friendsData" [profileData]="friend"></app-people-cards>
 </section>

@@ -35,14 +35,6 @@ header {
     max-height: 126px;
 }
 
-footer {
-    height: 100px;
-    width:100%;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-}
-
 footer button {
     border: none;
     border-radius: 60px;
@@ -52,15 +44,6 @@ footer button {
 
 footer i {
     font-size: 14vw;
-}
-
-.lists {
-    height: calc(100vh - 54vw);
-    min-height: calc(100vh - 346px);
-    box-sizing: border-box;
-    overflow: hidden;
-    margin: auto;
-    max-width: $maxWidth;
 }
 
 @media screen and (min-width: 534px) {

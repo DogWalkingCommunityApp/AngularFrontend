@@ -1,9 +1,9 @@
 <article>
-      <div class="profile-image">
-        <img src="/assets/pics/Doge.png" alt="Profile Picture">
+      <div class="cardImage">
+        <img src="/assets/pics/Doge.png" alt="Dog Picture">
       </div>
       <div class="content">
-        <div class="dogCredentials">
+        <div class="cardCredentials">
           <p><b>{{name}}</b> <br>
           {{race}}, {{age}},<br>
           {{neuteredText}}{{genderText}}
@@ -14,11 +14,11 @@
                     [name]="descriptionVisible ? 'arrow-dropup' :'arrow-dropdown'">
           </ion-icon>
           <div class="lowerIconsRight">
-            <img src="../../assets/icon/trash.svg" alt="addDogIcon" class="deleteDogButton cursorPointer" name="deleteDog">
-            <img src="../../assets/icon/change.svg" alt="addDogIcon" class="changeDogInfoButton cursorPointer" name="changeDogInfo">
+            <img src="../../assets/icon/trash.svg" alt="delete" class="deleteCardButton cursorPointer" name="deleteDog">
+            <img src="../../assets/icon/change.svg" alt="change" class="changeCardInfoButton cursorPointer" name="changeDogInfo">
           </div>
         </div>
-        <div [class]="descriptionVisible ? 'dogDescription displayInLineBlock' :'dogDescription displayNone'">{{description}}</div>
+        <div [class]="descriptionVisible ? 'cardDescription displayInLineBlock' :'cardDescription displayNone'">{{description}}</div>
       </div>
 </article>
 
