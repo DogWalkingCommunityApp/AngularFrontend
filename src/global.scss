@@ -210,6 +210,29 @@ footer{
   background-color: #27c200;
 }
 
+#modal-component{
+  width:auto;
+  margin:auto;
+}
+
+#modal-component #modal-header{
+  position: relative;
+  top: -30px;
+}
+
+#modal-component #modal-body{
+  position: relative;
+  top: -30px;
+}
+
+#modal-component #modal-body #modal-save-button{
+  margin: 2px;
+}
+
+#modal-component #modal-body #modal-cancel-button{
+  margin: 2px;
+}
+
 #modal-save-button {
   background-color: #86d058;
 }
